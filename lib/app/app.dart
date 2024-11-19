@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spicypickles/features/home/presentation/pages/home.dart';
+import 'package:spicypickles/presentation/home/home.dart';
 
 class SpicyPickleApp extends StatelessWidget {
   const SpicyPickleApp({super.key});
