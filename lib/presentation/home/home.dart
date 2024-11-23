@@ -56,6 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
       appBar: AppBar(
         elevation: 0,
+        backgroundColor: AppColors.vibrantRed.withOpacity(0.8),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -64,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
               style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8), fontSize: 12),
             ),
             const SizedBox(height: 2),
-              const Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Icon(Icons.location_on),
@@ -95,43 +96,46 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            height: 200,
-            width: double.infinity,
-            padding: const EdgeInsets.all(20),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColor,
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Text(
-                  "Hi, Tulasi Reddy",
-                  style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8)),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  AppConstants.kTagLine1,
-                  style: context.textStyle?.labelLarge?.copyWith(fontSize: 18),
-                ),
-                const SizedBox(height: 16),
-                TextFormFieldWidget(
-                  maxWidth: double.infinity,
-                  controller: _aadhaarNoController,
-                  hintText: "Search for your favorite pickle flavor",
-                  textInputType: TextInputType.text,
-                  actionKeyboard: TextInputAction.search,
-                  maxLength: 100,
-                  onChanged: (value) {},
-                  onClick: (value) {
-                    print("Text: $value");
-                  },
-                ),
-              ],
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: SafeArea(
+          child: SingleChildScrollView(
+            child: Container(
+              height: 200,
+              width: double.infinity,
+              padding: const EdgeInsets.all(20),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColor.withOpacity(0.8),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    "Hi, Tulasi Reddy",
+                    style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8)),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(
+                    AppConstants.kTagLine1,
+                    style: context.textStyle?.labelLarge?.copyWith(fontSize: 18),
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormFieldWidget(
+                    maxWidth: double.infinity,
+                    controller: _aadhaarNoController,
+                    hintText: "Search for your favorite pickle flavor",
+                    textInputType: TextInputType.text,
+                    actionKeyboard: TextInputAction.search,
+                    maxLength: 100,
+                    onChanged: (value) {},
+                    onClick: (value) {
+                      print("Text: $value");
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),

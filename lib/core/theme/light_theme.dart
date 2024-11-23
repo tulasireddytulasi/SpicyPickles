@@ -155,13 +155,17 @@ class LightTheme implements AppTheme {
             color: AppColors.salmonPink,
           ),
           focusColor: AppColors.white,
+          enabledBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(8.0),
+            borderSide: const BorderSide(color: AppColors.vibrantRed, width: 2),
+          ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
             borderSide: const BorderSide(color: AppColors.vibrantRed, width: 2),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: const BorderSide(color: Colors.transparent, width: 6),
+            borderSide: const BorderSide(color: AppColors.vibrantRed, width: 6),
           ),
         ),
         snackBarTheme: const SnackBarThemeData(
