@@ -5,6 +5,7 @@ import 'package:spicypickles/core/utils/app_colors.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
   final TextInputType? textInputType;
+  final Widget? suffixIcon;
   final String hintText;
   final TextEditingController controller;
   final TextInputAction? actionKeyboard;
@@ -35,6 +36,7 @@ class TextFormFieldWidget extends StatefulWidget {
     this.onClick,
     this.isOnClickDisabled = false,
     this.readOnly = false,
+    this.suffixIcon,
   });
 
   @override
@@ -79,6 +81,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         hintStyle: themeProvider.inputDecorationTheme.hintStyle?.copyWith(fontSize: 14),
         errorMaxLines: 3,
         counterText: "",
+        suffixIcon: widget.suffixIcon,
       ),
       controller: widget.controller,
       validator: widget.onValidate,

@@ -125,9 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   TextFormFieldWidget(
                     maxWidth: double.infinity,
                     controller: _aadhaarNoController,
-                    hintText: "Search for your favorite pickle flavor",
+                    hintText: "Search for your favorite pickle",
                     textInputType: TextInputType.text,
                     actionKeyboard: TextInputAction.search,
+                    suffixIcon: const Icon(Icons.search_rounded, size: 32, color: AppColors.vibrantRed),
                     maxLength: 100,
                     onChanged: (value) {},
                     onClick: (value) {
