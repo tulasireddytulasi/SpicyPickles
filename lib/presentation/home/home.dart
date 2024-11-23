@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
+import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
 import 'package:spicypickles/presentation/widgets/text_form_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,7 +16,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final TextEditingController _aadhaarNoController = TextEditingController();
 
   final List<String> messages = [
     AppConstants.kTagLine,
@@ -59,6 +60,7 @@ class _HomeScreenState extends State<HomeScreen> {
         backgroundColor: AppColors.vibrantRed.withOpacity(0.8),
         title: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Text(
               'Location',
@@ -100,43 +102,18 @@ class _HomeScreenState extends State<HomeScreen> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: SafeArea(
           child: SingleChildScrollView(
-            child: Container(
-              height: 200,
-              width: double.infinity,
-              padding: const EdgeInsets.all(20),
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor.withOpacity(0.8),
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    "Hi, Tulasi Reddy",
-                    style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8)),
-                  ),
-                  const SizedBox(height: 10),
-                  Text(
-                    AppConstants.kTagLine1,
-                    style: context.textStyle?.labelLarge?.copyWith(fontSize: 18),
-                  ),
-                  const SizedBox(height: 16),
-                  TextFormFieldWidget(
-                    maxWidth: double.infinity,
-                    controller: _aadhaarNoController,
-                    hintText: "Search for your favorite pickle",
-                    textInputType: TextInputType.text,
-                    actionKeyboard: TextInputAction.search,
-                    suffixIcon: const Icon(Icons.search_rounded, size: 32, color: AppColors.vibrantRed),
-                    maxLength: 100,
-                    onChanged: (value) {},
-                    onClick: (value) {
-                      print("Text: $value");
-                    },
-                  ),
-                ],
-              ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const SearchbarWidget(),
+                 SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 150,
+                  child: const PageViewWithCards(),
+                ),
+              ],
             ),
           ),
         ),

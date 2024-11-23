@@ -21,4 +21,19 @@ class AppAssets {
   static const String kSendIcon = "assets/icons/send_icon.svg";
   static const String kSettingsIcon = "assets/icons/settings_icon.svg";
   static const String kShareIcon = "assets/icons/share_icon.svg";
+
+  static const String kPic1 = "assets/images/pic_1.png";
+  static const String kPic2 = "assets/images/pic_2.png";
+  static const String kPic3 = "assets/images/pic_3.png";
+  static const String kPic4 = "assets/images/pic_4.png";
+  static const String kPic5 = "assets/images/pic_5.png";
+  static const String kPic6 = "assets/images/pic_6.png";
+
+  static const String kPickle1 = "assets/images/pickle_1.png";
+  static const String kPickle2 = "assets/images/pickle_2.png";
+  static const String kPickle3 = "assets/images/pickle_3.png";
+  static const String kPickle4 = "assets/images/pickle_4.png";
+  static const String kPickle5 = "assets/images/pickle_5.png";
+  static const String kPickle6 = "assets/images/pickle_6.png";
+
 }
