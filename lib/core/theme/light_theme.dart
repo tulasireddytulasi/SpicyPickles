@@ -161,7 +161,7 @@ class LightTheme implements AppTheme {
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(8.0),
-            borderSide: BorderSide(color: Colors.transparent, width: 6),
+            borderSide: const BorderSide(color: Colors.transparent, width: 6),
           ),
         ),
         snackBarTheme: const SnackBarThemeData(
