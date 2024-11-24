@@ -15,12 +15,14 @@ class AppAssets {
   static const String kDeleteIcon = "assets/icons/delete_icon.svg";
   static const String kFavoriteIcon = "assets/icons/favorite_icon.svg";
   static const String kHelpIcon = "assets/icons/help_icon.svg";
-  static const String kNotificationIcon = "assets/icons/notification_icon.svg";
+  static const String kNotificationIcon = "assets/icons/notifications_icon.svg";
   static const String kPaymentIcon = "assets/icons/payment_icon.svg";
   static const String kSearchIcon = "assets/icons/search_icon.svg";
   static const String kSendIcon = "assets/icons/send_icon.svg";
   static const String kSettingsIcon = "assets/icons/settings_icon.svg";
   static const String kShareIcon = "assets/icons/share_icon.svg";
+  static const String kProfileIcon = "assets/icons/profile_icon.svg";
+  static const String kCMDKeyIcon = "assets/icons/cmd_key_icon.svg";
 
   static const String kPic1 = "assets/images/pic_1.png";
   static const String kPic2 = "assets/images/pic_2.png";

@@ -7,6 +7,7 @@ import 'package:spicypickles/presentation/home/widget/app_bar.dart';
 import 'package:spicypickles/presentation/home/widget/home_body_widget.dart';
 import 'package:spicypickles/presentation/product_details/product_details.dart';
 import 'package:spicypickles/presentation/product_list/product_list.dart';
+import 'package:spicypickles/presentation/profile/profile.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -22,6 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final List<Widget> _pages = const [
     HomeBodyWidget(),
     ProductListScreen(),
+    ProfileScreen(),
     ProductDetailsScreen(),
   ];
 

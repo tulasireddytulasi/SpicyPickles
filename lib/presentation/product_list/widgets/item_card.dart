@@ -73,7 +73,6 @@ class _ItemCardState extends State<ItemCard> {
                 ),
               ),
             ),
-
             Padding(
               padding: const EdgeInsets.only(left: 4, right: 4, top: 2, bottom: 4),
               child: Row(
@@ -94,7 +93,7 @@ class _ItemCardState extends State<ItemCard> {
                   const AddItemButton(width: 60, height: 26),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
