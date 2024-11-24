@@ -18,4 +18,5 @@ class AppConstants {
   static const String kPickleLover = "For the Pickle Lover in You!";
   static const String kCrunchyGoodness = "Crunchy Goodness, Sealed to Perfection.";
   static const String kFlavorExplosion = "A Flavor Explosion, Straight to Your Table!";
+  static const String kAdd = "ADD";
 }

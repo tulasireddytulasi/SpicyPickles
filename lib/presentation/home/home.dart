@@ -3,10 +3,10 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
-import 'package:spicypickles/core/utils/app_extensions.dart';
-import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
-import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
-import 'package:spicypickles/presentation/widgets/text_form_widget.dart';
+import 'package:spicypickles/presentation/home/widget/app_bar.dart';
+import 'package:spicypickles/presentation/home/widget/home_body_widget.dart';
+import 'package:spicypickles/presentation/product_details/product_details.dart';
+import 'package:spicypickles/presentation/product_list/product_list.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,6 +16,14 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+  int _currentIndex = 0;
+
+  final List<Widget> _pages = const [
+    HomeBodyWidget(),
+    ProductListScreen(),
+    ProductDetailsScreen(),
+  ];
 
   final List<String> messages = [
     AppConstants.kTagLine,
@@ -55,68 +63,35 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: AppColors.vibrantRed.withOpacity(0.8),
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Text(
-              'Location',
-              style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8), fontSize: 12),
-            ),
-            const SizedBox(height: 2),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 4),
-                Text(
-                  'MVP Colony, Vizag',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                SizedBox(width: 2),
-                Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  size: 28,
-                ),
-              ],
-            ),
-          ],
-        ),
-        centerTitle: false,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(top: 16),
-            child: IconButton(
-              icon: const Icon(Icons.person, color: Colors.white),
-              onPressed: () {
-                // Profile action
-              },
-            ),
+      appBar: const HomeAppBar(),
+      body: _pages[_currentIndex],
+      bottomNavigationBar: NavigationBar(
+        backgroundColor: AppColors.lightRed,
+        indicatorColor: AppColors.vibrantRed,
+        elevation: 9,
+        selectedIndex: _currentIndex,
+        onDestinationSelected: (int index) {
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home_outlined),
+            selectedIcon: Icon(Icons.home, color: AppColors.white),
+            label: 'Home',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.fastfood_outlined),
+            selectedIcon: Icon(Icons.fastfood_rounded, color: AppColors.white),
+            label: 'Pickles',
+          ),
+          NavigationDestination(
+            icon: Icon(Icons.person_outlined),
+            selectedIcon: Icon(Icons.person, color: AppColors.white),
+            label: 'Profile',
           ),
         ],
-      ),
-      body: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const SearchbarWidget(),
-                 SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  child: const PageViewWithCards(),
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }

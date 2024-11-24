@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({super.key});
@@ -10,6 +11,8 @@ class ProductDetailsScreen extends StatefulWidget {
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Center(
+      child: Text("Product Details Screen", style: context.textStyle?.displayMedium),
+    );
   }
 }

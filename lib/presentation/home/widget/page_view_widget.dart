@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
@@ -64,6 +63,38 @@ class _PageViewWithCardsState extends State<PageViewWithCards> {
                     maxLines: 3,
                     softWrap: true,
                     style: context.textStyle?.headlineMedium?.copyWith(fontSize: 18),
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 10,
+                left: 10,
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: AppColors.deepRed,
+                    borderRadius: BorderRadius.all(Radius.circular(20)),
+                  ),
+                  width: 146,
+                  height: 40,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Order Now",
+                        maxLines: 3,
+                        softWrap: true,
+                        style: context.textStyle?.headlineMedium?.copyWith(fontSize: 16, color: AppColors.white),
+                      ),
+                      const SizedBox(width: 2),
+                      Image.asset(
+                        AppAssets.kChilliIcon,
+                        fit: BoxFit.cover,
+                        width: 24,
+                        height: 24,
+                      )
+                    ],
                   ),
                 ),
               ),

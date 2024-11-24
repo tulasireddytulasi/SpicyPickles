@@ -15,6 +15,11 @@ class LightTheme implements AppTheme {
         primaryColorDark: AppColors.deepRed,
         secondaryHeaderColor: AppColors.vividOrange,
         scaffoldBackgroundColor: AppColors.lightGrey,
+        bottomAppBarTheme: const BottomAppBarTheme(
+          color: AppColors.white,
+          elevation: 4,
+          shadowColor: AppColors.lightPeach,
+        ),
         colorScheme: const ColorScheme(
           primary: AppColors.vibrantRed,
           primaryContainer: AppColors.deepRed,
