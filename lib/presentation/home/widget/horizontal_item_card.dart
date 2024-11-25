@@ -12,11 +12,13 @@ class HorizontalItemCard extends StatelessWidget {
     required this.title,
     required this.description,
     required this.price,
+    required this.rating,
   });
   final String imgUrl;
   final String title;
   final String description;
   final String price;
+  final int rating;
 
   @override
   Widget build(BuildContext context) {
@@ -62,13 +64,13 @@ class HorizontalItemCard extends StatelessWidget {
                         ),
                       ),
                       const SizedBox(height: 4),
-                      const ClipRRect(
-                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                       ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(4)),
                         child: ColoredBox(
                           color: AppColors.lightPeach,
                           child: Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: StarRating(rating: 3, filledColor: Colors.red),
+                            padding: const EdgeInsets.all(4.0),
+                            child: StarRating(rating: rating, filledColor: Colors.red),
                           ),
                         ),
                       ),

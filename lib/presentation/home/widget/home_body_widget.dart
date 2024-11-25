@@ -61,6 +61,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                   title: actorsList[index].title ?? "",
                   description: actorsList[index].description ?? "",
                   price: actorsList[index].price ?? "",
+                  rating: actorsList[index].rating?.round() ?? 0,
                 ),
               ),
             ],
