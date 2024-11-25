@@ -6,7 +6,17 @@ import 'package:spicypickles/presentation/home/widget/rating_widget.dart';
 import 'package:spicypickles/presentation/product_list/widgets/add_button.dart';
 
 class HorizontalItemCard extends StatelessWidget {
-  const HorizontalItemCard({super.key});
+  const HorizontalItemCard({
+    super.key,
+    required this.imgUrl,
+    required this.title,
+    required this.description,
+    required this.price,
+  });
+  final String imgUrl;
+  final String title;
+  final String description;
+  final String price;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +40,7 @@ class HorizontalItemCard extends StatelessWidget {
                     children: [
                       const SizedBox(height: 0),
                       Text(
-                        "Spicy Chilli Pickle",
+                        title,
                         maxLines: 2,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
@@ -40,7 +50,7 @@ class HorizontalItemCard extends StatelessWidget {
                       SizedBox(
                         width: 210,
                         child: Text(
-                          "A fiery and flavorful chilli pickle [1/2Kg]",
+                          description,
                           maxLines: 2,
                           softWrap: true,
                           overflow: TextOverflow.ellipsis,
@@ -67,7 +77,7 @@ class HorizontalItemCard extends StatelessWidget {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            "₹190",
+                            price,
                             style: context.textStyle?.bodySmall?.copyWith(
                               decoration: TextDecoration.lineThrough,
                               decorationColor: AppColors.charcoal,
@@ -79,7 +89,7 @@ class HorizontalItemCard extends StatelessWidget {
                           ),
                           const SizedBox(width: 8),
                           Text(
-                            "Get for ₹130",
+                            "Get for ${price}",
                             style: context.textStyle?.bodySmall?.copyWith(
                               fontSize: 12,
                               color: AppColors.darkBlue,
@@ -96,7 +106,7 @@ class HorizontalItemCard extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Image.asset(
-                        AppAssets.kChilliPickle,
+                        imgUrl,
                         fit: BoxFit.cover,
                         height: 140,
                       ),

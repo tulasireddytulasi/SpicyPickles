@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/home/widget/horizontal_item_card.dart';
 import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
 import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
+import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
 class HomeBodyWidget extends StatefulWidget {
   const HomeBodyWidget({super.key});
@@ -13,6 +17,14 @@ class HomeBodyWidget extends StatefulWidget {
 }
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
+  late List<Product> actorsList = [];
+  @override
+  void initState() {
+    super.initState();
+    final productsModel = productsModelFromJson(json.encode(RepoData.data));
+    actorsList = productsModel.products ?? [];
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -41,10 +53,15 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                 ),
               ),
               ListView.builder(
-                itemCount: 8,
+                itemCount: actorsList.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => const HorizontalItemCard(),
+                itemBuilder: (context, index) => HorizontalItemCard(
+                  imgUrl: actorsList[index].imgUrl ?? "",
+                  title: actorsList[index].title ?? "",
+                  description: actorsList[index].description ?? "",
+                  price: actorsList[index].price ?? "",
+                ),
               ),
             ],
           ),
