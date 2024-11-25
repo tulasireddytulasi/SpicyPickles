@@ -32,12 +32,6 @@ class _ProductListScreenState extends State<ProductListScreen> {
     try {
       final productsModel = productsModelFromJson(json.encode(RepoData.data));
       final List<Product> actorsList = productsModel.products ?? [];
-      print("actorsList: ${actorsList.length}");
-
-      // await fetchPopularActors(
-      //   pageNo: pageKey,
-      //   languageCode: "en-US",
-      // );
       _pagingController.appendPage(actorsList, pageKey + 1);
     } catch (error, stackTrace) {
       log("fetchPopularActors error: $error");

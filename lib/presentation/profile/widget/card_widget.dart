@@ -40,7 +40,7 @@ class CardWidget extends StatelessWidget {
             Text(
               label,
               style: context.textStyle?.headlineSmall?.copyWith(
-                fontSize: 18,
+                fontSize: 16,
                 color: AppColors.black,
                 fontFamily: 'MontserratSemiBold',
               ),
