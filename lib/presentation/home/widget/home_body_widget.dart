@@ -39,7 +39,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
               const SearchbarWidget(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 150,
+                height: 130,
                 child: const PageViewWithCards(),
               ),
               Padding(
