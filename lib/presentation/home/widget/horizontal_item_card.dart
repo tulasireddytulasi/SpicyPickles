@@ -70,7 +70,7 @@ class HorizontalItemCard extends StatelessWidget {
                           color: AppColors.lightPeach,
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
-                            child: StarRating(rating: rating, filledColor: Colors.red),
+                            child: StarRating(rating: rating, filledColor: Colors.red, starSize: 12),
                           ),
                         ),
                       ),
@@ -84,7 +84,7 @@ class HorizontalItemCard extends StatelessWidget {
                               decoration: TextDecoration.lineThrough,
                               decorationColor: AppColors.charcoal,
                               decorationThickness: 2,
-                              fontSize: 12,
+                              fontSize: 14,
                               color: AppColors.charcoal,
                               fontFamily: "MontserratSemiBold",
                             ),
@@ -93,7 +93,7 @@ class HorizontalItemCard extends StatelessWidget {
                           Text(
                             "Get for ${price}",
                             style: context.textStyle?.bodySmall?.copyWith(
-                              fontSize: 12,
+                              fontSize: 14,
                               color: AppColors.darkBlue,
                               fontFamily: "MontserratSemiBold",
                             ),
