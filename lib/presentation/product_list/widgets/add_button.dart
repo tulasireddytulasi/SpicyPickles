@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/cart/cart.dart';
 
 class AddItemButton extends StatelessWidget {
   const AddItemButton({
@@ -27,7 +28,14 @@ class AddItemButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const Cart(),
+            ),
+          );
+        },
         child: Container(
           alignment: Alignment.center,
           child: Text(

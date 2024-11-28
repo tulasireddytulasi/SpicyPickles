@@ -3,11 +3,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
+import 'package:spicypickles/presentation/cart/cart.dart';
+import 'package:spicypickles/presentation/cart/widgets/cart_app_bar.dart';
 import 'package:spicypickles/presentation/home/widget/app_bar.dart';
 import 'package:spicypickles/presentation/home/widget/home_body_widget.dart';
 import 'package:spicypickles/presentation/product_details/product_details.dart';
 import 'package:spicypickles/presentation/product_list/product_list.dart';
+import 'package:spicypickles/presentation/product_list/widgets/explore_app_bar.dart';
 import 'package:spicypickles/presentation/profile/profile.dart';
+import 'package:spicypickles/presentation/profile/widget/profile_app_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -25,6 +29,12 @@ class _HomeScreenState extends State<HomeScreen> {
     ProductListScreen(),
     ProfileScreen(),
     ProductDetailsScreen(),
+  ];
+
+  final List<PreferredSizeWidget> _appBars = const [
+    HomeAppBar(),
+    ExploreAppBar(),
+    ProfileAppBar(),
   ];
 
   final List<String> messages = [
@@ -65,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onPrimary,
-      appBar: const HomeAppBar(),
+      appBar: _appBars[_currentIndex],
       body: _pages[_currentIndex],
       bottomNavigationBar: NavigationBar(
         backgroundColor: AppColors.lightRed,
