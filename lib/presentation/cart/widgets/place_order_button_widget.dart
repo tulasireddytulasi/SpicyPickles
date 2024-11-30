@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/presentation/success/success_screen.dart';
 
 class PlaceOrderButton extends StatefulWidget {
   const PlaceOrderButton({super.key});
@@ -17,7 +18,14 @@ class _PlaceOrderButtonState extends State<PlaceOrderButton> {
       child: SizedBox(
         width: screenWidth / 1.7,
         child: InkWell(
-          onTap: () {},
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const SuccessScreen(),
+              ),
+            );
+          },
           focusColor: AppColors.white,
           highlightColor: AppColors.blue,
           hoverColor: AppColors.skyBlue,

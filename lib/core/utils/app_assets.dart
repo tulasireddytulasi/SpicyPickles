@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 class AppAssets {
   AppAssets._();
 
+  // Lottie Anim
+  static const String kSuccessTickAnim = "assets/lottie/success_tick.json";
+
   static const String kHomeIcon = "assets/icons/home_icon.svg";
   static const String kLocationIcon = "assets/icons/location_icon.svg";
   static const String kLoginIcon = "assets/icons/login_icon.svg";
