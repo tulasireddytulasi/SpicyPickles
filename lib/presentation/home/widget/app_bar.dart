@@ -56,8 +56,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
         Padding(
           padding: const EdgeInsets.only(right: 8.0),
           child: SizedBox(
-            width: 40,
-            height: 40,
+            width: 36,
+            height: 36,
             child: InkWell(
               onTap: (){},
               child:  ClipOval(
