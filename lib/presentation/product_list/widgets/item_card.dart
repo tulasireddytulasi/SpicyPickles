@@ -35,7 +35,8 @@ class _ItemCardState extends State<ItemCard> {
         width: 140,
         height: 210,
         child: InkWell(
-          onTap: (){
+          onTap: () async {
+            await Future.delayed(const Duration(milliseconds: 200));
             Navigator.push(
               context,
               MaterialPageRoute(

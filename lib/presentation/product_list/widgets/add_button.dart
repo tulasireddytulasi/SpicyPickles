@@ -28,7 +28,8 @@ class AddItemButton extends StatelessWidget {
         borderRadius: BorderRadius.circular(4),
       ),
       child: InkWell(
-        onTap: () {
+        onTap: () async {
+          await Future.delayed(const Duration(milliseconds: 200));
           Navigator.push(
             context,
             MaterialPageRoute(

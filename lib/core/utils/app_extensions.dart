@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+extension CustomThemeDataExtension on BuildContext {
+  ThemeData get themeData => Theme.of(this);
+}
+
 extension CustomTextThemeExtension on BuildContext {
   TextTheme? get textStyle => Theme.of(this).textTheme;
 }

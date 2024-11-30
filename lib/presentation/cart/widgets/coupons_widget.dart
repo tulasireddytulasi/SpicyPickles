@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/presentation/coupons_screen/coupons_screen.dart';
+import 'package:spicypickles/presentation/coupons_screen/widgets/coupon_applied_dilaog.dart';
 
 class CouponsWidget extends StatelessWidget {
   const CouponsWidget({super.key});
@@ -9,21 +11,20 @@ class CouponsWidget extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: () {
-        // Todo: Need to Impl Coupons Screen
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(builder: (context) => const CouponsScreen()),
-        // ).then((value) {
-        //   if (value) {
-        //     couponAppliedDialogBox(
-        //       buildContext: context,
-        //       height: 260,
-        //       width: screenWidth - 40,
-        //       couponId: "SWIGGYIT",
-        //       discount: "10",
-        //     );
-        //   }
-        // });
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CouponsScreen()),
+        ).then((value) {
+          if (value) {
+            couponAppliedDialogBox(
+              buildContext: context,
+              height: 260,
+              width: screenWidth - 40,
+              couponId: "SPICY",
+              discount: "10",
+            );
+          }
+        });
       },
       child: Container(
         alignment: Alignment.center,
