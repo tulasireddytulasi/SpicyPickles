@@ -54,6 +54,7 @@ class AppColors {
   static const skyBlue = Color(0xFF9BACCE);
   static const purple = Color(0xFF9768C4);
   static const green = Color(0xFF7CC468);
+  static const darkGreen = Color(0xFF32A413);
   static const silver = Color(0xFFF1EFEF);
   static const silver2 = Color(0xFFE0DCDC);
   static const blueGrey200 = Color(0xFFB0BEC5);

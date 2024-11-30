@@ -27,10 +27,7 @@ class _CouponsScreenState extends State<CouponsScreen> {
           onTap: () => Navigator.of(context).pop(),
           child: const Icon(Icons.arrow_back),
         ),
-        title: const Text(
-          "Coupons Screen",
-          style: TextStyle(fontSize: 18, color: AppColors.white),
-        ),
+        title: const Text("Coupons Screen"),
       ),
       body: SafeArea(
         child: Column(
@@ -53,17 +50,17 @@ class _CouponsScreenState extends State<CouponsScreen> {
                   ],
                 ),
                 child: TextFormField(
-                  style: const TextStyle(fontSize: 16, color: AppColors.black),
+                  style: context.textStyle?.titleLarge,
                   controller: _couponTextFieldController,
                   cursorColor: AppColors.black,
                   showCursor: true,
                   autofocus: false,
                   decoration: InputDecoration(
-                    hintText: "Enter Code",
-                    hintStyle: context.textStyle?.titleLarge?.copyWith(color: context.themeData.primaryColorLight),
+                    hintText: "Enter Coupon Code",
+                    hintStyle: context.textStyle?.titleLarge,
                     isDense: true,
                     contentPadding: const EdgeInsets.only(top: 10, bottom: 10, left: 0, right: 0),
-                    errorStyle: const TextStyle(fontSize: 14, color: Colors.deepOrange),
+                    errorStyle: context.textStyle?.bodyMedium?.copyWith(color: context.colorScheme?.error),
                     counterText: "",
                     enabledBorder: InputBorder.none,
                     border: InputBorder.none,
@@ -76,12 +73,11 @@ class _CouponsScreenState extends State<CouponsScreen> {
                           log("InValid");
                         }
                       },
-                      child: const Text(
+                      child: Text(
                         "APPLY",
-                        style: TextStyle(
-                            color: Colors.deepOrange,
-                            // fontFamily: MONTSERRAT_MEDIUM,
-                            fontSize: 14),
+                        style: context.textStyle?.labelLarge?.copyWith(
+                          color: context.colorScheme?.secondary,
+                        ),
                       ),
                     ),
                   ),
@@ -101,13 +97,9 @@ class _CouponsScreenState extends State<CouponsScreen> {
             Container(
               margin: const EdgeInsets.only(left: 24, right: 20, top: 20, bottom: 10),
               alignment: Alignment.topLeft,
-              child: const Text(
+              child: Text(
                 "Available coupons",
-                style: TextStyle(
-                  fontSize: 18,
-                  color: AppColors.black,
-                  fontFamily: "MontserratSemiBold",
-                ),
+                style: context.textStyle?.titleLarge?.copyWith(color: AppColors.black, fontSize: 18),
               ),
             ),
             Expanded(

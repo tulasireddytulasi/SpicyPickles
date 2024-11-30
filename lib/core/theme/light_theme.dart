@@ -27,7 +27,7 @@ class LightTheme implements AppTheme {
           secondaryContainer: AppColors.softOrange,
           surface: AppColors.lightGrey,
           background: AppColors.white,
-          error: AppColors.vibrantRed,
+          error: AppColors.vividOrange,
           onPrimary: AppColors.white,
           onSecondary: AppColors.grey,
           onSurface: AppColors.darkGrey,
@@ -36,8 +36,14 @@ class LightTheme implements AppTheme {
           brightness: Brightness.light,
         ),
         appBarTheme: const AppBarTheme(
+          titleSpacing: 0,
           backgroundColor: AppColors.vibrantRed,
           foregroundColor: AppColors.white,
+          titleTextStyle: TextStyle(
+            fontSize: 18,
+            fontFamily: 'MontserratBold',
+            color: AppColors.white,
+          ),
           iconTheme: IconThemeData(color: AppColors.white),
         ),
         buttonTheme: ButtonThemeData(
@@ -157,7 +163,7 @@ class LightTheme implements AppTheme {
             fontSize: 12,
             fontWeight: FontWeight.w500,
             fontFamily: 'MontserratMedium',
-            color: AppColors.salmonPink,
+            color: AppColors.darkGrey,
           ),
           focusColor: AppColors.white,
           enabledBorder: OutlineInputBorder(

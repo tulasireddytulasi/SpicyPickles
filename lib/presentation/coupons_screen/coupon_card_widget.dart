@@ -61,7 +61,6 @@ class _CouponCardState extends State<CouponCard> {
               child: Text(
                 widget.label,
                 style: context.textStyle?.titleMedium?.copyWith(color: AppColors.white, fontSize: 20),
-                //const TextStyle(fontSize: 20, color: Colors.white),
               ),
             ),
           ),
@@ -83,7 +82,6 @@ class _CouponCardState extends State<CouponCard> {
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       style: context.textStyle?.titleLarge?.copyWith(color: AppColors.black),
-                      //const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(width: screenWidth / 2.6),
@@ -93,11 +91,11 @@ class _CouponCardState extends State<CouponCard> {
                     },
                     child: Container(
                       margin: const EdgeInsets.only(top: 10, right: 10),
-                      child: const Text(
+                      child: Text(
                         "APPLY",
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 16, color: Colors.deepOrange, fontWeight: FontWeight.bold),
+                        style: context.textStyle?.titleLarge?.copyWith(color: context.themeData.secondaryHeaderColor),
                       ),
                     ),
                   ),
@@ -108,10 +106,7 @@ class _CouponCardState extends State<CouponCard> {
                 widget.shortDescription,
                 softWrap: true,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 14,
-                  color: Colors.green,
-                ),
+                style: context.textStyle?.titleMedium?.copyWith(color: AppColors.darkGreen),
               ),
               const SizedBox(height: 10),
               SizedBox(
@@ -126,18 +121,15 @@ class _CouponCardState extends State<CouponCard> {
                   softWrap: true,
                   maxLines: 6,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.grey,
-                  ),
+                  style: context.textStyle?.bodyMedium,
                 ),
               ),
               const SizedBox(height: 10),
               SizedBox(
                 width: screenWidth / 1.5,
-                child: const Text(
+                child: Text(
                   "+ MORE",
-                  style: TextStyle(fontSize: 14, color: Colors.black, fontWeight: FontWeight.bold),
+                  style: context.textStyle?.titleMedium?.copyWith(color: AppColors.black),
                 ),
               ),
             ],
