@@ -54,12 +54,19 @@ class _HomeAppBarState extends State<HomeAppBar> {
       centerTitle: false,
       actions: [
         Padding(
-          padding: const EdgeInsets.only(top: 16),
-          child: IconButton(
-            icon: const Icon(Icons.notification_important_outlined, color: Colors.white),
-            onPressed: () {
-              // Profile action
-            },
+          padding: const EdgeInsets.only(right: 8.0),
+          child: SizedBox(
+            width: 40,
+            height: 40,
+            child: InkWell(
+              onTap: (){},
+              child:  ClipOval(
+                child: ColoredBox(
+                  color: AppColors.white,
+                  child: Icon(Icons.notification_important_outlined, color: context.colorScheme?.primary),
+                ),
+              ),
+            ),
           ),
         ),
       ],
