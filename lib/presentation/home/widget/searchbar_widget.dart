@@ -19,7 +19,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
       width: double.infinity,
       padding: const EdgeInsets.only(top: 10, bottom: 20, left: 20, right: 20),
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.8),
+        color: context.themeData.primaryColor,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

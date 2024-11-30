@@ -17,7 +17,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: AppColors.vibrantRed.withOpacity(0.8),
+      backgroundColor: context.themeData.primaryColor,
       title: Padding(
         padding: const EdgeInsets.only(left: 20.0),
         child: Column(
@@ -26,7 +26,10 @@ class _HomeAppBarState extends State<HomeAppBar> {
           children: [
             Text(
               'Location',
-              style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8), fontSize: 12),
+              style: context.textStyle?.labelLarge?.copyWith(
+                color: AppColors.white.withOpacity(0.8),
+                fontSize: 12,
+              ),
             ),
             const SizedBox(height: 2),
             const Row(

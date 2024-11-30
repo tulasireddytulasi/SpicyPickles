@@ -53,6 +53,16 @@ class LightTheme implements AppTheme {
             borderRadius: BorderRadius.circular(4),
           ),
         ),
+        navigationBarTheme: NavigationBarThemeData(
+          labelTextStyle: WidgetStateProperty.all(
+            const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+              fontFamily: 'MontserratMedium',
+              color: AppColors.darkGrey,
+            ),
+          ),
+        ),
         cardTheme: CardTheme(
           color: AppColors.white,
           shadowColor: AppColors.grey.withOpacity(0.1),

@@ -48,7 +48,7 @@ class _PageViewWithCardsState extends State<PageViewWithCards> {
       itemBuilder: (context, index) {
         return Card(
           elevation: 5,
-          color: AppColors.lightPeach,
+          color: AppColors.blush,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(8),
           ),

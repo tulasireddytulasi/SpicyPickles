@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
-import 'package:spicypickles/presentation/cart/cart.dart';
-import 'package:spicypickles/presentation/cart/widgets/cart_app_bar.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/home/widget/app_bar.dart';
 import 'package:spicypickles/presentation/home/widget/home_body_widget.dart';
 import 'package:spicypickles/presentation/product_details/product_details.dart';
@@ -74,13 +73,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.onPrimary,
+      backgroundColor: context.colorScheme?.onPrimary,
       appBar: _appBars[_currentIndex],
       body: _pages[_currentIndex],
       bottomNavigationBar: NavigationBar(
-        backgroundColor: AppColors.lightRed,
+        backgroundColor: Colors.white, // Background color for NavigationBar
+        surfaceTintColor: Colors.white, // Keeps the surface color stable
+        shadowColor: Colors.black, // Shadow color for elevation
+        elevation: 10, // Simulates elevation effect
         indicatorColor: AppColors.vibrantRed,
-        elevation: 9,
         selectedIndex: _currentIndex,
         onDestinationSelected: (int index) {
           setState(() {
