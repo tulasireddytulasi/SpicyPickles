@@ -68,29 +68,6 @@ class _HomeAppBarState extends State<HomeAppBar> {
           },
           size: 36,
         ),
-        // Padding(
-        //   padding: const EdgeInsets.only(right: 8.0),
-        //   child: SizedBox(
-        //     width: 36,
-        //     height: 36,
-        //     child: InkWell(
-        //       onTap: () {
-        //         Navigator.push(
-        //           context,
-        //           MaterialPageRoute(
-        //             builder: (context) => const NotificationScreen(),
-        //           ),
-        //         );
-        //       },
-        //       child: ClipOval(
-        //         child: ColoredBox(
-        //           color: AppColors.white,
-        //           child: Icon(Icons.notification_important_outlined, color: context.colorScheme?.primary),
-        //         ),
-        //       ),
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }
