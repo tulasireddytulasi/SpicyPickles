@@ -14,7 +14,7 @@ class NotificationTile extends StatelessWidget {
       titleAlignment: ListTileTitleAlignment.top,
       leading: ClipOval(
         child: ColoredBox(
-          color: AppColors.lightPeach,
+          color: AppColors.rosePink,
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Icon(
