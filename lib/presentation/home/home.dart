@@ -46,7 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   String currentMessage = AppConstants.kTagLine;
-  late Timer _timer;
+  // late Timer _timer;
 
   @override
   void initState() {
@@ -54,21 +54,21 @@ class _HomeScreenState extends State<HomeScreen> {
     // setTimer();
   }
 
-  setTimer() {
-    // Set up the Timer to update text every second
-    _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
-      setState(() {
-        currentMessage = messages[timer.tick % messages.length];
-      });
-    });
-  }
+  // setTimer() {
+  //   // Set up the Timer to update text every second
+  //   _timer = Timer.periodic(const Duration(seconds: 3), (timer) {
+  //     setState(() {
+  //       currentMessage = messages[timer.tick % messages.length];
+  //     });
+  //   });
+  // }
 
-  @override
-  void dispose() {
-    // Always cancel the timer to prevent memory leaks
-    _timer.cancel();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   // Always cancel the timer to prevent memory leaks
+  //   _timer.cancel();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
