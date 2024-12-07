@@ -57,4 +57,12 @@ class AppAssets {
   static const String kMixedPickle = "assets/images/mixed_pickle.png";
   static const String kChilliIcon = "assets/images/chilli_icon.png";
 
+  static const String kPickle11 = "assets/images/kpickle1.jpeg";
+  static const String kPickle12 = "assets/images/kpickle2.jpeg";
+  static const String kPickle13 = "assets/images/kpickle3.jpeg";
+  static const String kPickle14 = "assets/images/kpickle4.avif";
+  static const String kPickle15 = "assets/images/kpickle5.jpg";
+  static const String kPickle16 = "assets/images/kpickle6.jpg";
+  static const String kPickle7 = "assets/images/kpickle7.jpg";
+  static const String kPickle8 = "assets/images/kpickle8.jpg";
 }
