@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/notifications/notification_screen.dart';
+import 'package:spicypickles/presentation/widgets/circular_icon_widget.dart';
 
 class HomeAppBar extends StatefulWidget implements PreferredSizeWidget {
   const HomeAppBar({super.key});
@@ -53,22 +55,42 @@ class _HomeAppBarState extends State<HomeAppBar> {
       ),
       centerTitle: false,
       actions: [
-        Padding(
+        CircularIconWidget(
+          icon: Icons.notification_important_outlined,
           padding: const EdgeInsets.only(right: 8.0),
-          child: SizedBox(
-            width: 36,
-            height: 36,
-            child: InkWell(
-              onTap: (){},
-              child:  ClipOval(
-                child: ColoredBox(
-                  color: AppColors.white,
-                  child: Icon(Icons.notification_important_outlined, color: context.colorScheme?.primary),
-                ),
+          onTap:  () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const NotificationScreen(),
               ),
-            ),
-          ),
+            );
+          },
+          size: 36,
         ),
+        // Padding(
+        //   padding: const EdgeInsets.only(right: 8.0),
+        //   child: SizedBox(
+        //     width: 36,
+        //     height: 36,
+        //     child: InkWell(
+        //       onTap: () {
+        //         Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //             builder: (context) => const NotificationScreen(),
+        //           ),
+        //         );
+        //       },
+        //       child: ClipOval(
+        //         child: ColoredBox(
+        //           color: AppColors.white,
+        //           child: Icon(Icons.notification_important_outlined, color: context.colorScheme?.primary),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }
