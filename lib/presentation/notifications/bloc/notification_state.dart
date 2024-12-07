@@ -15,7 +15,7 @@ class NotificationLoading extends NotificationState {
   const NotificationLoading();
 
   @override
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [];
 }
 
 class NotificationLoaded extends NotificationState {
