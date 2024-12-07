@@ -47,7 +47,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Best Chilli Pickles",
+                  "Explore your favorite pickles",
                   maxLines: 2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
