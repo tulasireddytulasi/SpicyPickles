@@ -29,7 +29,7 @@ class CircularIconWidget extends StatelessWidget {
           child: ClipOval(
             child: ColoredBox(
               color: backgroundColor ?? AppColors.white,
-              child: Icon(icon, color: context.colorScheme?.primary),
+              child: Icon(icon, color: context.colorScheme?.onSurface),
             ),
           ),
         ),

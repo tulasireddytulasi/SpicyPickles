@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/notifications/bloc/notification_bloc.dart';
 import 'package:spicypickles/presentation/notifications/widget/notification_card.dart';
 import 'package:spicypickles/presentation/widgets/circular_icon_widget.dart';
@@ -18,8 +19,14 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text("Notification"),
+        title: Text(
+          "Notification",
+          style: context.themeData.appBarTheme.titleTextStyle?.copyWith(
+            color: AppColors.black,
+          ),
+        ),
         centerTitle: true,
+       backgroundColor: AppColors.white,
         leading: CircularIconWidget(
           icon: Icons.arrow_back_ios_rounded,
           padding: const EdgeInsets.all(8.0),
