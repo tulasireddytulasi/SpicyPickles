@@ -5,7 +5,7 @@ import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_constants.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/home/widget/app_bar.dart';
-import 'package:spicypickles/presentation/home/widget/home_body_widget.dart';
+import 'package:spicypickles/presentation/home/widget/home_screen.dart';
 import 'package:spicypickles/presentation/product_details/product_details.dart';
 import 'package:spicypickles/presentation/product_list/product_list.dart';
 import 'package:spicypickles/presentation/product_list/widgets/explore_app_bar.dart';

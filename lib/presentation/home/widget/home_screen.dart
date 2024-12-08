@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/icons_model.dart';
 import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
 import 'package:spicypickles/presentation/home/widget/pickle_card.dart';
+import 'package:spicypickles/presentation/home/widget/pickles_list.dart';
 import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
@@ -19,12 +21,14 @@ class HomeBodyWidget extends StatefulWidget {
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
   late List<Product> actorsList = [];
+  late PickleIconsModel pickleIconsModel;
 
   @override
   void initState() {
     super.initState();
     final productsModel = productsModelFromJson(json.encode(RepoData.data2));
     actorsList = productsModel.products ?? [];
+    pickleIconsModel = pickleIconsModelFromJson(json.encode(RepoData.iconsData));
   }
 
   @override
@@ -45,13 +49,27 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                 child: const PageViewWithCards(),
               ),
               Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Center(
+                  child: Text(
+                    "WHAT'S ON YOUR MIND?",
+                    softWrap: true,
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: context.textStyle?.titleMedium?.copyWith(fontSize: 16, color: AppColors.mediumGrey),
+                  ),
+                ),
+              ),
+              PicklesList(iconsModel: pickleIconsModel),
+              const SizedBox(height: 16),
+              Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   "Explore your favorite pickles",
                   maxLines: 2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.headlineMedium?.copyWith(fontSize: 18, color: AppColors.black),
+                  style: context.textStyle?.headlineMedium?.copyWith(fontSize: 16, color: AppColors.black),
                 ),
               ),
               ListView.separated(
