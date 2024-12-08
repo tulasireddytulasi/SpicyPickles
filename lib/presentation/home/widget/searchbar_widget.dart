@@ -19,7 +19,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
       width: double.infinity,
       padding: const EdgeInsets.only(top: 10, bottom: 20, left: 20, right: 20),
       decoration: BoxDecoration(
-        color: context.themeData.primaryColor,
+        color: context.themeData.colorScheme.onPrimary,
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -28,7 +28,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
         children: [
           Text(
             "Hi, Tulasi Reddy",
-            style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white.withOpacity(0.8)),
+            style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black.withOpacity(0.8)),
           ),
           // const SizedBox(height: 8),
           // Text(

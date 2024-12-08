@@ -19,7 +19,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
   Widget build(BuildContext context) {
     return AppBar(
       elevation: 0,
-      backgroundColor: context.themeData.primaryColor,
+      backgroundColor: context.themeData.colorScheme.onPrimary,
       title: Padding(
         padding: const EdgeInsets.only(left: 20.0),
         child: Column(
@@ -29,22 +29,25 @@ class _HomeAppBarState extends State<HomeAppBar> {
             Text(
               'Location',
               style: context.textStyle?.labelLarge?.copyWith(
-                color: AppColors.white.withOpacity(0.8),
+                color: AppColors.black.withOpacity(0.8),
                 fontSize: 12,
               ),
             ),
             const SizedBox(height: 2),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Icon(Icons.location_on),
-                SizedBox(width: 4),
+                const Icon(Icons.location_on),
+                const SizedBox(width: 2),
                 Text(
                   'MVP Colony, Vizag',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: context.textStyle?.labelLarge?.copyWith(
+                    color: AppColors.black,
+                    fontFamily: 'MontserratBold',
+                  ),
                 ),
-                SizedBox(width: 2),
-                Icon(
+                const SizedBox(width: 2),
+                const Icon(
                   Icons.keyboard_arrow_down_rounded,
                   size: 28,
                 ),
@@ -58,7 +61,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
         CircularIconWidget(
           icon: Icons.notification_important_outlined,
           padding: const EdgeInsets.only(right: 8.0),
-          onTap:  () {
+          backgroundColor: AppColors.silver,
+          onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(

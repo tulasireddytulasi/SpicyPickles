@@ -81,7 +81,7 @@ class _HomeScreenState extends State<HomeScreen> {
         surfaceTintColor: Colors.white, // Keeps the surface color stable
         shadowColor: Colors.black, // Shadow color for elevation
         elevation: 10, // Simulates elevation effect
-        indicatorColor: AppColors.vibrantRed,
+        indicatorColor: context.themeData.primaryColor,
         selectedIndex: _currentIndex,
         onDestinationSelected: (int index) {
           setState(() {

@@ -16,15 +16,15 @@ class _ExploreAppBarState extends State<ExploreAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 0,
-      backgroundColor: context.colorScheme?.primary,
+      elevation: 4,
+      backgroundColor: context.colorScheme?.onPrimary,
       titleSpacing: 0,
       leading: GestureDetector(
         child: const Icon(Icons.arrow_back),
       ),
       title: Text(
         "My Pickles",
-        style: context.textStyle?.labelLarge?.copyWith(color: AppColors.white, fontSize: 18),
+        style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black, fontSize: 18),
       ),
       centerTitle: false,
     );

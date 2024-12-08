@@ -38,7 +38,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              const SearchbarWidget(),
+              //const SearchbarWidget(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 130,

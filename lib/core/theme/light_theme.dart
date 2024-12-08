@@ -10,7 +10,7 @@ class LightTheme implements AppTheme {
   ThemeData get themeData => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        primaryColor: AppColors.vibrantRed,
+        primaryColor: AppColors.vividOrange,
         primaryColorLight: AppColors.softOrange,
         primaryColorDark: AppColors.deepRed,
         secondaryHeaderColor: AppColors.vividOrange,
@@ -21,7 +21,7 @@ class LightTheme implements AppTheme {
           shadowColor: AppColors.lightPeach,
         ),
         colorScheme: const ColorScheme(
-          primary: AppColors.vibrantRed,
+          primary: AppColors.vividOrange,
           primaryContainer: AppColors.deepRed,
           secondary: AppColors.vividOrange,
           secondaryContainer: AppColors.softOrange,
@@ -37,14 +37,14 @@ class LightTheme implements AppTheme {
         ),
         appBarTheme: const AppBarTheme(
           titleSpacing: 0,
-          backgroundColor: AppColors.vibrantRed,
+          backgroundColor: AppColors.white,
           foregroundColor: AppColors.white,
           titleTextStyle: TextStyle(
             fontSize: 18,
             fontFamily: 'MontserratBold',
             color: AppColors.white,
           ),
-          iconTheme: IconThemeData(color: AppColors.white),
+          iconTheme: IconThemeData(color: AppColors.black),
         ),
         buttonTheme: ButtonThemeData(
           buttonColor: AppColors.vividOrange,
