@@ -61,6 +61,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                 separatorBuilder: (context, index) => const SizedBox(height: 10),
                 itemBuilder: (context, index) => PickleCard(
                   imgUrl: actorsList[index].imgUrl ?? AppAssets.kPickle11,
+                  title: actorsList[index].title ?? "",
                   description: actorsList[index].description ?? "",
                 ),
               ),

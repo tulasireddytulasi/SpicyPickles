@@ -7,20 +7,17 @@ class PickleCard extends StatelessWidget {
     super.key,
     required this.imgUrl,
     required this.description,
+    required this.title,
   });
 
   final String imgUrl;
+  final String title;
   final String description;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10),
-      decoration: BoxDecoration(
-        color: AppColors.white,
-        border: Border.all(color: AppColors.grey, width: 1),
-        borderRadius: const BorderRadius.all(Radius.circular(10)),
-      ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Material(
         color: Colors.transparent, // Ensures the background color doesn't override the design
         borderRadius: const BorderRadius.all(Radius.circular(10)), // Matches the container's border radius
@@ -35,10 +32,7 @@ class PickleCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8),
-                  topRight: Radius.circular(8),
-                ),
+                borderRadius: const BorderRadius.all(Radius.circular(8)),
                 child: SizedBox(
                   height: 160,
                   width: double.infinity,
@@ -49,15 +43,29 @@ class PickleCard extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                padding: const EdgeInsets.only(top: 10, bottom: 4),
                 child: Text(
-                  "$description $description",
+                  "$title, $description",
+                  maxLines: 4,
+                  softWrap: true,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.textStyle?.bodySmall?.copyWith(
+                    fontSize: 14,
+                    color: AppColors.black,
+                    fontFamily: "MontserratSemiBold",
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: Text(
+                  "Organic - Spicy - Sesame oil",
                   maxLines: 2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                   style: context.textStyle?.bodySmall?.copyWith(
-                    fontSize: 12,
-                    color: AppColors.charcoal,
+                    fontSize: 14,
+                    color: AppColors.mediumGrey,
                     fontFamily: "MontserratSemiBold",
                   ),
                 ),
