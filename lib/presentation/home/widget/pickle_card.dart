@@ -69,15 +69,29 @@ class PickleCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 10),
-                child: Text(
-                  "Organic - Spicy - Sesame oil",
-                  maxLines: 2,
+                child: RichText(
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.bodySmall?.copyWith(
-                    fontSize: 14,
-                    color: AppColors.mediumGrey,
-                    fontFamily: "MontserratSemiBold",
+                  maxLines: 2,
+                  text: TextSpan(
+                    children: [
+                      TextSpan(
+                        text: "South Indian | Spicy | ",
+                        style: context.textStyle?.bodySmall?.copyWith(
+                          fontSize: 14,
+                          color: AppColors.mediumGrey,
+                          fontFamily: "MontserratSemiBold",
+                        ),
+                      ),
+                      TextSpan(
+                        text: "Rs 500 / 0.2 kg",
+                        style: context.textStyle?.bodySmall?.copyWith(
+                          fontSize: 14,
+                          color: AppColors.vibrantRed,
+                          fontFamily: "MontserratSemiBold",
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
