@@ -10,6 +10,7 @@ import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
 import 'package:spicypickles/presentation/home/widget/pickle_card.dart';
 import 'package:spicypickles/presentation/home/widget/pickles_list.dart';
 import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
+import 'package:spicypickles/presentation/home/widget/title_widget.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
 class HomeBodyWidget extends StatefulWidget {
@@ -48,30 +49,9 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
                 height: 130,
                 child: const PageViewWithCards(),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Center(
-                  child: Text(
-                    "WHAT'S ON YOUR MIND?",
-                    softWrap: true,
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: context.textStyle?.titleMedium?.copyWith(fontSize: 16, color: AppColors.mediumGrey),
-                  ),
-                ),
-              ),
+              const TitleWidget(title: "WHAT'S ON YOUR MIND ?", verticalPadding: 20),
               PicklesList(iconsModel: pickleIconsModel),
-              const SizedBox(height: 16),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Explore your favorite pickles",
-                  maxLines: 2,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.headlineMedium?.copyWith(fontSize: 16, color: AppColors.black),
-                ),
-              ),
+              const TitleWidget(title: "EXPLORE", verticalPadding: 20),
               ListView.separated(
                 itemCount: actorsList.length,
                 shrinkWrap: true,
