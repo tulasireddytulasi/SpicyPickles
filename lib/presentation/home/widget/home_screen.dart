@@ -2,14 +2,11 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
-import 'package:spicypickles/core/utils/app_colors.dart';
-import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/model/icons_model.dart';
 import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
 import 'package:spicypickles/presentation/home/widget/pickle_card.dart';
 import 'package:spicypickles/presentation/home/widget/pickles_list.dart';
-import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
 import 'package:spicypickles/presentation/home/widget/title_widget.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
@@ -21,14 +18,14 @@ class HomeBodyWidget extends StatefulWidget {
 }
 
 class _HomeBodyWidgetState extends State<HomeBodyWidget> {
-  late List<Product> actorsList = [];
+  late List<Product> productsList = [];
   late PickleIconsModel pickleIconsModel;
 
   @override
   void initState() {
     super.initState();
     final productsModel = productsModelFromJson(json.encode(RepoData.data2));
-    actorsList = productsModel.products ?? [];
+    productsList = productsModel.products ?? [];
     pickleIconsModel = pickleIconsModelFromJson(json.encode(RepoData.iconsData));
   }
 
@@ -53,14 +50,14 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
               PicklesList(iconsModel: pickleIconsModel),
               const TitleWidget(title: "EXPLORE", verticalPadding: 20),
               ListView.separated(
-                itemCount: actorsList.length,
+                itemCount: productsList.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 separatorBuilder: (context, index) => const SizedBox(height: 10),
                 itemBuilder: (context, index) => PickleCard(
-                  imgUrl: actorsList[index].imgUrl ?? AppAssets.kPickle11,
-                  title: actorsList[index].title ?? "",
-                  description: actorsList[index].description ?? "",
+                  imgUrl: productsList[index].imgUrl ?? AppAssets.kPickle11,
+                  title: productsList[index].title ?? "",
+                  description: productsList[index].description ?? "",
                 ),
               ),
             ],

@@ -75,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: context.colorScheme?.onPrimary,
       appBar: _appBars[_currentIndex],
-      body: _pages[_currentIndex],
+      body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: NavigationBar(
         backgroundColor: Colors.white, // Background color for NavigationBar
         surfaceTintColor: Colors.white, // Keeps the surface color stable
