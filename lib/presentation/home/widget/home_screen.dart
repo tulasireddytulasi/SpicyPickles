@@ -7,6 +7,7 @@ import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/home/widget/page_view_widget.dart';
 import 'package:spicypickles/presentation/home/widget/pickle_card.dart';
 import 'package:spicypickles/presentation/home/widget/pickles_list.dart';
+import 'package:spicypickles/presentation/home/widget/searchbar_widget.dart';
 import 'package:spicypickles/presentation/home/widget/title_widget.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
@@ -40,7 +41,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
             mainAxisAlignment: MainAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              //const SearchbarWidget(),
+              const SearchbarWidget(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
                 height: 130,

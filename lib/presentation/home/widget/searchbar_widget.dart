@@ -17,7 +17,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.only(top: 10, bottom: 20, left: 20, right: 20),
+      padding: const EdgeInsets.only(top: 10, bottom: 20, left: 10, right: 10),
       decoration: BoxDecoration(
         color: context.themeData.colorScheme.onPrimary,
       ),
@@ -26,10 +26,10 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text(
-            "Hi, Tulasi Reddy",
-            style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black.withOpacity(0.8)),
-          ),
+          // Text(
+          //   "Hi, Tulasi Reddy",
+          //   style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black.withOpacity(0.8)),
+          // ),
           // const SizedBox(height: 8),
           // Text(
           //   AppConstants.kTagLine1,
@@ -42,7 +42,12 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
             hintText: "Search for your favorite pickle",
             textInputType: TextInputType.text,
             actionKeyboard: TextInputAction.search,
-            suffixIcon: const Icon(Icons.search_rounded, size: 32, color: AppColors.vibrantRed),
+            prefixIcon: const Icon(Icons.arrow_back_ios_rounded, size: 20, color: AppColors.vibrantRed),
+            suffixIcon: const Icon(Icons.search_rounded, size: 28, color: AppColors.vibrantRed),
+            contentPadding: const EdgeInsets.symmetric(
+              vertical: 12,
+              horizontal: 10,
+            ),
             maxLength: 100,
             onChanged: (value) {},
             onClick: (value) {
