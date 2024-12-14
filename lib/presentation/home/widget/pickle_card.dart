@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/widgets/rating_widget.dart';
 
 class PickleCard extends StatelessWidget {
   const PickleCard({
@@ -44,16 +45,26 @@ class PickleCard extends StatelessWidget {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 4),
-                child: Text(
-                  "$title, $description",
-                  maxLines: 4,
-                  softWrap: true,
-                  overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.bodySmall?.copyWith(
-                    fontSize: 14,
-                    color: AppColors.black,
-                    fontFamily: "MontserratSemiBold",
-                  ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        "$title, $description",
+                        maxLines: 4,
+                        softWrap: true,
+                        overflow: TextOverflow.ellipsis,
+                        style: context.textStyle?.bodySmall?.copyWith(
+                          fontSize: 14,
+                          color: AppColors.black,
+                          fontFamily: "MontserratSemiBold",
+                        ),
+                      ),
+                    ),
+                    const RatingWidget(rating: "3.5"),
+                  ],
                 ),
               ),
               Padding(
