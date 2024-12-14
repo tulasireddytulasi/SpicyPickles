@@ -52,7 +52,7 @@ class PickleCard extends StatelessWidget {
                   children: [
                     Flexible(
                       child: Text(
-                        "$title, $description",
+                        title,
                         maxLines: 4,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
@@ -67,8 +67,19 @@ class PickleCard extends StatelessWidget {
                   ],
                 ),
               ),
+              Text(
+                description,
+                maxLines: 4,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: context.textStyle?.bodySmall?.copyWith(
+                  fontSize: 14,
+                  color: AppColors.mediumGrey,
+                  fontFamily: "MontserratSemiBold",
+                ),
+              ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 10),
+                padding: const EdgeInsets.only(bottom: 10, top: 4),
                 child: RichText(
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
@@ -78,7 +89,7 @@ class PickleCard extends StatelessWidget {
                       TextSpan(
                         text: "South Indian | Spicy | ",
                         style: context.textStyle?.bodySmall?.copyWith(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: AppColors.mediumGrey,
                           fontFamily: "MontserratSemiBold",
                         ),
@@ -86,7 +97,7 @@ class PickleCard extends StatelessWidget {
                       TextSpan(
                         text: "Rs 500 / 0.2 kg",
                         style: context.textStyle?.bodySmall?.copyWith(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: AppColors.vibrantRed,
                           fontFamily: "MontserratSemiBold",
                         ),
