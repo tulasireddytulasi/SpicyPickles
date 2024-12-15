@@ -11,7 +11,23 @@ class SearchbarWidget extends StatefulWidget {
 }
 
 class _SearchbarWidgetState extends State<SearchbarWidget> {
-  final TextEditingController _aadhaarNoController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
+  final ValueNotifier<String> _searchTextNotifier = ValueNotifier<String>("");
+
+  @override
+  void initState() {
+    super.initState();
+    _searchController.addListener(() {
+      _searchTextNotifier.value = _searchController.text;
+    });
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    _searchTextNotifier.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,12 +54,44 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
           const SizedBox(height: 8),
           TextFormFieldWidget(
             maxWidth: double.infinity,
-            controller: _aadhaarNoController,
+            controller: _searchController,
             hintText: "Search for your favorite pickle",
             textInputType: TextInputType.text,
             actionKeyboard: TextInputAction.search,
             prefixIcon: const Icon(Icons.arrow_back_ios_rounded, size: 20, color: AppColors.vibrantRed),
-            suffixIcon: const Icon(Icons.search_rounded, size: 28, color: AppColors.vibrantRed),
+            suffixIcon: ValueListenableBuilder<String>(
+              valueListenable: _searchTextNotifier,
+              builder: (context, value, child) {
+                return Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    if (value.isNotEmpty)
+                      InkWell(
+                        onTap: () {
+                          _searchController.clear();
+                          _searchTextNotifier.value = "";
+                        },
+                        child: const Icon(Icons.close, size: 20, color: AppColors.black),
+                      ),
+                    const SizedBox(width: 6),
+                    const RotatedBox(
+                      quarterTurns: 3,
+                      child: SizedBox(
+                        width: 20,
+                        child: Divider(
+                          height: 4,
+                          thickness: 2,
+                          color: AppColors.lightGrey,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 6),
+                    const Icon(Icons.search_rounded, size: 20, color: AppColors.vibrantRed),
+                    const SizedBox(width: 10),
+                  ],
+                );
+              },
+            ),
             contentPadding: const EdgeInsets.symmetric(
               vertical: 12,
               horizontal: 10,
