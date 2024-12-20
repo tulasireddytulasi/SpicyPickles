@@ -26,6 +26,8 @@ class AppAssets {
   static const String kShareIcon = "assets/icons/share_icon.svg";
   static const String kProfileIcon = "assets/icons/profile_icon.svg";
   static const String kCMDKeyIcon = "assets/icons/cmd_key_icon.svg";
+  static const String kDiscountIcon = "assets/icons/discount.png";
+  static const String kPriceTagIcon = "assets/icons/price_tag.png";
 
   static const String kPic1 = "assets/images/pic_1.png";
   static const String kPic2 = "assets/images/pic_2.png";
@@ -75,5 +77,6 @@ class AppAssets {
   static const String kMangoIcon1 = "assets/images/mango_icon_1.png";
   static const String kLimeIcon1 = "assets/images/lime_icon_1.png";
   static const String kLimeIcon2 = "assets/images/lime_icon_2.png";
+  static const String kChilliIcon2 = "assets/images/lime_icon_2.png";
 
 }

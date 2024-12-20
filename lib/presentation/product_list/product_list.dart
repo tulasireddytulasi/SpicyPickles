@@ -8,6 +8,7 @@ import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/product_list/widgets/item_card.dart';
+import 'package:spicypickles/presentation/product_list/widgets/item_card_2.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
 class ProductListScreen extends StatefulWidget {
@@ -51,13 +52,13 @@ class _ProductListScreenState extends State<ProductListScreen> {
             showNoMoreItemsIndicatorAsGridChild: false,
             pagingController: _pagingController,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 5/7,
+              childAspectRatio: 16/12.5,
               crossAxisSpacing: 0,
               mainAxisSpacing: 0,
-              crossAxisCount: 2,
+              crossAxisCount: 1,
             ),
             builderDelegate: PagedChildBuilderDelegate<Product>(
-              itemBuilder: (context, items, index) => ItemCard(
+              itemBuilder: (context, items, index) => ItemCard2(
                 imgUrl: items.imgUrl ?? "",
                 title: items.title ?? "",
                 description: items.description ?? "",
