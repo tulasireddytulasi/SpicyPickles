@@ -69,7 +69,10 @@ class PickleCard extends StatelessWidget {
                         ),
                       ),
                     ),
-                    const RatingWidget(rating: "3.5"),
+                    const Padding(
+                      padding: EdgeInsets.only(left: 2.0),
+                      child: RatingWidget(rating: "3.5"),
+                    ),
                   ],
                 ),
               ),

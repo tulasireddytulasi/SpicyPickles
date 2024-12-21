@@ -13,9 +13,9 @@ class RatingWidget extends StatelessWidget {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         color: Colors.green,
-        borderRadius: BorderRadius.circular(6),
+        borderRadius: BorderRadius.circular(4),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -23,17 +23,17 @@ class RatingWidget extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            margin: const EdgeInsets.only(left: 0, right: 4),
+            margin: const EdgeInsets.only(left: 0, right: 0),
             child: Text(
               rating,
               textAlign: TextAlign.center,
-              style: context.textStyle?.titleMedium?.copyWith(color: AppColors.white),
+              style: context.textStyle?.titleMedium?.copyWith(color: AppColors.white, fontSize: 12),
             ),
           ),
           const Icon(
             Icons.star,
             color: Colors.white,
-            size: 14,
+            size: 10,
           ),
         ],
       ),
