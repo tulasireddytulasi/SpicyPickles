@@ -115,14 +115,14 @@ class _ItemCard2State extends State<ItemCard2> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Image.asset(AppAssets.kDiscountIcon, width: 20, fit: BoxFit.cover),
+                  Image.asset(AppAssets.kDiscountIcon, width: 20, fit: BoxFit.cover, color: AppColors.darkBlue),
                   const SizedBox(width: 10),
                   Text(
                     "30% Off up to  Rs 50",
                     softWrap: true,
                     overflow: TextOverflow.ellipsis,
                     maxLines: 2,
-                    style: context.textStyle?.headlineMedium?.copyWith(fontSize: 14, color: AppColors.darkGrey),
+                    style: context.textStyle?.headlineMedium?.copyWith(fontSize: 14, color: AppColors.black),
                   ),
                 ],
               ),

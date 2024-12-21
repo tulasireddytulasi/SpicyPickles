@@ -18,8 +18,8 @@ class _HomeAppBarState extends State<HomeAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      elevation: 1,
-      shadowColor: AppColors.black,
+      // elevation: 1,
+      // shadowColor: AppColors.black,
       backgroundColor: context.themeData.colorScheme.onPrimary,
       title: Padding(
         padding: const EdgeInsets.only(left: 20.0),

@@ -38,6 +38,7 @@ class LightTheme implements AppTheme {
         appBarTheme: const AppBarTheme(
           titleSpacing: 0,
           backgroundColor: AppColors.white,
+          surfaceTintColor: AppColors.white,
           foregroundColor: AppColors.white,
           titleTextStyle: TextStyle(
             fontSize: 18,

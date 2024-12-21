@@ -32,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   final List<PreferredSizeWidget> _appBars = const [
     HomeAppBar(),
-    ExploreAppBar(),
+    HomeAppBar(),
     ProfileAppBar(),
   ];
 
