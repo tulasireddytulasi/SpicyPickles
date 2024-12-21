@@ -13,7 +13,8 @@ class ItemCard2 extends StatefulWidget {
     required this.imgUrl,
     required this.title,
     required this.description,
-    required this.price, this.maxLines = 1,
+    required this.price,
+    this.maxLines = 2,
   });
 
   final String imgUrl;
@@ -47,6 +48,7 @@ class _ItemCard2State extends State<ItemCard2> {
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             ClipRRect(
               borderRadius: const BorderRadius.only(topRight: Radius.circular(12), topLeft: Radius.circular(12)),
@@ -68,46 +70,40 @@ class _ItemCard2State extends State<ItemCard2> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     flex: 70,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          widget.title,
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 2,
-                          style: context.textStyle?.headlineMedium?.copyWith(fontSize: 16, color: AppColors.black),
-                        ),
-                        const SizedBox(height: 2),
-                        RichText(
-                          softWrap: true,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: widget.maxLines,
-                          text: TextSpan(
-                            children: [
-                              TextSpan(
-                                text: "South Indian  | Mutton Pickle | Rs 500/ 0.2 kg ",
-                                style: context.textStyle?.bodySmall?.copyWith(
-                                  fontSize: 12,
-                                  color: AppColors.mediumGrey,
-                                  fontFamily: "MontserratSemiBold",
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
+                    child: Text(
+                      widget.title,
+                      softWrap: true,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 2,
+                      style: context.textStyle?.headlineMedium?.copyWith(fontSize: 20, color: AppColors.black),
                     ),
                   ),
                   const Padding(
                     padding: EdgeInsets.only(top: 4),
-                    child: RatingWidget(rating: "4.5", ),
+                    child: RatingWidget(
+                      rating: "4.5",
+                    ),
                   ),
                 ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Text(
+                "South Indian | Mutton Pickle | Rs 500/ 0.2 kg",
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                maxLines: widget.maxLines,
+                textAlign: TextAlign.start,
+                style: context.textStyle?.bodySmall?.copyWith(
+                  fontSize: 12,
+                  color: AppColors.mediumGrey,
+                  fontFamily: "MontserratSemiBold",
+                ),
               ),
             ),
             const Padding(

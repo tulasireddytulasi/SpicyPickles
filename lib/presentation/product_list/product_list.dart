@@ -3,11 +3,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:spicypickles/core/utils/app_assets.dart';
-import 'package:spicypickles/core/utils/app_colors.dart';
-import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/model/products_model.dart';
-import 'package:spicypickles/presentation/product_list/widgets/item_card.dart';
 import 'package:spicypickles/presentation/product_list/widgets/item_card_2.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 
@@ -46,17 +42,8 @@ class _ProductListScreenState extends State<ProductListScreen> {
     return Column(
       children: [
         Expanded(
-          child: PagedGridView<int, Product>(
-            showNewPageProgressIndicatorAsGridChild: false,
-            showNewPageErrorIndicatorAsGridChild: false,
-            showNoMoreItemsIndicatorAsGridChild: false,
+          child: PagedListView<int, Product>(
             pagingController: _pagingController,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              childAspectRatio: 16/12.5,
-              crossAxisSpacing: 0,
-              mainAxisSpacing: 0,
-              crossAxisCount: 1,
-            ),
             builderDelegate: PagedChildBuilderDelegate<Product>(
               itemBuilder: (context, items, index) => ItemCard2(
                 imgUrl: items.imgUrl ?? "",
