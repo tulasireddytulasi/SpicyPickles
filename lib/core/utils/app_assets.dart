@@ -71,6 +71,8 @@ class AppAssets {
   static const String kGingerIcon = "assets/images/ginger_icon.png";
   static const String kGingerIcon1 = "assets/images/ginger_icon_1.png";
   static const String kGingerIcon2 = "assets/images/ginger_icon_2.png";
+  static const String kGingerIcon3 = "assets/images/ginger_icon_3.png";
+  static const String kGingerIcon4 = "assets/images/ginger_icon_4.png";
   static const String kMangoIcon = "assets/images/mango_icon.png";
   static const String kLimeIcon = "assets/images/lime_icon.png";
   static const String kGonguraIcon = "assets/images/gongura.png";

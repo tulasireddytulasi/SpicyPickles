@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/cart/cart.dart';
 import 'package:spicypickles/presentation/widgets/rating_widget.dart';
 
 class PickleCard extends StatelessWidget {
@@ -24,9 +25,14 @@ class PickleCard extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(10)), // Matches the container's border radius
         child: InkWell(
           borderRadius: const BorderRadius.all(Radius.circular(10)), // Ensures ripple effect matches the shape
-          onTap: () {
-            // Handle click event here
-            debugPrint("Container clicked!");
+          onTap: () async {
+            await Future.delayed(const Duration(milliseconds: 200));
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const Cart(),
+              ),
+            );
           },
           child: Column(
             mainAxisSize: MainAxisSize.max,

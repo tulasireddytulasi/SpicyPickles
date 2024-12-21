@@ -112,6 +112,14 @@ class RepoData {
   static Map<String, dynamic> iconsData = {
     "pickleIcons": [
       {
+        "imgUrl": AppAssets.kGingerIcon4,
+        "title": "Ginger Pickle",
+      },
+      {
+        "imgUrl": AppAssets.kGingerIcon3,
+        "title": "Ginger Pickle",
+      },
+      {
         "imgUrl": AppAssets.kGingerIcon,
         "title": "Ginger Pickle",
       },
