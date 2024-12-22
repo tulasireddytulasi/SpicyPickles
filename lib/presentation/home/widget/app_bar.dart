@@ -22,35 +22,37 @@ class _HomeAppBarState extends State<HomeAppBar> {
       // shadowColor: AppColors.black,
       backgroundColor: context.themeData.colorScheme.onPrimary,
       title: Padding(
-        padding: const EdgeInsets.only(left: 20.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        padding: const EdgeInsets.only(left: 10.0),
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              'Location',
-              style: context.textStyle?.labelLarge?.copyWith(
-                color: AppColors.black.withOpacity(0.8),
-                fontSize: 12,
-              ),
-            ),
-            const SizedBox(height: 2),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
+            const Icon(Icons.location_on, size: 32),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Icon(Icons.location_on),
-                const SizedBox(width: 2),
                 Text(
-                  'MVP Colony, Vizag',
+                  'Location',
                   style: context.textStyle?.labelLarge?.copyWith(
-                    color: AppColors.black,
-                    fontFamily: 'MontserratBold',
+                    color: AppColors.black.withOpacity(0.8),
+                    fontSize: 12,
                   ),
                 ),
-                const SizedBox(width: 2),
-                const Icon(
-                  Icons.keyboard_arrow_down_rounded,
-                  size: 28,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'MVP Colony, Vizag',
+                      style: context.textStyle?.labelLarge?.copyWith(
+                        color: AppColors.black,
+                        fontFamily: 'MontserratBold',
+                      ),
+                    ),
+                    const SizedBox(width: 2),
+                    const Icon(
+                      Icons.keyboard_arrow_down_rounded,
+                      size: 28,
+                    ),
+                  ],
                 ),
               ],
             ),
