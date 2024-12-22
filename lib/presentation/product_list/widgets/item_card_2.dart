@@ -58,11 +58,11 @@ class _ItemCard2State extends State<ItemCard2> {
                 width: double.infinity,
                 fit: BoxFit.cover,
                 placeholder: (context, url) => Image.asset(
-                  AppAssets.kPickle12, // Replace with your asset path
+                  widget.imgUrl,
                   fit: BoxFit.cover,
                 ),
                 errorWidget: (context, url, error) => Image.asset(
-                  AppAssets.kPickle12, // Replace with your asset path
+                  widget.imgUrl,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -70,7 +70,7 @@ class _ItemCard2State extends State<ItemCard2> {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Expanded(
                     flex: 70,
@@ -79,14 +79,12 @@ class _ItemCard2State extends State<ItemCard2> {
                       softWrap: true,
                       overflow: TextOverflow.ellipsis,
                       maxLines: 2,
-                      style: context.textStyle?.headlineMedium?.copyWith(fontSize: 20, color: AppColors.black),
+                      style: context.textStyle?.headlineMedium?.copyWith(fontSize: 18, color: AppColors.black),
                     ),
                   ),
                   const Padding(
-                    padding: EdgeInsets.only(top: 4),
-                    child: RatingWidget(
-                      rating: "4.5",
-                    ),
+                    padding: EdgeInsets.only(left: 20),
+                    child: RatingWidget(rating: "4.5"),
                   ),
                 ],
               ),

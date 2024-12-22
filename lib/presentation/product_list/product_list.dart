@@ -35,7 +35,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   _fetchPopularActors({required int pageKey}) async {
     try {
-      final productsModel = productsModelFromJson(json.encode(RepoData.data));
+      final productsModel = productsModelFromJson(json.encode(RepoData.data2));
       final List<Product> actorsList = productsModel.products ?? [];
       _pagingController.appendPage(actorsList, pageKey + 1);
     } catch (error, stackTrace) {
