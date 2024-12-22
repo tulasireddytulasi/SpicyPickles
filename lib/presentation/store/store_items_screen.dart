@@ -9,14 +9,14 @@ import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/product_list/widgets/products_list_data.dart';
 import 'package:spicypickles/presentation/store/widget/product_card.dart';
 
-class StoreProductsScreen extends StatefulWidget {
-  const StoreProductsScreen({super.key});
+class StoreItemsScreen extends StatefulWidget {
+  const StoreItemsScreen({super.key});
 
   @override
-  State<StoreProductsScreen> createState() => _StoreProductsScreenState();
+  State<StoreItemsScreen> createState() => _StoreItemsScreenState();
 }
 
-class _StoreProductsScreenState extends State<StoreProductsScreen> {
+class _StoreItemsScreenState extends State<StoreItemsScreen> {
   final PagingController<int, Product> _pagingController = PagingController(firstPageKey: 1);
 
   @override

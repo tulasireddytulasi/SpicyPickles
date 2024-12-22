@@ -1,1 +1,1 @@
-export 'package:spicypickles/presentation/store/store_products_screen.dart';
+export 'package:spicypickles/presentation/store/store_items_screen.dart';

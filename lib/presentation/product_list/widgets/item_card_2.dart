@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
-import 'package:spicypickles/presentation/cart/cart.dart';
-import 'package:spicypickles/presentation/store/store_products_screen.dart';
+import 'package:spicypickles/presentation/store/store_items_screen.dart';
 import 'package:spicypickles/presentation/widgets/dash_line_divider_widget.dart';
 import 'package:spicypickles/presentation/widgets/rating_widget.dart';
 
@@ -37,7 +36,7 @@ class _ItemCard2State extends State<ItemCard2> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const StoreProductsScreen(),
+            builder: (context) => const StoreItemsScreen(),
           ),
         );
       },
