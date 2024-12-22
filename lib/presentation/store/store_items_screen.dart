@@ -48,7 +48,16 @@ class _StoreItemsScreenState extends State<StoreItemsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "Just Eat & Go",
+          style: context.textStyle?.bodySmall?.copyWith(
+            fontSize: 14,
+            color: AppColors.black,
+            fontFamily: "MontserratSemiBold",
+          ),
+        ),
+      ),
       backgroundColor: context.colorScheme?.onPrimary,
       body: SafeArea(
         child: Column(
@@ -56,6 +65,24 @@ class _StoreItemsScreenState extends State<StoreItemsScreen> {
           mainAxisAlignment: MainAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Just Eat & Go",
+                maxLines: 2,
+                softWrap: true,
+                overflow: TextOverflow.ellipsis,
+                style: context.textStyle?.bodySmall?.copyWith(
+                  fontSize: 22,
+                  color: AppColors.black,
+                  fontFamily: "MontserratBold",
+                ),
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 8.0),
+              child: Divider(height: 2, thickness: 4, color: AppColors.lynxWhite),
+            ),
             Expanded(
               child: PagedListView<int, Product>.separated(
                 pagingController: _pagingController,
@@ -64,7 +91,7 @@ class _StoreItemsScreenState extends State<StoreItemsScreen> {
                   child: Divider(
                     height: 2,
                     thickness: 2,
-                    color: AppColors.lightGrey,
+                    color: AppColors.lynxWhite,
                   ),
                 ),
                 builderDelegate: PagedChildBuilderDelegate<Product>(
