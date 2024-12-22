@@ -23,8 +23,10 @@ class AppColors {
 
   // Third row colors
   static const blush = Color(0xFFFCD8D8);
+  static const lavenderBlush = Color(0xFFFFF5F6);
   static const lightPeach = Color(0xFFFAAAA4);
   static const watermelon = Color(0xFFF86363);
+  static const amaranth = Color(0xFFF04F5F);
   static const scarlet = Color(0xFFDB1F1F);
   static const burgundy = Color(0xFF9B1313);
   static const chocolate = Color(0xFF600808);
