@@ -52,27 +52,23 @@ class PickleCard extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.only(top: 10, bottom: 4),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Flexible(
+                    Expanded(
+                      flex: 70,
                       child: Text(
                         title,
                         maxLines: 4,
                         softWrap: true,
                         overflow: TextOverflow.ellipsis,
                         style: context.textStyle?.bodySmall?.copyWith(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: AppColors.black,
                           fontFamily: "MontserratSemiBold",
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.only(left: 2.0),
-                      child: RatingWidget(rating: "3.5"),
-                    ),
+                    const RatingWidget(rating: "3.5"),
                   ],
                 ),
               ),
