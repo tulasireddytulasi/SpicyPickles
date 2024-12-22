@@ -27,7 +27,7 @@ class _AddItemButtonState extends State<AddItemButton> {
       width: widget.width,
       height: widget.height,
       decoration: BoxDecoration(
-        color: Colors.redAccent.withOpacity(0.1),
+        color: AppColors.lightPeach,
         border: Border.all(color: AppColors.vibrantRed, width: 0.5),
         borderRadius: BorderRadius.circular(4),
       ),
