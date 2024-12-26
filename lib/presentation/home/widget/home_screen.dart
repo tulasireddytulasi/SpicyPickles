@@ -44,7 +44,7 @@ class _HomeBodyWidgetState extends State<HomeBodyWidget> {
               const SearchbarWidget(),
               SizedBox(
                 width: MediaQuery.of(context).size.width,
-                height: 130,
+                height: 190,
                 child: const PageViewWithCards(),
               ),
               const TitleWidget(title: "WHAT'S ON YOUR MIND ?", verticalPadding: 20),

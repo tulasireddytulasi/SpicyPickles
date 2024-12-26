@@ -81,4 +81,9 @@ class AppAssets {
   static const String kLimeIcon2 = "assets/images/lime_icon_2.png";
   static const String kChilliIcon2 = "assets/images/lime_icon_2.png";
 
+  static const String kBanner1 = "assets/images/banner_1.jpg";
+  static const String kBanner2 = "assets/images/banner_2.jpg";
+  static const String kBanner3 = "assets/images/banner_3.jpg";
+  static const String kBanner4 = "assets/images/banner_4.jpg";
+  static const String kBanner5 = "assets/images/banner_5.jpg";
 }
