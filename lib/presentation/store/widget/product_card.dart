@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/cart/widgets/add_items_button.dart';
 import 'package:spicypickles/presentation/home/widget/rating_widget.dart';
 
@@ -9,29 +10,25 @@ class FoodItemCard extends StatefulWidget {
   const FoodItemCard({
     super.key,
     this.cardSize = 140,
-    required this.title,
-    required this.price,
-    required this.description,
-    required this.imageUrl,
-    required this.isVeg,
-    required this.isBestseller,
-    required this.rating,
+    required this.product,
   });
 
   final double cardSize;
-  final String title;
-  final String price;
-  final String description;
-  final String imageUrl;
-  final bool isVeg;
-  final bool isBestseller;
-  final double rating;
+  final Product product;
 
   @override
   State<FoodItemCard> createState() => _FoodItemCardState();
 }
 
 class _FoodItemCardState extends State<FoodItemCard> {
+  late final Product product;
+
+  @override
+  void initState() {
+    super.initState();
+    product = widget.product;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -48,7 +45,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
+                  product.title ?? "",
                   maxLines: 4,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
@@ -61,7 +58,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                 const SizedBox(height: 6),
                 Row(
                   children: [
-                    StarRating(rating: widget.rating.toInt(), filledColor: Colors.amber, starSize: 14.5),
+                    StarRating(rating: product.rating?.toInt() ?? 0, filledColor: Colors.amber, starSize: 14.5),
                     const SizedBox(width: 4),
                     Text(
                       "(126)",
@@ -75,7 +72,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  widget.price,
+                  product.price ?? "",
                   style: context.textStyle?.bodySmall?.copyWith(
                     fontSize: 14,
                     color: AppColors.black,
@@ -84,7 +81,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                 ),
                 const SizedBox(height: 6),
                 Text(
-                  widget.description,
+                  product.description ?? '',
                   maxLines: 2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
@@ -107,15 +104,15 @@ class _FoodItemCardState extends State<FoodItemCard> {
                 child: ClipRRect(
                   borderRadius: const BorderRadius.all(Radius.circular(12)),
                   child: CachedNetworkImage(
-                    imageUrl: widget.imageUrl,
+                    imageUrl: product.imgUrl ?? "",
                     width: double.infinity,
                     fit: BoxFit.cover,
                     placeholder: (context, url) => Image.asset(
-                      widget.imageUrl,
+                      product.imgUrl ?? "",
                       fit: BoxFit.cover,
                     ),
                     errorWidget: (context, url, error) => Image.asset(
-                      widget.imageUrl,
+                      product.imgUrl ?? "",
                       fit: BoxFit.cover,
                     ),
                   ),

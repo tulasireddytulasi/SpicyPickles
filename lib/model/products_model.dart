@@ -30,6 +30,8 @@ class Product {
   String? description;
   String? price;
   double? rating;
+  bool? isVeg;
+  bool? isBestseller;
 
   Product({
     this.imgUrl,
@@ -37,6 +39,8 @@ class Product {
     this.description,
     this.price,
     this.rating,
+    this.isVeg,
+    this.isBestseller,
   });
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -45,6 +49,8 @@ class Product {
     description: json["description"],
     price: json["price"],
     rating: json["rating"]?.toDouble(),
+    isVeg: json["isVeg"],
+    isBestseller: json["isBestseller"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -52,6 +58,8 @@ class Product {
     "title": title,
     "description": description,
     "price": price,
+    "isVeg": isVeg,
+    "isBestseller":isBestseller,
     "rating": rating,
   };
 }

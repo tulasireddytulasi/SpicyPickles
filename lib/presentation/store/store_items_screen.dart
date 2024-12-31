@@ -92,13 +92,7 @@ class _StoreItemsScreenState extends State<StoreItemsScreen> {
                     ),
                     builderDelegate: PagedChildBuilderDelegate<Product>(
                       itemBuilder: (context, items, index) => FoodItemCard(
-                        imageUrl: items.imgUrl ?? "",
-                        title: items.title ?? "",
-                        description: items.description ?? "",
-                        price: items.price ?? "",
-                        isVeg: false,
-                        isBestseller: true,
-                        rating: items.rating ?? 0,
+                        product: items,
                         key: ValueKey(index),
                       ),
                     ),

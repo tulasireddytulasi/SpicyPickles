@@ -55,6 +55,8 @@ class RepoData {
         "title": "Spicy and Flavorful Chilli Pickle Delight",
         "description": "A fiery and flavorful chilli pickle [1/2Kg]",
         "price": "₹130",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 4.6
       },
       {
@@ -62,6 +64,8 @@ class RepoData {
         "title": "Tangy and Delicious Traditional Mango Pickle",
         "description": "A tangy and delicious mango pickle [1/2Kg]",
         "price": "₹150",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 3.1
       },
       {
@@ -69,6 +73,8 @@ class RepoData {
         "title": "Zesty and Unique Ginger Pickle Experience",
         "description": "A zesty ginger pickle with a unique taste [1/2Kg]",
         "price": "₹140",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 2.5
       },
       {
@@ -76,6 +82,8 @@ class RepoData {
         "title": "Authentic and Traditional Gongura Pickle Taste",
         "description": "A traditional and authentic gongura pickle [1/2Kg]",
         "price": "₹160",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 3.7
       },
       {
@@ -83,6 +91,8 @@ class RepoData {
         "title": "Refreshing and Citrus-Infused Lime Pickle Treat",
         "description": "A refreshing and citrusy lime pickle [1/2Kg]",
         "price": "₹120",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 4.4
       },
       {
@@ -90,6 +100,8 @@ class RepoData {
         "title": "Delicious and Flavorful Mixed Pickle Creation",
         "description": "A blend of flavors in a delicious mixed pickle [1/2Kg]",
         "price": "₹170",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 3.9
       },
       {
@@ -97,6 +109,8 @@ class RepoData {
         "title": "Refreshing and Zesty Citrus Lime Pickle Jar",
         "description": "A refreshing and citrusy lime pickle [1/2Kg]",
         "price": "₹120",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 3.4
       },
       {
@@ -104,6 +118,8 @@ class RepoData {
         "title": "Delicious and Tangy Mixed Pickle with Spices",
         "description": "A blend of flavors in a delicious mixed pickle [1/2Kg]",
         "price": "₹170",
+        "isVeg": true,
+        "isBestseller": true,
         "rating": 4.9
       }
     ]
