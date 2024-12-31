@@ -121,7 +121,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   ),
                 ),
               ),
-              const Positioned(bottom: -10, right: 14, child: AddItemButton(width: 110, height: 36)),
+              const Positioned(bottom: -16, right: 14, child: AddItemButton(width: 110, height: 36)),
             ],
           ),
         ],
