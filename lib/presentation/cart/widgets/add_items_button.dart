@@ -41,7 +41,7 @@ class _AddItemButtonState extends State<AddItemButton> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () => noOfItems.value -= 1,
                         child: Container(
                           alignment: Alignment.center,
@@ -61,7 +61,7 @@ class _AddItemButtonState extends State<AddItemButton> {
                       ),
                     ),
                     Expanded(
-                      child: GestureDetector(
+                      child: InkWell(
                         onTap: () => noOfItems.value += 1,
                         child: Container(
                           alignment: Alignment.center,
