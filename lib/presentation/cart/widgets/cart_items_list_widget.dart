@@ -59,7 +59,7 @@ class _CardItemsWidgetState extends State<CardItemsWidget> {
                     color: AppColors.lightGrey,
                   ),
                   itemBuilder: (context, index) {
-                    return Items(product: state.productList[index]);
+                    return Items(product: state.productList[index].product!);
                   },
                 ),
               ],

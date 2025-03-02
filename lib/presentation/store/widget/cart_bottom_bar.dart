@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/cart_items_model.dart';
 import 'package:spicypickles/presentation/cart/bloc/cart_bloc.dart';
 
 class CartBottomBar extends StatefulWidget {
@@ -12,6 +13,11 @@ class CartBottomBar extends StatefulWidget {
 }
 
 class _CartBottomBarState extends State<CartBottomBar> {
+
+  int getTotalQuantity(List<CartItemsModel> cart) {
+    return cart.fold(0, (total, item) => total + (item.quantity ?? 0));
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CartBloc, CartState>(
@@ -22,7 +28,7 @@ class _CartBottomBarState extends State<CartBottomBar> {
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                " ${state.productList.length} item added",
+                " ${getTotalQuantity(state.productList)} item added",
                 textAlign: TextAlign.center,
                 style: context.textStyle?.titleLarge?.copyWith(color: AppColors.white),
               ),

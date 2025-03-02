@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/cart_items_model.dart';
 import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/cart/bloc/cart_bloc.dart';
 
@@ -24,36 +25,42 @@ class AddItemButton extends StatefulWidget {
 }
 
 class _AddItemButtonState extends State<AddItemButton> {
-  late int noOfItems4;
-  late final ValueNotifier<int> noOfItems;
+  late int noOfItems;
 
   @override
   void initState() {
     super.initState();
-    noOfItems = ValueNotifier<int>(widget.noOfItems);
+    noOfItems = 0;
   }
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder<int>(
-      valueListenable: noOfItems,
-      builder: (context, value, child) {
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        if (state is CartLoaded) {
+          // Find the product in the cart
+          CartItemsModel? cartItemsModel = state.productList.firstWhere(
+            (item) => item.product?.title == widget.product.title,
+            orElse: () => CartItemsModel(product: null, quantity: 0), // Return default CartItemsModel
+          );
+          noOfItems = cartItemsModel.quantity ?? 0;
+        }
+
         return Container(
           width: widget.width,
           height: widget.height,
           decoration: BoxDecoration(
-            color: noOfItems.value > 0 ? AppColors.amaranth : AppColors.lavenderBlush,
+            color: noOfItems > 0 ? AppColors.amaranth : AppColors.lavenderBlush,
             border: Border.all(color: AppColors.vibrantRed, width: 0.5),
             borderRadius: BorderRadius.circular(8),
           ),
-          child: noOfItems.value > 0
+          child: noOfItems > 0
               ? Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          noOfItems.value -= 1;
                           context.read<CartBloc>().add(RemoveItem(product: widget.product));
                         },
                         child: Container(
@@ -66,7 +73,7 @@ class _AddItemButtonState extends State<AddItemButton> {
                       ),
                     ),
                     Text(
-                      noOfItems.value.toString(),
+                      noOfItems.toString(),
                       style: const TextStyle(
                         color: AppColors.white,
                         fontSize: 16,
@@ -76,7 +83,6 @@ class _AddItemButtonState extends State<AddItemButton> {
                     Expanded(
                       child: InkWell(
                         onTap: () {
-                          noOfItems.value += 1;
                           context.read<CartBloc>().add(AddItem(product: widget.product));
                         },
                         child: Container(
@@ -92,7 +98,6 @@ class _AddItemButtonState extends State<AddItemButton> {
                 )
               : InkWell(
                   onTap: () {
-                    noOfItems.value += 1;
                     context.read<CartBloc>().add(AddItem(product: widget.product));
                   },
                   child: Container(
