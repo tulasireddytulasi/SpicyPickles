@@ -4,6 +4,7 @@ import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/model/cart_items_model.dart';
 import 'package:spicypickles/presentation/cart/bloc/cart_bloc.dart';
+import 'package:spicypickles/presentation/cart/cart.dart';
 
 class CartBottomBar extends StatefulWidget {
   const CartBottomBar({super.key});
@@ -23,14 +24,24 @@ class _CartBottomBarState extends State<CartBottomBar> {
     return BlocBuilder<CartBloc, CartState>(
       builder: (context, state) {
         if (state is CartLoaded && state.productList.isNotEmpty) {
-          return ColoredBox(
-            color: AppColors.amaranth,
-            child: Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                " ${getTotalQuantity(state.productList)} item added",
-                textAlign: TextAlign.center,
-                style: context.textStyle?.titleLarge?.copyWith(color: AppColors.white),
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const Cart(),
+                ),
+              );
+            },
+            child: ColoredBox(
+              color: AppColors.amaranth,
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  " ${getTotalQuantity(state.productList)} item added",
+                  textAlign: TextAlign.center,
+                  style: context.textStyle?.titleLarge?.copyWith(color: AppColors.white),
+                ),
               ),
             ),
           );
