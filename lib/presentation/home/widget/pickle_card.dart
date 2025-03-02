@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/cart/cart.dart';
+import 'package:spicypickles/presentation/store/store.dart';
 import 'package:spicypickles/presentation/widgets/rating_widget.dart';
 
 class PickleCard extends StatelessWidget {
@@ -27,10 +28,11 @@ class PickleCard extends StatelessWidget {
           borderRadius: const BorderRadius.all(Radius.circular(10)), // Ensures ripple effect matches the shape
           onTap: () async {
             await Future.delayed(const Duration(milliseconds: 200));
+            if(!context.mounted) return;
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const Cart(),
+                builder: (context) => const StoreItemsScreen(),
               ),
             );
           },
