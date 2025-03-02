@@ -1,16 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/model/products_model.dart';
 import 'package:spicypickles/presentation/cart/widgets/add_items_button.dart';
 
 class Items extends StatefulWidget {
-  const Items({super.key});
+  const Items({super.key, required this.product});
+  final Product product;
 
   @override
   State<Items> createState() => _ItemsState();
 }
 
 class _ItemsState extends State<Items> {
+  late final Product product;
+
+  @override
+  void initState() {
+    super.initState();
+    product = widget.product;
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
@@ -22,29 +32,26 @@ class _ItemsState extends State<Items> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
-              AppAssets.kChilliPickle,
+              product.imgUrl ?? AppAssets.kChilliPickle,
               width: 100,
-              height: 130,
+              height: 100,
               fit: BoxFit.fitHeight,
             ),
             Container(
               margin: const EdgeInsets.only(left: 10),
               padding: const EdgeInsets.only(top: 0),
-              decoration: const BoxDecoration(
-                  //   border: Border.all(color: black, width: 1),
-                  ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   SizedBox(
                     width: screenWidth / 2,
-                    child: const Text(
-                      "Tender Coconut 1 pc (Approx 800 g - 1500 g)",
+                    child:  Text(
+                      product.title ?? "Tender Coconut 1 pc (Approx 800 g - 1500 g)",
                       softWrap: true,
                       maxLines: 6,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.black,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
@@ -65,19 +72,19 @@ class _ItemsState extends State<Items> {
                   Container(
                     width: screenWidth / 2,
                     margin: const EdgeInsets.only(top: 4),
-                    child: const Text(
-                      "₹49.00",
+                    child:  Text(
+                      product.price ?? "₹49.00",
                       softWrap: true,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontSize: 18,
                           color: AppColors.black,
                           fontWeight: FontWeight.bold),
                     ),
                   ),
                   const SizedBox(height: 2),
-                  const AddItemButton(noOfItems: 1),
+                  AddItemButton(noOfItems: 1, product: product),
                 ],
               ),
             ),

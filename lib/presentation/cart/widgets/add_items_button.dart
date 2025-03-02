@@ -1,13 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/products_model.dart';
+import 'package:spicypickles/presentation/cart/bloc/cart_bloc.dart';
 
 class AddItemButton extends StatefulWidget {
-  const AddItemButton({super.key, this.width = 100, this.height = 40, this.noOfItems = 0});
+  const AddItemButton({
+    super.key,
+    this.width = 100,
+    this.height = 40,
+    this.noOfItems = 0,
+    required this.product,
+  });
 
   final double width;
   final double height;
   final int noOfItems;
+  final Product product;
 
   @override
   State<AddItemButton> createState() => _AddItemButtonState();
@@ -42,7 +52,10 @@ class _AddItemButtonState extends State<AddItemButton> {
                   children: [
                     Expanded(
                       child: InkWell(
-                        onTap: () => noOfItems.value -= 1,
+                        onTap: () {
+                          noOfItems.value -= 1;
+                          context.read<CartBloc>().add(RemoveItem(product: widget.product));
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           child: const Text(
@@ -62,7 +75,10 @@ class _AddItemButtonState extends State<AddItemButton> {
                     ),
                     Expanded(
                       child: InkWell(
-                        onTap: () => noOfItems.value += 1,
+                        onTap: () {
+                          noOfItems.value += 1;
+                          context.read<CartBloc>().add(AddItem(product: widget.product));
+                        },
                         child: Container(
                           alignment: Alignment.center,
                           child: const Text(
@@ -75,7 +91,10 @@ class _AddItemButtonState extends State<AddItemButton> {
                   ],
                 )
               : InkWell(
-                  onTap: () => noOfItems.value += 1,
+                  onTap: () {
+                    noOfItems.value += 1;
+                    context.read<CartBloc>().add(AddItem(product: widget.product));
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     child: Text(
