@@ -8,16 +8,17 @@ class CardWidget extends StatelessWidget {
     super.key,
     required this.iconUrl,
     required this.label,
-    required this.iconColor,
+    required this.iconColor, required this.onTap,
   });
   final String iconUrl;
   final String label;
   final Color iconColor;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: (){},
+      onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
         child: Row(
