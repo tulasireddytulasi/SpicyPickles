@@ -11,28 +11,28 @@ String ordersModelToJson(OrdersModel data) => json.encode(data.toJson());
 class OrdersModel {
   int? totalResults;
   int? page;
-  List<OrdersList>? ordersList;
+  List<Order>? orders;
 
   OrdersModel({
     this.totalResults,
     this.page,
-    this.ordersList,
+    this.orders,
   });
 
   factory OrdersModel.fromJson(Map<String, dynamic> json) => OrdersModel(
     totalResults: json["totalResults"],
     page: json["page"],
-    ordersList: json["ordersList"] == null ? [] : List<OrdersList>.from(json["ordersList"]!.map((x) => OrdersList.fromJson(x))),
+    orders: json["orders"] == null ? [] : List<Order>.from(json["orders"]!.map((x) => Order.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "totalResults": totalResults,
     "page": page,
-    "ordersList": ordersList == null ? [] : List<dynamic>.from(ordersList!.map((x) => x.toJson())),
+    "orders": orders == null ? [] : List<dynamic>.from(orders!.map((x) => x.toJson())),
   };
 }
 
-class OrdersList {
+class Order {
   String? orderDate;
   String? orderId;
   String? deliveryAddress;
@@ -48,7 +48,7 @@ class OrdersList {
   int? phoneNo;
   List<Item>? items;
 
-  OrdersList({
+  Order({
     this.orderDate,
     this.orderId,
     this.deliveryAddress,
@@ -65,7 +65,7 @@ class OrdersList {
     this.items,
   });
 
-  factory OrdersList.fromJson(Map<String, dynamic> json) => OrdersList(
+  factory Order.fromJson(Map<String, dynamic> json) => Order(
     orderDate: json["orderDate"],
     orderId: json["orderId"],
     deliveryAddress: json["deliveryAddress"],
