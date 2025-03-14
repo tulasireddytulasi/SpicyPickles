@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/home/widget/rating_widget.dart';
