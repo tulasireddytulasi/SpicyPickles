@@ -29,7 +29,7 @@ class HorizontalItemCard extends StatelessWidget {
         child: ClipRRect(
           borderRadius: const BorderRadius.all(Radius.circular(10)),
           child: ColoredBox(
-            color: AppColors.lightGrey.withOpacity(0.4),
+            color: AppColors.lightGrey.withValues(alpha: 0.4),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(

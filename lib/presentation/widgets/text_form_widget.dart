@@ -55,7 +55,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
     themeProvider = LightTheme().themeData;
     primaryColor = themeProvider.colorScheme.primary;
     primaryContainer = Colors.transparent; //themeProvider.colorScheme.onPrimary;
-    secondaryColor = themeProvider.colorScheme.secondary.withOpacity(0.4);
+    secondaryColor = themeProvider.colorScheme.secondary.withValues(alpha: 0.4);
   }
 
   @override

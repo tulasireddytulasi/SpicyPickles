@@ -33,7 +33,7 @@ class _HomeAppBarState extends State<HomeAppBar> {
                 Text(
                   'Location',
                   style: context.textStyle?.labelLarge?.copyWith(
-                    color: AppColors.black.withOpacity(0.8),
+                    color: AppColors.black.withValues(alpha: 0.8),
                     fontSize: 12,
                   ),
                 ),

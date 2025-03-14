@@ -27,7 +27,7 @@ class _ItemCardState extends State<ItemCard> {
   Widget build(BuildContext context) {
     return Card(
       elevation: 5,
-      color: AppColors.lightGrey.withOpacity(0.4),
+      color: AppColors.lightGrey.withValues(alpha: 0.4),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(4),
       ),

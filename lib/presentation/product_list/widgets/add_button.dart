@@ -23,7 +23,7 @@ class AddItemButton extends StatelessWidget {
       height: height,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: Colors.redAccent.withOpacity(0.1),
+        color: Colors.redAccent.withValues(alpha: 0.1),
         border: Border.all(color: AppColors.vibrantRed, width: 0.5),
         borderRadius: BorderRadius.circular(4),
       ),

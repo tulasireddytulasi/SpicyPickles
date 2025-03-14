@@ -22,7 +22,7 @@ class TitleWidget extends StatelessWidget {
           children: [
             Expanded(
               child: Divider(
-                color: context.colorScheme?.onSecondary.withOpacity(0.4),
+                color: context.colorScheme?.onSecondary.withValues(alpha: 0.4),
                 height: 4,
                 thickness: 1,
               ),
@@ -38,7 +38,7 @@ class TitleWidget extends StatelessWidget {
             const SizedBox(width: 10),
             Expanded(
               child: Divider(
-                color: context.colorScheme?.onSecondary.withOpacity(0.4),
+                color: context.colorScheme?.onSecondary.withValues(alpha: 0.4),
                 height: 4,
                 thickness: 1,
               ),

@@ -66,7 +66,7 @@ class LightTheme implements AppTheme {
         ),
         cardTheme: CardTheme(
           color: AppColors.white,
-          shadowColor: AppColors.grey.withOpacity(0.1),
+          shadowColor: AppColors.grey.withValues(alpha: 0.1),
           elevation: 2,
           margin: const EdgeInsets.all(8),
           shape: RoundedRectangleBorder(

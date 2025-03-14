@@ -22,7 +22,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: ColoredBox(
-                color: AppColors.lightGrey.withOpacity(0.4),
+                color: AppColors.lightGrey.withValues(alpha: 0.4),
                 child: Column(
                   children: [
                     CardWidget(
@@ -45,7 +45,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: ColoredBox(
-                color: AppColors.lightGrey.withOpacity(0.4),
+                color: AppColors.lightGrey.withValues(alpha: 0.4),
                 child: Column(
                   children: [
                     CardWidget(
@@ -87,7 +87,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: ColoredBox(
-                color: AppColors.lightGrey.withOpacity(0.4),
+                color: AppColors.lightGrey.withValues(alpha: 0.4),
                 child: Column(
                   children: [
                     CardWidget(
@@ -116,7 +116,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             ClipRRect(
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: ColoredBox(
-                color: AppColors.lightGrey.withOpacity(0.4),
+                color: AppColors.lightGrey.withValues(alpha: 0.4),
                 child:  Column(
                   children: [
                     CardWidget(
