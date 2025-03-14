@@ -1,22 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
-class OrdersScreen extends StatelessWidget {
+class OrdersScreen extends StatefulWidget {
   const OrdersScreen({super.key});
+
+  @override
+  State<OrdersScreen> createState() => _OrdersScreenState();
+}
+
+class _OrdersScreenState extends State<OrdersScreen> {
+  bool _isLoading = true; // Initially set to true for shimmer effect
+
+  @override
+  void initState() {
+    super.initState();
+    // Simulate loading data (replace with your actual data fetching)
+    Future.delayed(const Duration(seconds: 3), () {
+      setState(() {
+        _isLoading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your Orders'),
+        title: const Text('Your Orders'),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             // Handle back button press
           },
         ),
         actions: [
           IconButton(
-            icon: Icon(Icons.more_vert),
+            icon: const Icon(Icons.more_vert),
             onPressed: () {
               // Handle more options
             },
@@ -30,7 +49,7 @@ class OrdersScreen extends StatelessWidget {
             child: TextField(
               decoration: InputDecoration(
                 hintText: 'Search by restaurant or dish',
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10.0),
                 ),
@@ -38,7 +57,7 @@ class OrdersScreen extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView(
+            child: _isLoading ? _buildShimmerList() : ListView(
               children: [
                 OrderItem(
                   restaurantName: 'Faasos - Wraps, Rolls ...',
@@ -179,4 +198,60 @@ class OrderItem extends StatelessWidget {
       ),
     );
   }
+}
+
+Widget _buildShimmerList() {
+  return Shimmer.fromColors(
+    baseColor: Colors.grey[300]!,
+    highlightColor: Colors.grey[100]!,
+    child: ListView.builder(
+      itemCount: 5, // Number of shimmer placeholders
+      itemBuilder: (context, index) {
+        return Card(
+          margin: const EdgeInsets.all(8.0),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  width: double.infinity,
+                  height: 20.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 8.0),
+                Container(
+                  width: 150.0,
+                  height: 16.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 8.0),
+                Container(
+                  width: double.infinity,
+                  height: 16.0,
+                  color: Colors.white,
+                ),
+                const SizedBox(height: 16.0),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 80.0,
+                      height: 16.0,
+                      color: Colors.white,
+                    ),
+                    Container(
+                      width: 60.0,
+                      height: 32.0,
+                      color: Colors.white,
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+  );
 }

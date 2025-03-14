@@ -50,7 +50,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     CardWidget(
                       iconUrl: AppAssets.kCartIcon,
-                      label: "Cart",
+                      label: "Orders",
                       iconColor: AppColors.skyBlue,
                       onTap: () {
                         Navigator.push(
