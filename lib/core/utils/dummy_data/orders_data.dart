@@ -6,6 +6,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 6:00PM",
         "orderId": "#123456789ABC",
+        "orderStatus": "processing",
         "deliveryAddress": "Bangalore, Kolkata",
         "orderDeliveredDate": "16 Mar, 7:15PM",
         "totalPrice": 320,
@@ -39,6 +40,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 12:30PM",
         "orderId": "#987654321DEF",
+        "orderStatus": "delivered",
         "deliveryAddress": "Mumbai",
         "orderDeliveredDate": "16 Mar, 1:45PM",
         "totalPrice": 450,
@@ -65,6 +67,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 8:45PM",
         "orderId": "#567890123GHI",
+        "orderStatus": "cancelled",
         "deliveryAddress": "Delhi",
         "orderDeliveredDate": "16 Mar, 10:00PM",
         "totalPrice": 280,
@@ -91,6 +94,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 3:15PM",
         "orderId": "#012345678JKL",
+        "orderStatus": "returned",
         "deliveryAddress": "Chennai",
         "orderDeliveredDate": "16 Mar, 4:30PM",
         "totalPrice": 380,
@@ -117,6 +121,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 7:00AM",
         "orderId": "#456789012MNO",
+        "orderStatus": "delivered",
         "deliveryAddress": "Kolkata",
         "orderDeliveredDate": "16 Mar, 8:15AM",
         "totalPrice": 250,
@@ -143,6 +148,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 10:30AM",
         "orderId": "#789012345PQR",
+        "orderStatus": "delivered",
         "deliveryAddress": "Pune",
         "orderDeliveredDate": "16 Mar, 11:45AM",
         "totalPrice": 300,
@@ -168,6 +174,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 05:30PM",
         "orderId": "#234567890STU",
+        "orderStatus": "delivered",
         "deliveryAddress": "Jaipur",
         "orderDeliveredDate": "16 Mar, 06:45PM",
         "totalPrice": 220,
@@ -193,6 +200,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 09:15AM",
         "orderId": "#678901234VWX",
+        "orderStatus": "delivered",
         "deliveryAddress": "Lucknow",
         "orderDeliveredDate": "16 Mar, 10:30AM",
         "totalPrice": 270,

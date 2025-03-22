@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/core/utils/app_enums.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/model/orders_model.dart';
 import 'package:spicypickles/presentation/orders_screen/widget/non_veg_icon.dart';
@@ -10,6 +11,46 @@ class OrderItem extends StatelessWidget {
   final Orders orders;
 
   OrderItem({required this.orders});
+
+  String getOrderStatusString(OrderStatus status) {
+    switch (status) {
+      case OrderStatus.pending:
+        return 'Pending';
+      case OrderStatus.processing:
+        return 'Processing';
+      case OrderStatus.shipped:
+        return 'Shipped';
+      case OrderStatus.delivered:
+        return 'Delivered';
+      case OrderStatus.cancelled:
+        return 'Cancelled';
+      case OrderStatus.returned:
+        return 'Returned';
+      case OrderStatus.failed:
+        return 'Failed';// Handle unexpected cases
+    }
+  }
+
+  Color getOrderStatusColor(OrderStatus status) {
+    switch (status) {
+      case OrderStatus.pending:
+        return Colors.orange;
+      case OrderStatus.processing:
+        return Colors.blue;
+      case OrderStatus.shipped:
+        return Colors.green;
+      case OrderStatus.delivered:
+        return Colors.green[800]!;
+      case OrderStatus.cancelled:
+        return Colors.red;
+      case OrderStatus.returned:
+        return Colors.purple;
+      case OrderStatus.failed:
+        return Colors.grey;
+      default:
+        return Colors.black; // Default color for unknown status
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +143,10 @@ class OrderItem extends StatelessWidget {
                         style: context.textStyle?.titleMedium,
                       ),
                       Text(
-                        'Delivered',
-                        style: context.textStyle?.titleMedium?.copyWith(color: AppColors.green),
+                        getOrderStatusString(orders.orderStatus!),
+                        style: context.textStyle?.titleMedium?.copyWith(
+                          color: getOrderStatusColor(orders.orderStatus!),
+                        ),
                       ),
                     ],
                   ),

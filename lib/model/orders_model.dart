@@ -1,8 +1,5 @@
-// To parse this JSON data, do
-//
-//     final ordersModel = ordersModelFromJson(jsonString);
-
 import 'dart:convert';
+import 'package:spicypickles/core/utils/app_enums.dart';
 
 OrdersModel ordersModelFromJson(String str) => OrdersModel.fromJson(json.decode(str));
 
@@ -49,6 +46,7 @@ class Orders {
   String? payment;
   int? phoneNo;
   List<Item>? items;
+  final OrderStatus? orderStatus;
 
   Orders({
     this.orderDate,
@@ -67,6 +65,7 @@ class Orders {
     this.payment,
     this.phoneNo,
     this.items,
+    this.orderStatus
   });
 
   factory Orders.fromJson(Map<String, dynamic> json) => Orders(
@@ -86,6 +85,7 @@ class Orders {
     payment: json["payment"],
     phoneNo: json["phoneNo"],
     items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
+    orderStatus: json['orderStatus'] == null ? null : OrderStatus.values.byName(json['orderStatus']),
   );
 
   Map<String, dynamic> toJson() => {
@@ -105,6 +105,7 @@ class Orders {
     "payment": payment,
     "phoneNo": phoneNo,
     "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
+    "orderStatus": orderStatus == null ? null : orderStatus,
   };
 }
 
