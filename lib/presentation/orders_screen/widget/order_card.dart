@@ -1,24 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/model/orders_model.dart';
 import 'package:spicypickles/presentation/orders_screen/widget/non_veg_icon.dart';
 import 'package:spicypickles/presentation/orders_screen/widget/star_rating_widget.dart';
 import 'package:spicypickles/presentation/widgets/dash_line_divider_widget.dart';
 
 class OrderItem extends StatelessWidget {
-  final String restaurantName;
-  final String location;
-  final String dishName;
-  final String price;
-  final String orderDate;
+  final Orders orders;
 
-  OrderItem({
-    required this.restaurantName,
-    required this.location,
-    required this.dishName,
-    required this.price,
-    required this.orderDate,
-  });
+  OrderItem({required this.orders});
 
   @override
   Widget build(BuildContext context) {
@@ -46,10 +37,10 @@ class OrderItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        restaurantName,
+                        orders.restaurantName ?? "",
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(location, style: const TextStyle(color: Colors.grey)),
+                      Text(orders.restaurantLocation ?? "", style: const TextStyle(color: Colors.grey)),
                     ],
                   ),
                   IconButton(
@@ -67,7 +58,7 @@ class OrderItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: List.generate(
-                  2,
+                  orders.items?.length ?? 0,
                   (index) {
                     return Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -81,11 +72,11 @@ class OrderItem extends StatelessWidget {
                           child: RichText(
                             text: TextSpan(children: [
                               TextSpan(
-                                text: "1 x ",
+                                text: "${orders.items?[index].noOfItems} x ",
                                 style: context.textStyle?.titleMedium?.copyWith(color: AppColors.grey),
                               ),
                               TextSpan(
-                                text: dishName,
+                                text: orders.items?[index].itemName,
                                 style: context.textStyle?.titleMedium?.copyWith(color: AppColors.black),
                               )
                             ]),
@@ -107,7 +98,7 @@ class OrderItem extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'Order placed on $orderDate',
+                        'Order placed on ${orders.orderDate ?? ""}',
                         style: context.textStyle?.titleMedium,
                       ),
                       Text(
@@ -119,7 +110,7 @@ class OrderItem extends StatelessWidget {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(price, style: context.textStyle?.labelLarge),
+                      Text("₹" + orders.totalPrice.toString(), style: context.textStyle?.labelLarge),
                       Icon(
                         Icons.arrow_forward_ios_rounded,
                         size: 16,

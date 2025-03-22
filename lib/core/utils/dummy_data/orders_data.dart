@@ -6,7 +6,7 @@ class OrdersData {
       {
         "orderDate": "16 Mar, 6:00PM",
         "orderId": "#123456789ABC",
-        "deliveryAddress": "Bangalore",
+        "deliveryAddress": "Bangalore, Kolkata",
         "orderDeliveredDate": "16 Mar, 7:15PM",
         "totalPrice": 320,
         "taxes": 18,
@@ -14,12 +14,13 @@ class OrdersData {
         "couponName": "EATNOW",
         "deliveryCharges": 25,
         "restPackingCharges": 5,
+        "restaurantName": "Local Dhaba",
+        "restaurantLocation": "Kumnunchull, Bangalore, Kolkata",
         "platformFees": 5,
         "payment": "Paytm",
         "phoneNo": 9988776655,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Local Dhaba",
             "itemName": "Veg Thali",
             "price": 200,
             "rating": 4.2,
@@ -27,7 +28,6 @@ class OrdersData {
             "isVeg": true,
           },
           {
-            "restaurantName": "Snack Corner",
             "itemName": "Samosa",
             "price": 120,
             "rating": 4,
@@ -47,12 +47,13 @@ class OrdersData {
         "couponName": "LUNCHDEAL",
         "deliveryCharges": 30,
         "restPackingCharges": 3,
+        "restaurantName": "Seafood Shack",
+        "restaurantLocation": 'Mogwons, Bongelere',
         "platformFees": 7,
         "payment": "Google Pay",
         "phoneNo": 8899001122,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Seafood Shack",
             "itemName": "Fish Curry",
             "price": 450,
             "rating": 4.5,
@@ -72,12 +73,13 @@ class OrdersData {
         "couponName": "DINNER15",
         "deliveryCharges": 20,
         "restPackingCharges": 2,
+        "restaurantName": "North Indian Bites",
+        "restaurantLocation": "Habbol, Sampalors", 
         "platformFees": 4,
         "payment": "Credit Card",
         "phoneNo": 7766554433,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "North Indian Bites",
             "itemName": "Paneer Butter Masala",
             "price": 280,
             "rating": 4.3,
@@ -97,12 +99,13 @@ class OrdersData {
         "couponName": "TEAANDSNACKS",
         "deliveryCharges": 28,
         "restPackingCharges": 4,
+        "restaurantName": "Coffee House",
+        "restaurantLocation": "Hennur, Bangalore, Kolkata",
         "platformFees": 6,
         "payment": "UPI",
         "phoneNo": 6655443322,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Coffee House",
             "itemName": "Idli Vada",
             "price": 180,
             "rating": 4.1,
@@ -122,12 +125,13 @@ class OrdersData {
         "couponName": "MORNINGJOY",
         "deliveryCharges": 18,
         "restPackingCharges": 1,
+        "restaurantName": "Sweet Shop",
+        "restaurantLocation": "Hennur, Bangalore, Kolkata",
         "platformFees": 3,
         "payment": "Debit Card",
         "phoneNo": 5544332211,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Sweet Shop",
             "itemName": "Rasgulla",
             "price": 250,
             "rating": 4.4,
@@ -147,12 +151,12 @@ class OrdersData {
         "couponName": "BRUNCH",
         "deliveryCharges": 22,
         "restPackingCharges": 3,
+        "restaurantName": "Healthy Bites",
         "platformFees": 5,
         "payment": "Paytm",
         "phoneNo": 4433221100,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Healthy Bites",
             "itemName": "Poha",
             "price": 150,
             "rating": 4.6,
@@ -172,12 +176,12 @@ class OrdersData {
         "couponName": "RAJASTHAN",
         "deliveryCharges": 15,
         "restPackingCharges": 2,
+        "restaurantName": "Rajasthani Foods",
         "platformFees": 3,
         "payment": "Google Pay",
         "phoneNo": 3322110099,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Rajasthani Foods",
             "itemName": "Dal Baati",
             "price": 220,
             "rating": 4.7,
@@ -197,12 +201,12 @@ class OrdersData {
         "couponName": "LUCKNOWI",
         "deliveryCharges": 19,
         "restPackingCharges": 2,
+        "restaurantName": "Kebabs & Biryani",
         "platformFees": 4,
         "payment": "Credit Card",
         "phoneNo": 2211009988,
-        "Items": [
+        "items": [
           {
-            "restaurantName": "Kebabs & Biryani",
             "itemName": "Veg Biryani",
             "price": 270,
             "rating": 4.2,

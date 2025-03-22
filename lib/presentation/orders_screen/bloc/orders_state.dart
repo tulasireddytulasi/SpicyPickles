@@ -22,7 +22,7 @@ final class OrdersLoading extends OrdersState {
 final class OrdersLoaded extends OrdersState {
   const OrdersLoaded({required this.ordersList});
 
-  final List<Order> ordersList;
+  final List<Orders> ordersList;
 
   @override
   List<Object> get props => [];

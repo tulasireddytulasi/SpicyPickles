@@ -11,28 +11,28 @@ String ordersModelToJson(OrdersModel data) => json.encode(data.toJson());
 class OrdersModel {
   int? totalResults;
   int? page;
-  List<Order>? orders;
+  List<Orders>? ordersList;
 
   OrdersModel({
     this.totalResults,
     this.page,
-    this.orders,
+    this.ordersList,
   });
 
   factory OrdersModel.fromJson(Map<String, dynamic> json) => OrdersModel(
     totalResults: json["totalResults"],
     page: json["page"],
-    orders: json["orders"] == null ? [] : List<Order>.from(json["orders"]!.map((x) => Order.fromJson(x))),
+    ordersList: json["ordersList"] == null ? [] : List<Orders>.from(json["ordersList"]!.map((x) => Orders.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
     "totalResults": totalResults,
     "page": page,
-    "orders": orders == null ? [] : List<dynamic>.from(orders!.map((x) => x.toJson())),
+    "ordersList": ordersList == null ? [] : List<dynamic>.from(ordersList!.map((x) => x.toJson())),
   };
 }
 
-class Order {
+class Orders {
   String? orderDate;
   String? orderId;
   String? deliveryAddress;
@@ -43,12 +43,14 @@ class Order {
   String? couponName;
   int? deliveryCharges;
   int? restPackingCharges;
+  String? restaurantName;
+  String? restaurantLocation;
   int? platformFees;
   String? payment;
   int? phoneNo;
   List<Item>? items;
 
-  Order({
+  Orders({
     this.orderDate,
     this.orderId,
     this.deliveryAddress,
@@ -59,13 +61,15 @@ class Order {
     this.couponName,
     this.deliveryCharges,
     this.restPackingCharges,
+    this.restaurantName,
+    this.restaurantLocation,
     this.platformFees,
     this.payment,
     this.phoneNo,
     this.items,
   });
 
-  factory Order.fromJson(Map<String, dynamic> json) => Order(
+  factory Orders.fromJson(Map<String, dynamic> json) => Orders(
     orderDate: json["orderDate"],
     orderId: json["orderId"],
     deliveryAddress: json["deliveryAddress"],
@@ -76,10 +80,12 @@ class Order {
     couponName: json["couponName"],
     deliveryCharges: json["deliveryCharges"],
     restPackingCharges: json["restPackingCharges"],
+    restaurantName: json["restaurantName"],
+    restaurantLocation: json["restaurantLocation"],
     platformFees: json["platformFees"],
     payment: json["payment"],
     phoneNo: json["phoneNo"],
-    items: json["Items"] == null ? [] : List<Item>.from(json["Items"]!.map((x) => Item.fromJson(x))),
+    items: json["items"] == null ? [] : List<Item>.from(json["items"]!.map((x) => Item.fromJson(x))),
   );
 
   Map<String, dynamic> toJson() => {
@@ -93,15 +99,16 @@ class Order {
     "couponName": couponName,
     "deliveryCharges": deliveryCharges,
     "restPackingCharges": restPackingCharges,
+    "restaurantName": restaurantName,
+    "restaurantLocation": restaurantLocation,
     "platformFees": platformFees,
     "payment": payment,
     "phoneNo": phoneNo,
-    "Items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
+    "items": items == null ? [] : List<dynamic>.from(items!.map((x) => x.toJson())),
   };
 }
 
 class Item {
-  String? restaurantName;
   String? itemName;
   int? price;
   double? rating;
@@ -109,7 +116,6 @@ class Item {
   bool? isVeg;
 
   Item({
-    this.restaurantName,
     this.itemName,
     this.price,
     this.rating,
@@ -118,7 +124,6 @@ class Item {
   });
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
-    restaurantName: json["restaurantName"],
     itemName: json["itemName"],
     price: json["price"],
     rating: json["rating"]?.toDouble(),
@@ -127,7 +132,6 @@ class Item {
   );
 
   Map<String, dynamic> toJson() => {
-    "restaurantName": restaurantName,
     "itemName": itemName,
     "price": price,
     "rating": rating,

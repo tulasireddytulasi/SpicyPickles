@@ -21,7 +21,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
       emit(const OrdersLoading());
       await Future.delayed(Duration(milliseconds: 500));
       final ordersModel = ordersModelFromJson(json.encode(OrdersData.ordersData));
-      final List<Order> ordersList = ordersModel.orders ?? [];
+      final List<Orders> ordersList = ordersModel.ordersList ?? [];
       emit(OrdersLoaded(ordersList: ordersList));
     } catch (e, s) {
       log("FetchFoodItems Error: $e");
