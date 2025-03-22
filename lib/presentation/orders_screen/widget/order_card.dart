@@ -185,9 +185,7 @@ class OrderItem extends StatelessWidget {
                         onRatingChanged: (rating) {
                           print('New rating: $rating');
                         },
-                        starColor: Colors.red,
-                        // Change the star color
-                        starSize: 24, // change star size
+                        starSize: 24,
                       ),
                     ],
                   ),
