@@ -27,7 +27,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text('Your Orders'),
+        title: Text('Your Orders', style: context.textStyle?.labelLarge?.copyWith(fontSize: 18)),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
