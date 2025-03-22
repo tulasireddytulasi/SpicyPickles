@@ -151,7 +151,7 @@ class LightTheme implements AppTheme {
             fontSize: 14,
             fontWeight: FontWeight.w600,
             fontFamily: 'MontserratSemiBold',
-            color: AppColors.white,
+            color: AppColors.black,
           ),
           labelMedium: TextStyle(
             fontSize: 12,

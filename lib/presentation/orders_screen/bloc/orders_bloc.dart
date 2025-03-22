@@ -19,7 +19,7 @@ class OrdersBloc extends Bloc<OrdersEvent, OrdersState> {
   Future<void> _fetchOrders(FetchOrdersEvent event, Emitter<OrdersState> emit) async {
     try {
       emit(const OrdersLoading());
-      await Future.delayed(Duration(seconds: 2));
+      await Future.delayed(Duration(milliseconds: 500));
       final ordersModel = ordersModelFromJson(json.encode(OrdersData.ordersData));
       final List<Order> ordersList = ordersModel.orders ?? [];
       emit(OrdersLoaded(ordersList: ordersList));

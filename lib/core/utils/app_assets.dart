@@ -28,6 +28,7 @@ class AppAssets {
   static const String kCMDKeyIcon = "assets/icons/cmd_key_icon.svg";
   static const String kDiscountIcon = "assets/icons/discount.png";
   static const String kPriceTagIcon = "assets/icons/price_tag.png";
+  static const String arrowDropUpIcon = "assets/icons/arrow_drop_up_icon.png";
 
   static const String kPic1 = "assets/images/pic_1.png";
   static const String kPic2 = "assets/images/pic_2.png";

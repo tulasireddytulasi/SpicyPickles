@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/orders_screen/widget/non_veg_icon.dart';
+import 'package:spicypickles/presentation/orders_screen/widget/star_rating_widget.dart';
+import 'package:spicypickles/presentation/widgets/dash_line_divider_widget.dart';
 
 class OrderItem extends StatelessWidget {
   final String restaurantName;
@@ -19,72 +24,161 @@ class OrderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: const EdgeInsets.all(8.0),
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  restaurantName,
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                IconButton(
-                  icon: const Icon(Icons.more_vert),
-                  onPressed: () {
-                    // Handle more options
-                  },
-                ),
-              ],
-            ),
-            Text(location, style: const TextStyle(color: Colors.grey)),
-            const SizedBox(height: 8.0),
-            Text(dishName),
-            const SizedBox(height: 8.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text(
-                      'Delivered',
-                      style: TextStyle(color: Colors.green),
-                    ),
-                    Text('Order placed on $orderDate', style: const TextStyle(fontSize: 12.0)),
-                  ],
-                ),
-                Text(price, style: const TextStyle(fontWeight: FontWeight.bold)),
-              ],
-            ),
-            const SizedBox(height: 8.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Row(
-                  children: [
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star, color: Colors.amber),
-                    Icon(Icons.star_border, color: Colors.amber),
-                    Icon(Icons.star_border, color: Colors.amber),
-                  ],
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    // Handle reorder
-                  },
-                  style: ElevatedButton.styleFrom(
-                    foregroundColor: Colors.white,
-                    backgroundColor: Colors.red,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        side: BorderSide(color: AppColors.lightGrey),
+      ),
+      color: AppColors.white,
+      elevation: 0,
+      shadowColor: Colors.blue.withValues(alpha: 0.4),
+      child: InkWell(
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        restaurantName,
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Text(location, style: const TextStyle(color: Colors.grey)),
+                    ],
                   ),
-                  child: const Text('Reorder'),
+                  IconButton(
+                    icon: const Icon(Icons.more_vert),
+                    onPressed: () {},
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Divider(color: AppColors.lightGrey, thickness: 1.2),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: List.generate(
+                  2,
+                  (index) {
+                    return Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(top: 5.0),
+                          child: CustomButton(),
+                        ),
+                        SizedBox(width: 6),
+                        Flexible(
+                          child: RichText(
+                            text: TextSpan(children: [
+                              TextSpan(
+                                text: "1 x ",
+                                style: context.textStyle?.titleMedium?.copyWith(color: AppColors.grey),
+                              ),
+                              TextSpan(
+                                text: dishName,
+                                style: context.textStyle?.titleMedium?.copyWith(color: AppColors.black),
+                              )
+                            ]),
+                          ),
+                        ),
+                      ],
+                    );
+                  },
                 ),
-              ],
-            ),
-          ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 12),
+                child: const DashLineDivider(color: AppColors.lightGrey, dashWidth: 4.0, dashSpace: 1),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Order placed on $orderDate',
+                        style: context.textStyle?.titleMedium,
+                      ),
+                      Text(
+                        'Delivered',
+                        style: context.textStyle?.titleMedium?.copyWith(color: AppColors.green),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(price, style: context.textStyle?.labelLarge),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        size: 16,
+                        color: AppColors.grey,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8),
+                child: const Divider(color: AppColors.lightGrey, thickness: 1.2),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "Rate",
+                        style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black),
+                      ),
+                      SizedBox(width: 6),
+                      StarRating(
+                        initialRating: 3,
+                        maxRating: 5,
+                        starSpacing: 6,
+                        onRatingChanged: (rating) {
+                          print('New rating: $rating');
+                        },
+                        starColor: Colors.red,
+                        // Change the star color
+                        starSize: 24, // change star size
+                      ),
+                    ],
+                  ),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Handle reorder
+                    },
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.white,
+                      backgroundColor: Colors.red.shade400,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(6)),
+                      ),
+                    ),
+                    child: Text(
+                      'Reorder',
+                      style: context.textStyle?.titleMedium?.copyWith(
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

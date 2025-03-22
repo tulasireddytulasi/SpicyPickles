@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
 import 'package:spicypickles/presentation/orders_screen/bloc/orders_bloc.dart';
 
 import 'widget/order_card.dart';
@@ -23,6 +25,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       appBar: AppBar(
         title: const Text('Your Orders'),
         leading: IconButton(
@@ -52,7 +55,11 @@ class _OrdersScreenState extends State<OrdersScreen> {
                 child: TextField(
                   decoration: InputDecoration(
                     hintText: 'Search by restaurant or dish',
-                    prefixIcon: const Icon(Icons.search),
+                    hintStyle: context.textStyle?.titleMedium?.copyWith(
+                      fontFamily: 'MontserratSemiBold',
+                      color: AppColors.grey,
+                    ),
+                    prefixIcon: Icon(Icons.search, color: AppColors.crimson),
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

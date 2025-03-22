@@ -8,7 +8,7 @@ class OrdersData {
         "orderId": "#123456789ABC",
         "deliveryAddress": "Bangalore",
         "orderDeliveredDate": "16 Mar, 7:15PM",
-        "itemTotal": 320,
+        "totalPrice": 320,
         "taxes": 18,
         "coupon": 20,
         "couponName": "EATNOW",
@@ -23,14 +23,16 @@ class OrdersData {
             "itemName": "Veg Thali",
             "price": 200,
             "rating": 4.2,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           },
           {
             "restaurantName": "Snack Corner",
             "itemName": "Samosa",
             "price": 120,
             "rating": 4,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           }
         ]
       },
@@ -39,7 +41,7 @@ class OrdersData {
         "orderId": "#987654321DEF",
         "deliveryAddress": "Mumbai",
         "orderDeliveredDate": "16 Mar, 1:45PM",
-        "itemTotal": 450,
+        "totalPrice": 450,
         "taxes": 25,
         "coupon": 30,
         "couponName": "LUNCHDEAL",
@@ -54,7 +56,8 @@ class OrdersData {
             "itemName": "Fish Curry",
             "price": 450,
             "rating": 4.5,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": false,
           }
         ]
       },
@@ -63,7 +66,7 @@ class OrdersData {
         "orderId": "#567890123GHI",
         "deliveryAddress": "Delhi",
         "orderDeliveredDate": "16 Mar, 10:00PM",
-        "itemTotal": 280,
+        "totalPrice": 280,
         "taxes": 15,
         "coupon": 15,
         "couponName": "DINNER15",
@@ -78,7 +81,8 @@ class OrdersData {
             "itemName": "Paneer Butter Masala",
             "price": 280,
             "rating": 4.3,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           }
         ]
       },
@@ -87,7 +91,7 @@ class OrdersData {
         "orderId": "#012345678JKL",
         "deliveryAddress": "Chennai",
         "orderDeliveredDate": "16 Mar, 4:30PM",
-        "itemTotal": 380,
+        "totalPrice": 380,
         "taxes": 20,
         "coupon": 25,
         "couponName": "TEAANDSNACKS",
@@ -102,7 +106,8 @@ class OrdersData {
             "itemName": "Idli Vada",
             "price": 180,
             "rating": 4.1,
-            "noOfItems": 2
+            "noOfItems": 2,
+            "isVeg": true,
           }
         ]
       },
@@ -111,7 +116,7 @@ class OrdersData {
         "orderId": "#456789012MNO",
         "deliveryAddress": "Kolkata",
         "orderDeliveredDate": "16 Mar, 8:15AM",
-        "itemTotal": 250,
+        "totalPrice": 250,
         "taxes": 12,
         "coupon": 10,
         "couponName": "MORNINGJOY",
@@ -126,7 +131,8 @@ class OrdersData {
             "itemName": "Rasgulla",
             "price": 250,
             "rating": 4.4,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           }
         ]
       },
@@ -135,7 +141,7 @@ class OrdersData {
         "orderId": "#789012345PQR",
         "deliveryAddress": "Pune",
         "orderDeliveredDate": "16 Mar, 11:45AM",
-        "itemTotal": 300,
+        "totalPrice": 300,
         "taxes": 16,
         "coupon": 22,
         "couponName": "BRUNCH",
@@ -150,7 +156,8 @@ class OrdersData {
             "itemName": "Poha",
             "price": 150,
             "rating": 4.6,
-            "noOfItems": 2
+            "noOfItems": 2,
+            "isVeg": true,
           }
         ]
       },
@@ -159,7 +166,7 @@ class OrdersData {
         "orderId": "#234567890STU",
         "deliveryAddress": "Jaipur",
         "orderDeliveredDate": "16 Mar, 06:45PM",
-        "itemTotal": 220,
+        "totalPrice": 220,
         "taxes": 10,
         "coupon": 18,
         "couponName": "RAJASTHAN",
@@ -174,7 +181,8 @@ class OrdersData {
             "itemName": "Dal Baati",
             "price": 220,
             "rating": 4.7,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           }
         ]
       },
@@ -183,7 +191,7 @@ class OrdersData {
         "orderId": "#678901234VWX",
         "deliveryAddress": "Lucknow",
         "orderDeliveredDate": "16 Mar, 10:30AM",
-        "itemTotal": 270,
+        "totalPrice": 270,
         "taxes": 14,
         "coupon": 12,
         "couponName": "LUCKNOWI",
@@ -198,7 +206,8 @@ class OrdersData {
             "itemName": "Veg Biryani",
             "price": 270,
             "rating": 4.2,
-            "noOfItems": 1
+            "noOfItems": 1,
+            "isVeg": true,
           }
         ]
       }

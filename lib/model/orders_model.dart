@@ -37,7 +37,7 @@ class Order {
   String? orderId;
   String? deliveryAddress;
   String? orderDeliveredDate;
-  int? itemTotal;
+  int? totalPrice;
   int? taxes;
   int? coupon;
   String? couponName;
@@ -53,7 +53,7 @@ class Order {
     this.orderId,
     this.deliveryAddress,
     this.orderDeliveredDate,
-    this.itemTotal,
+    this.totalPrice,
     this.taxes,
     this.coupon,
     this.couponName,
@@ -70,7 +70,7 @@ class Order {
     orderId: json["orderId"],
     deliveryAddress: json["deliveryAddress"],
     orderDeliveredDate: json["orderDeliveredDate"],
-    itemTotal: json["itemTotal"],
+    totalPrice: json["totalPrice"],
     taxes: json["taxes"],
     coupon: json["coupon"],
     couponName: json["couponName"],
@@ -87,7 +87,7 @@ class Order {
     "orderId": orderId,
     "deliveryAddress": deliveryAddress,
     "orderDeliveredDate": orderDeliveredDate,
-    "itemTotal": itemTotal,
+    "totalPrice": totalPrice,
     "taxes": taxes,
     "coupon": coupon,
     "couponName": couponName,
@@ -106,6 +106,7 @@ class Item {
   int? price;
   double? rating;
   int? noOfItems;
+  bool? isVeg;
 
   Item({
     this.restaurantName,
@@ -113,6 +114,7 @@ class Item {
     this.price,
     this.rating,
     this.noOfItems,
+    this.isVeg,
   });
 
   factory Item.fromJson(Map<String, dynamic> json) => Item(
@@ -121,6 +123,7 @@ class Item {
     price: json["price"],
     rating: json["rating"]?.toDouble(),
     noOfItems: json["noOfItems"],
+    isVeg: json["isVeg"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -129,5 +132,6 @@ class Item {
     "price": price,
     "rating": rating,
     "noOfItems": noOfItems,
+    "isVeg": isVeg,
   };
 }

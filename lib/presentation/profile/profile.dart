@@ -52,12 +52,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       iconUrl: AppAssets.kCartIcon,
                       label: "Orders",
                       iconColor: AppColors.skyBlue,
-                      onTap: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const OrdersScreen(),
-                          ),
+                      onTap: () async {
+                        await Future.delayed(Duration(milliseconds: 260)).then(
+                          (value) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const OrdersScreen(),
+                              ),
+                            );
+                          },
                         );
                       },
                     ),
@@ -117,7 +121,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               borderRadius: const BorderRadius.all(Radius.circular(16)),
               child: ColoredBox(
                 color: AppColors.lightGrey.withValues(alpha: 0.4),
-                child:  Column(
+                child: Column(
                   children: [
                     CardWidget(
                       iconUrl: AppAssets.kLogoutIcon,
