@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_enums.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
@@ -61,7 +62,7 @@ class OrderItem extends StatelessWidget {
         side: BorderSide(color: AppColors.lightGrey),
       ),
       color: AppColors.white,
-      elevation: 0,
+      elevation: 4,
       shadowColor: Colors.blue.withValues(alpha: 0.4),
       child: InkWell(
         onTap: () {},
@@ -73,17 +74,44 @@ class OrderItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.min,
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
-                      Text(
-                        orders.restaurantName ?? "",
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: Image.asset(
+                          AppAssets.kPickle8,
+                          width: 50,
+                          height: 50,
+                          fit: BoxFit.cover,
+                        ),
                       ),
-                      Text(orders.restaurantLocation ?? "", style: const TextStyle(color: Colors.grey)),
+                      SizedBox(width: 10,),
+                      Column(
+                        mainAxisSize: MainAxisSize.min,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            orders.restaurantName ?? "",
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            width: context.screenWidth / 1.7,
+                            child: Text(
+                              orders.restaurantLocation ?? "",
+                              softWrap: true,
+                              maxLines: 2,
+                              overflow: TextOverflow.ellipsis,
+                              style: const TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
+
                   IconButton(
                     icon: const Icon(Icons.more_vert),
                     onPressed: () {},
