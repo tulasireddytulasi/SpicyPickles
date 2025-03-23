@@ -64,6 +64,17 @@ class _UpdateProfileState extends State<UpdateProfile> with TextFieldStyle {
               key: _profileFormKey,
               child: Column(
                 children: [
+                  CircleAvatar(
+                    radius: 50,
+                    backgroundColor: AppColors.lightBlue,
+                    child: Text(
+                      _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : 'T',
+                      style: context.textStyle?.headlineLarge?.copyWith(
+                        color: AppColors.white,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 50),
                   _buildTextField(
                     controller: _nameController,
                     label: "Name",
