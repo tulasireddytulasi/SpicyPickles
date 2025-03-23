@@ -64,14 +64,38 @@ class _UpdateProfileState extends State<UpdateProfile> with TextFieldStyle {
               key: _profileFormKey,
               child: Column(
                 children: [
-                  CircleAvatar(
-                    radius: 50,
-                    backgroundColor: AppColors.lightBlue,
-                    child: Text(
-                      _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : 'T',
-                      style: context.textStyle?.headlineLarge?.copyWith(
-                        color: AppColors.white,
-                      ),
+                  Center(
+                    child: Stack(
+                      children: [
+                        CircleAvatar(
+                          radius: 50,
+                          backgroundColor: Colors.amber,
+                          child: Text(
+                            _nameController.text.isNotEmpty ? _nameController.text[0].toUpperCase() : 'T',
+                            style: context.textStyle?.headlineLarge?.copyWith(
+                              color: AppColors.white,
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: -4,
+                          right: 0,
+                          child: Container(
+                            width: 28,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: AppColors.lightBlue,
+                            ),
+                            child: IconButton(
+                              icon: Icon(Icons.edit),
+                              iconSize: 14,
+                              onPressed: () {
+                                // Implement profile picture editing
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(height: 50),
