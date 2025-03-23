@@ -82,7 +82,14 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
       onFieldSubmitted: (value) => widget.onClick?.call(value),
       onTap: widget.onTap,
       decoration: InputDecoration(
-        label: Text(widget.label ?? "", style: context.textStyle?.titleMedium?.copyWith(color: AppColors.grey),),
+        label: (widget.label != null)
+            ? Text(
+                widget.label ?? "",
+                style: context.textStyle?.titleMedium?.copyWith(
+                  color: AppColors.grey,
+                ),
+              )
+            : null,
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(
               vertical: 18,
