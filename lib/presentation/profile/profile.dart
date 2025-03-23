@@ -3,6 +3,7 @@ import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/presentation/orders_screen/orders_screen.dart';
 import 'package:spicypickles/presentation/profile/widget/card_widget.dart';
+import 'package:spicypickles/presentation/update_profile/update_profile.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -29,7 +30,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       iconUrl: AppAssets.kProfileIcon,
                       label: "Personal Info",
                       iconColor: AppColors.vibrantRed,
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => UpdateProfile(),
+                            ));
+                      },
                     ),
                     CardWidget(
                       iconUrl: AppAssets.kMapIcon,

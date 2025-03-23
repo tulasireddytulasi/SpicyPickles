@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:spicypickles/core/theme/light_theme.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/core/utils/app_extensions.dart';
 
 class TextFormFieldWidget extends StatefulWidget {
   final TextInputType? textInputType;
   final Widget? suffixIcon;
   final Widget? prefixIcon;
-  final String hintText;
+  final String? hintText;
   final TextEditingController controller;
   final TextInputAction? actionKeyboard;
   final List<TextInputFormatter>? inputFormatters;
@@ -18,12 +19,15 @@ class TextFormFieldWidget extends StatefulWidget {
   final double maxWidth;
   final EdgeInsetsGeometry? contentPadding;
   final ValueChanged<String>? onClick;
+  final VoidCallback? onTap;
   final bool isOnClickDisabled;
   final bool readOnly;
+  final String? label;
+  final InputBorder? focusedBorder;
 
   const TextFormFieldWidget({
     super.key,
-    required this.hintText,
+    this.hintText,
     this.textInputType,
     required this.controller,
     this.actionKeyboard = TextInputAction.next,
@@ -39,6 +43,9 @@ class TextFormFieldWidget extends StatefulWidget {
     this.readOnly = false,
     this.suffixIcon,
     this.prefixIcon,
+    this.label,
+    this.focusedBorder,
+    this.onTap,
   });
 
   @override
@@ -73,18 +80,21 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
         widget.onChanged(newValue);
       },
       onFieldSubmitted: (value) => widget.onClick?.call(value),
+      onTap: widget.onTap,
       decoration: InputDecoration(
+        label: Text(widget.label ?? "", style: context.textStyle?.titleMedium?.copyWith(color: AppColors.grey),),
         contentPadding: widget.contentPadding ??
             const EdgeInsets.symmetric(
               vertical: 18,
               horizontal: 14,
             ),
         hintText: widget.hintText,
-        hintStyle: themeProvider.inputDecorationTheme.hintStyle?.copyWith(fontSize: 14),
+        hintStyle: themeProvider.inputDecorationTheme.hintStyle?.copyWith(fontSize: 14, color: AppColors.grey),
         errorMaxLines: 3,
         counterText: "",
         prefixIcon:  widget.prefixIcon,
         suffixIcon: widget.suffixIcon,
+        focusedBorder: widget.focusedBorder,
       ),
       controller: widget.controller,
       validator: widget.onValidate,
