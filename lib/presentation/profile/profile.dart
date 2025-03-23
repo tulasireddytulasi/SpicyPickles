@@ -31,11 +31,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       label: "Personal Info",
                       iconColor: AppColors.vibrantRed,
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => UpdateProfile(),
-                            ));
+                         Future.delayed(Duration(milliseconds: 260)).then(
+                              (value) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const UpdateProfile(),
+                              ),
+                            );
+                          },
+                        );
                       },
                     ),
                     CardWidget(
@@ -59,8 +64,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       iconUrl: AppAssets.kCartIcon,
                       label: "Orders",
                       iconColor: AppColors.skyBlue,
-                      onTap: () async {
-                        await Future.delayed(Duration(milliseconds: 260)).then(
+                      onTap: () {
+                        Future.delayed(Duration(milliseconds: 260)).then(
                           (value) {
                             Navigator.push(
                               context,

@@ -25,14 +25,14 @@ class CardWidget extends StatelessWidget {
           children: [
             ClipOval(
               child: ColoredBox(
-                color: AppColors.white,
+                color: AppColors.lightBlue,
                 child: Padding(
                   padding: const EdgeInsets.all(10.0),
                   child: SvgPicture.asset(
                     iconUrl,
                     colorFilter: ColorFilter.mode(iconColor, BlendMode.srcIn),
-                    width: 28,
-                    height: 28,
+                    width: 20,
+                    height: 20,
                   ),
                 ),
               ),
