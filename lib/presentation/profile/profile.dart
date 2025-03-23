@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/core/utils/app_assets.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
+import 'package:spicypickles/presentation/address_screen/address_screen.dart';
 import 'package:spicypickles/presentation/faqs_screen/faqs_screen.dart';
 import 'package:spicypickles/presentation/orders_screen/orders_screen.dart';
 import 'package:spicypickles/presentation/profile/widget/card_widget.dart';
@@ -48,7 +49,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       iconUrl: AppAssets.kMapIcon,
                       label: "Addresses",
                       iconColor: AppColors.blue,
-                      onTap: () {},
+                      onTap: () {
+                        Future.delayed(Duration(milliseconds: 260)).then(
+                              (value) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AddressScreen(),
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                   ],
                 ),

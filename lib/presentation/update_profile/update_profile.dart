@@ -49,11 +49,16 @@ class _UpdateProfileState extends State<UpdateProfile> with TextFieldStyle {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: Text('Update Profile', style: context.textStyle?.labelLarge?.copyWith(fontSize: 18)),
+        title: Text(
+          'Update Profile',
+          style: context.textStyle?.labelLarge?.copyWith(fontSize: 18),
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.pop(context),
         ),
+        elevation: 1,
+        shadowColor: AppColors.lynxWhite,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(), // Dismiss keyboard on tap
