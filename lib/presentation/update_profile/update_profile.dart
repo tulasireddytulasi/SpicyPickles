@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:spicypickles/core/utils/app_colors.dart';
 import 'package:spicypickles/core/utils/app_extensions.dart';
+import 'package:spicypickles/presentation/widgets/reusable_button.dart';
 import 'package:spicypickles/presentation/widgets/text_field_widgets/text_field_widgets.dart';
 import 'package:spicypickles/presentation/widgets/text_form_widget.dart';
 
@@ -94,14 +95,22 @@ class _UpdateProfileState extends State<UpdateProfile> with TextFieldStyle {
                     onTap: () => _selectDate(context),
                   ),
                   const SizedBox(height: 50),
-                  ElevatedButton(
-                    onPressed: _submitForm,
-                    child: Text("Submit"),
-                  ),
                 ],
               ),
             ),
           ),
+        ),
+      ),
+      bottomNavigationBar: Container(
+        height: 88,
+        color: AppColors.bgColor,
+        padding: EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+        child: ProceedButton(
+          callingAPI: _submitForm,
+          buttonWidth: 200,
+          borderRadius: 8,
+          text: "Update Profile",
+          color: AppColors.lightBlue, //Colors.blue.withValues(alpha: 0.4),
         ),
       ),
     );

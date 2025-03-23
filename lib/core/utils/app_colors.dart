@@ -61,4 +61,6 @@ class AppColors {
   static const silver2 = Color(0xFFE0DCDC);
   static const blueGrey200 = Color(0xFFB0BEC5);
   static const lynxWhite = Color(0xFFF7F7F7);
+  static const lightBlue = Color(0xFFe6e9f0);
+  static const bgColor = Color(0xFFf5f6fb);
 }
