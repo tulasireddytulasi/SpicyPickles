@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:spicypickles/core/theme/light_theme.dart';
-import 'package:spicypickles/presentation/cart/bloc/cart_bloc.dart';
-import 'package:spicypickles/presentation/home/home.dart';
-import 'package:spicypickles/presentation/notifications/bloc/notification_bloc.dart';
-import 'package:spicypickles/presentation/orders_screen/bloc/orders_bloc.dart';
-import 'package:spicypickles/presentation/store/bloc/store_items_bloc.dart';
+import 'package:spicypickles/app/core/theme/light_theme.dart';
+import 'presentation/cart/bloc/cart_bloc.dart';
+import 'presentation/home/home.dart';
+import 'presentation/notifications/bloc/notification_bloc.dart';
+import 'presentation/orders_screen/bloc/orders_bloc.dart';
+import 'presentation/store/bloc/store_items_bloc.dart';
 
 class SpicyPickleApp extends StatelessWidget {
   const SpicyPickleApp({super.key});
