@@ -22,38 +22,34 @@ class _HomeAppBarState extends State<HomeAppBar> {
       backgroundColor: context.themeData.colorScheme.onPrimary,
       title: Padding(
         padding: const EdgeInsets.only(left: 10.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Icon(Icons.location_on, size: 32),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisSize: MainAxisSize.min,
               children: [
+                const Icon(Icons.location_on_rounded, size: 22, color: AppColors.crimson,),
+                SizedBox(width: 0),
                 Text(
-                  'Location',
+                  'Home',
                   style: context.textStyle?.labelLarge?.copyWith(
                     color: AppColors.black.withValues(alpha: 0.8),
-                    fontSize: 12,
+                    fontSize: 16,
+                    fontFamily: 'MontserratBold',
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    Text(
-                      'MVP Colony, Vizag',
-                      style: context.textStyle?.labelLarge?.copyWith(
-                        color: AppColors.black,
-                        fontFamily: 'MontserratBold',
-                      ),
-                    ),
-                    const SizedBox(width: 2),
-                    const Icon(
-                      Icons.keyboard_arrow_down_rounded,
-                      size: 28,
-                    ),
-                  ],
+                const Icon(
+                  Icons.keyboard_arrow_down_rounded,
+                  size: 28,
                 ),
               ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 6.0),
+              child: Text(
+                'MVP Colony, Sector -12, Vizag.',
+                style: context.textStyle?.labelLarge?.copyWith(fontSize: 12, color: AppColors.darkGrey),
+              ),
             ),
           ],
         ),
