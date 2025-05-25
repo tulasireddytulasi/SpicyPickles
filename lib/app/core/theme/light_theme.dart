@@ -64,7 +64,7 @@ class LightTheme implements AppTheme {
             ),
           ),
         ),
-        cardTheme: CardTheme(
+        cardTheme: CardThemeData(
           color: AppColors.white,
           shadowColor: AppColors.grey.withValues(alpha: 0.1),
           elevation: 2,
@@ -195,7 +195,7 @@ class LightTheme implements AppTheme {
           contentTextStyle: TextStyle(color: AppColors.white),
           actionTextColor: AppColors.vividOrange,
         ),
-        dialogTheme: const DialogTheme(
+        dialogTheme: const DialogThemeData(
           backgroundColor: AppColors.white,
           titleTextStyle: TextStyle(
             fontSize: 20,
