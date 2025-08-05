@@ -5,8 +5,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
+import 'package:spicypickles/app/data/models/cart_item_model.dart';
 import 'package:spicypickles/app/data/models/product_model.dart';
 import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
+import 'package:collection/collection.dart';
+
 
 class MenuItemCard extends StatelessWidget {
   final ProductModel product;
@@ -31,15 +34,12 @@ class MenuItemCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      margin: EdgeInsets.zero,
-      // No external margin, handled by parent spacing
-      elevation: 1,
-      // shadow-sm
+      margin: EdgeInsets.zero, // No external margin, handled by parent spacing
+      elevation: 1, // shadow-sm
       shape: RoundedRectangleBorder(
         borderRadius: Theme.of(context).customBorderRadius.defaultRadius, // rounded-lg
       ),
-      clipBehavior: Clip.antiAlias,
-      // Ensures content respects rounded corners
+      clipBehavior: Clip.antiAlias, // Ensures content respects rounded corners
       child: InkWell(
         onTap: () {
           // Handle tap on menu item (e.g., navigate to product detail screen)
@@ -52,42 +52,48 @@ class MenuItemCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Expanded(
+              Expanded( // This Expanded ensures the left column takes available space
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     // Product Name and Tags
                     Row(
                       children: [
-                        Text(
-                          product.name,
-                          style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                                fontWeight: FontWeight.w500, // font-medium
-                                color: AppTheme.gray800, // text-gray-800
-                              ),
+                        Expanded( // FIX: Wrap product name with Expanded to prevent overflow
+                          child: Text(
+                            product.name,
+                            style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                              fontWeight: FontWeight.w500, // font-medium
+                              color: AppTheme.gray800, // text-gray-800
+                            ),
+                            overflow: TextOverflow.ellipsis, // Add ellipsis for long names
+                            softWrap: false, // Prevent wrapping to keep it single line
+                          ),
                         ),
                         if (product.tags.isNotEmpty)
                           ...product.tags.map((tag) => Padding(
-                                padding: const EdgeInsets.only(left: 8.0), // gap-2
-                                child: Container(
-                                  padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0), // px-2 py-0.5
-                                  decoration: BoxDecoration(
-                                    color: tag == 'Spicy'
-                                        ? AppTheme.red100 // bg-red-100
-                                        : AppTheme.secondaryColor.withValues(alpha: 0.2), // bg-secondary/20
-                                    borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
-                                  ),
-                                  child: Text(
-                                    tag,
-                                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                          fontSize: 10, // text-xs
-                                          color: tag == 'Spicy'
-                                              ? AppTheme.red600 // text-red-600
-                                              : AppTheme.secondaryColor, // text-secondary
-                                        ),
-                                  ),
+                            padding: const EdgeInsets.only(left: 8.0), // gap-2
+                            child: Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 2.0), // px-2 py-0.5
+                              decoration: BoxDecoration(
+                                color: tag == 'Spicy'
+                                    ? AppTheme.red100 // bg-red-100
+                                    : AppTheme.secondaryColor.withOpacity(0.2), // bg-secondary/20
+                                borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
+                              ),
+                              child: Text(
+                                tag,
+                                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                  fontSize: 10, // text-xs
+                                  color: tag == 'Spicy'
+                                      ? AppTheme.red600 // text-red-600
+                                      : AppTheme.secondaryColor, // text-secondary
                                 ),
-                              )),
+                                overflow: TextOverflow.ellipsis, // Also add for tags
+                                softWrap: false,
+                              ),
+                            ),
+                          )),
                       ],
                     ),
                     const SizedBox(height: 4), // mt-1 (approx)
@@ -99,9 +105,9 @@ class MenuItemCard extends StatelessWidget {
                         Text(
                           '${product.rating.toStringAsFixed(1)} (${product.reviewsCount}+)',
                           style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                fontSize: 12, // text-xs
-                                color: AppTheme.gray500, // text-gray-500
-                              ),
+                            fontSize: 12, // text-xs
+                            color: AppTheme.gray500, // text-gray-500
+                          ),
                         ),
                       ],
                     ),
@@ -110,9 +116,11 @@ class MenuItemCard extends StatelessWidget {
                     Text(
                       product.description,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                            fontSize: 12, // text-xs
-                            color: AppTheme.gray500, // text-gray-500
-                          ),
+                        fontSize: 12, // text-xs
+                        color: AppTheme.gray500, // text-gray-500
+                      ),
+                      maxLines: 2, // Limit description to 2 lines
+                      overflow: TextOverflow.ellipsis, // Add ellipsis if it overflows
                     ),
                     const SizedBox(height: 8), // mt-2 (approx)
                     // Price
@@ -121,9 +129,9 @@ class MenuItemCard extends StatelessWidget {
                         Text(
                           '\$${product.price.toStringAsFixed(2)}',
                           style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                color: AppTheme.primaryColor, // text-primary
-                                fontWeight: FontWeight.w500, // font-medium
-                              ),
+                            color: AppTheme.primaryColor, // text-primary
+                            fontWeight: FontWeight.w500, // font-medium
+                          ),
                         ),
                         if (product.originalPrice != null)
                           Padding(
@@ -131,10 +139,10 @@ class MenuItemCard extends StatelessWidget {
                             child: Text(
                               '\$${product.originalPrice!.toStringAsFixed(2)}',
                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                    fontSize: 12, // text-xs
-                                    color: AppTheme.gray500, // text-gray-500
-                                    decoration: TextDecoration.lineThrough, // line-through
-                                  ),
+                                fontSize: 12, // text-xs
+                                color: AppTheme.gray500, // text-gray-500
+                                decoration: TextDecoration.lineThrough, // line-through
+                              ),
                             ),
                           ),
                       ],
@@ -167,9 +175,8 @@ class MenuItemCard extends StatelessWidget {
                     builder: (context, state) {
                       int currentQuantity = 0;
                       if (state is CartLoaded2) {
-                        final cartItem = state.items.firstWhere(
-                          (item) => item.id == product.id,
-                          // orElse: () => null, // Using null! as a workaround for older Dart versions
+                        final CartItemModel? cartItem = state.items.firstWhereOrNull(
+                              (item) => item.id == product.id,
                         );
                         if (cartItem != null) {
                           currentQuantity = cartItem.quantity;
@@ -180,101 +187,97 @@ class MenuItemCard extends StatelessWidget {
                         offset: const Offset(0, 8), // -bottom-2 in HTML (approx 8px from bottom)
                         child: currentQuantity == 0
                             ? GestureDetector(
+                          onTap: () {
+                            context.read<CartBloc>().add(AddItemToCart(product));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Added ${product.name} to cart')),
+                            );
+                          },
+                          child: Container(
+                            width: 32, // w-8
+                            height: 32, // h-8
+                            decoration: BoxDecoration(
+                              color: AppTheme.primaryColor, // bg-primary
+                              shape: BoxShape.circle,
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black.withOpacity(0.2), // shadow-lg
+                                  blurRadius: 8,
+                                  offset: const Offset(0, 4),
+                                ),
+                              ],
+                            ),
+                            child: const Icon(
+                              Icons.add, // ri-add-line
+                              color: AppTheme.whiteColor,
+                              size: 20,
+                            ),
+                          ),
+                        )
+                            : Container(
+                          height: 32, // h-8
+                          decoration: BoxDecoration(
+                            color: AppTheme.primaryColor, // bg-primary
+                            borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2), // shadow-lg
+                                blurRadius: 8,
+                                offset: const Offset(0, 4),
+                              ),
+                            ],
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              GestureDetector(
                                 onTap: () {
-                                  context.read<CartBloc>().add(AddItemToCart(product));
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text('Added ${product.name} to cart')),
-                                  );
+                                  if (currentQuantity > 1) {
+                                    context.read<CartBloc>().add(UpdateCartItemQuantity(product.id, currentQuantity - 1));
+                                  } else {
+                                    context.read<CartBloc>().add(RemoveItemFromCart(product.id));
+                                  }
                                 },
                                 child: Container(
                                   width: 32, // w-8
                                   height: 32, // h-8
-                                  decoration: BoxDecoration(
-                                    color: AppTheme.primaryColor, // bg-primary
-                                    shape: BoxShape.circle,
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.black.withValues(alpha: 0.2), // shadow-lg
-                                        blurRadius: 8,
-                                        offset: const Offset(0, 4),
-                                      ),
-                                    ],
+                                  alignment: Alignment.center,
+                                  child: const Icon(
+                                    Icons.remove, // ri-subtract-line
+                                    color: AppTheme.whiteColor,
+                                    size: 20,
                                   ),
+                                ),
+                              ),
+                              SizedBox(
+                                width: 32, // w-8
+                                child: Text(
+                                  currentQuantity.toString(),
+                                  textAlign: TextAlign.center,
+                                  style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                                    color: AppTheme.whiteColor,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                              GestureDetector(
+                                onTap: () {
+                                  context.read<CartBloc>().add(UpdateCartItemQuantity(product.id, currentQuantity + 1));
+                                },
+                                child: Container(
+                                  width: 32, // w-8
+                                  height: 32, // h-8
+                                  alignment: Alignment.center,
                                   child: const Icon(
                                     Icons.add, // ri-add-line
                                     color: AppTheme.whiteColor,
                                     size: 20,
                                   ),
                                 ),
-                              )
-                            : Container(
-                                height: 32, // h-8
-                                decoration: BoxDecoration(
-                                  color: AppTheme.primaryColor, // bg-primary
-                                  borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.black.withValues(alpha: 0.2), // shadow-lg
-                                      blurRadius: 8,
-                                      offset: const Offset(0, 4),
-                                    ),
-                                  ],
-                                ),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    GestureDetector(
-                                      onTap: () {
-                                        if (currentQuantity > 1) {
-                                          context
-                                              .read<CartBloc>()
-                                              .add(UpdateCartItemQuantity(product.id, currentQuantity - 1));
-                                        } else {
-                                          context.read<CartBloc>().add(RemoveItemFromCart(product.id));
-                                        }
-                                      },
-                                      child: Container(
-                                        width: 32, // w-8
-                                        height: 32, // h-8
-                                        alignment: Alignment.center,
-                                        child: const Icon(
-                                          Icons.remove, // ri-subtract-line
-                                          color: AppTheme.whiteColor,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                    SizedBox(
-                                      width: 32, // w-8
-                                      child: Text(
-                                        currentQuantity.toString(),
-                                        textAlign: TextAlign.center,
-                                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                              color: AppTheme.whiteColor,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                      ),
-                                    ),
-                                    GestureDetector(
-                                      onTap: () {
-                                        context
-                                            .read<CartBloc>()
-                                            .add(UpdateCartItemQuantity(product.id, currentQuantity + 1));
-                                      },
-                                      child: Container(
-                                        width: 32, // w-8
-                                        height: 32, // h-8
-                                        alignment: Alignment.center,
-                                        child: const Icon(
-                                          Icons.add, // ri-add-line
-                                          color: AppTheme.whiteColor,
-                                          size: 20,
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
                               ),
+                            ],
+                          ),
+                        ),
                       );
                     },
                   ),
@@ -287,3 +290,4 @@ class MenuItemCard extends StatelessWidget {
     );
   }
 }
+
