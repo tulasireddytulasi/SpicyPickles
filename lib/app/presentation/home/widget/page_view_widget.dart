@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
+import 'package:spicypickles/app/presentation/product_details/seller_details_screen.dart';
 
 class PageViewWithCards extends StatefulWidget {
   const PageViewWithCards({super.key});
@@ -43,22 +44,29 @@ class _PageViewWithCardsState extends State<PageViewWithCards> {
       padEnds: false,
       controller: pageController,
       itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: ClipRRect(
-            borderRadius: const BorderRadius.all(Radius.circular(12)),
-            child: CachedNetworkImage(
-              imageUrl: images[index],
-              height: 190,
-              width: double.infinity,
-              fit: BoxFit.fitHeight,
-              placeholder: (context, url) => Image.asset(
-                images[index],
-                fit: BoxFit.cover,
-              ),
-              errorWidget: (context, url, error) => Image.asset(
-                images[index],
-                fit: BoxFit.cover,
+        return InkWell(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const SellerDetailsScreen()),
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(12)),
+              child: CachedNetworkImage(
+                imageUrl: images[index],
+                height: 190,
+                width: double.infinity,
+                fit: BoxFit.fitHeight,
+                placeholder: (context, url) => Image.asset(
+                  images[index],
+                  fit: BoxFit.cover,
+                ),
+                errorWidget: (context, url, error) => Image.asset(
+                  images[index],
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ),
