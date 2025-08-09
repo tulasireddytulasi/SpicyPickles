@@ -43,7 +43,7 @@ class _SearchbarWidgetState extends State<SearchbarWidget> {
         children: [
           // Text(
           //   "Hi, Tulasi Reddy",
-          //   style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black.withOpacity(0.8)),
+          //   style: context.textStyle?.labelLarge?.copyWith(color: AppColors.black.withValues(alpha: 0.8)),
           // ),
           // const SizedBox(height: 8),
           // Text(

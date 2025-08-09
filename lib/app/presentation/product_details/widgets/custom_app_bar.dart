@@ -11,8 +11,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.transparent, // Transparent background as per HTML
-      elevation: 0, // No shadow
+      backgroundColor: Colors.white, // Transparent background as per HTML
+      surfaceTintColor: Colors.white,
+      foregroundColor: Colors.white,
+      elevation: 2, // No shadow
+      shadowColor: AppTheme.blackColor.withValues(alpha: 0.3),
       leadingWidth: 60, // Adjust leading width for the back button
       leading: Padding(
         padding: const EdgeInsets.only(left: 16.0), // Padding from the left edge
@@ -20,52 +23,28 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           onTap: () {
             Navigator.of(context).pop(); // Navigate back
           },
-          child: Container(
-            width: 32, // w-8 in Tailwind
-            height: 32, // h-8 in Tailwind
-            decoration: BoxDecoration(
-              color: AppTheme.blackColor.withOpacity(0.3), // bg-black/30
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.arrow_back_ios_new, // Equivalent to ri-arrow-left-line
-              color: AppTheme.whiteColor,
-              size: 20, // ri-lg is typically 24px, but 20 looks better in a 32x32 circle
-            ),
+          child: const Icon(
+            Icons.arrow_back_ios_new, // Equivalent to ri-arrow-left-line
+            color: AppTheme.blackColor,
+            size: 24, // ri-lg is typically 24px, but 20 looks better in a 32x32 circle
           ),
         ),
       ),
       actions: [
         Padding(
-          padding: const EdgeInsets.only(right: 8.0), // Space between icons
-          child: Container(
-            width: 32, // w-8 in Tailwind
-            height: 32, // h-8 in Tailwind
-            decoration: BoxDecoration(
-              color: AppTheme.blackColor.withOpacity(0.3), // bg-black/30
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.favorite_border, // Equivalent to ri-heart-line
-              color: AppTheme.whiteColor,
-              size: 20,
-            ),
+          padding: const EdgeInsets.only(right: 16.0), // Space between icons
+          child: const Icon(
+            Icons.favorite_border, // Equivalent to ri-heart-line
+            color: AppTheme.blackColor,
+            size: 24,
           ),
         ),
         Padding(
           padding: const EdgeInsets.only(right: 16.0), // Padding from the right edge
-          child: Container(
-            width: 32, // w-8 in Tailwind
-            height: 32, // h-8 in Tailwind
-            decoration: BoxDecoration(
-              color: AppTheme.blackColor.withOpacity(0.3), // bg-black/30
-              shape: BoxShape.circle,
-            ),
-            child: const Icon(
-              Icons.share, // Equivalent to ri-share-line
-              color: AppTheme.whiteColor,
-              size: 20,
-            ),
+          child: const Icon(
+            Icons.share, // Equivalent to ri-share-line
+            color: AppTheme.blackColor,
+            size: 24,
           ),
         ),
       ],

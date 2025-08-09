@@ -7,8 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
 import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 
-import 'package:spicypickles/app/presentation/product_details/cart_bloc/cart_bloc.dart';
-
 class FloatingCartButton extends StatelessWidget {
   final VoidCallback onPressed;
 
@@ -71,7 +69,7 @@ class FloatingCartButton extends StatelessWidget {
                       Container(
                         width: 1,
                         height: 20,
-                        color: AppTheme.whiteColor.withOpacity(0.5), // Separator line
+                        color: AppTheme.whiteColor.withValues(alpha: 0.5), // Separator line
                       ),
                       const SizedBox(width: 4), // mx-1
                       Text(

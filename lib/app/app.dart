@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
-// import 'package:spicypickles/app/core/theme/light_theme.dart';
 import 'package:spicypickles/app/data/repositories/cart_repository.dart';
 import 'package:spicypickles/app/data/repositories/product_repository.dart';
 import 'package:spicypickles/app/data/repositories/seller_repository.dart';
@@ -31,9 +30,6 @@ class SpicyPickleApp extends StatelessWidget {
         BlocProvider(
           create: (_) => StoreItemsBloc(),
         ),
-        // BlocProvider(
-        //   create: (_) => CartBloc(),
-        // ),
         BlocProvider(
           create: (_) => OrdersBloc(),
         ),

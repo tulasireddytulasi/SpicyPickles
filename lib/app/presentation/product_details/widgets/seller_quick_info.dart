@@ -30,7 +30,7 @@ class SellerQuickInfo extends StatelessWidget {
               borderRadius: Theme.of(context).customBorderRadius.xl, // rounded-xl
               boxShadow: [
                 BoxShadow(
-                  color: Colors.black.withOpacity(0.05), // shadow-sm
+                  color: Colors.black.withValues(alpha: 0.05), // shadow-sm
                   blurRadius: 4,
                   offset: const Offset(0, 2),
                 ),
@@ -62,11 +62,11 @@ class SellerQuickInfo extends StatelessWidget {
                     children: [
                       if (sellerDetails.offers.isNotEmpty)
                         ...sellerDetails.offers.map((offer) {
-                          Color bgColor = AppTheme.primaryColor.withOpacity(0.1); // bg-primary/10
+                          Color bgColor = AppTheme.primaryColor.withValues(alpha: 0.1); // bg-primary/10
                           Color textColor = AppTheme.primaryColor; // text-primary
 
                           if (offer.contains('Free Delivery')) {
-                            bgColor = AppTheme.secondaryColor.withOpacity(0.1); // bg-secondary/10
+                            bgColor = AppTheme.secondaryColor.withValues(alpha: 0.1); // bg-secondary/10
                             textColor = AppTheme.secondaryColor; // text-secondary
                           }
 

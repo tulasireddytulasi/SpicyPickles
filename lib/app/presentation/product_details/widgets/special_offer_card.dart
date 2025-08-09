@@ -42,7 +42,7 @@ class SpecialOfferCard extends StatelessWidget {
                   borderRadius: Theme.of(context).customBorderRadius.defaultRadius, // rounded-lg
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
+                      color: Colors.black.withValues(alpha: 0.05),
                       blurRadius: 4,
                       offset: const Offset(0, 2),
                     ),
@@ -110,7 +110,7 @@ class SpecialOfferCard extends StatelessWidget {
                             child: Container(
                               padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 2.0), // px-1.5 py-0.5
                               decoration: BoxDecoration(
-                                color: AppTheme.secondaryColor.withOpacity(0.2), // bg-secondary/20
+                                color: AppTheme.secondaryColor.withValues(alpha: 0.2), // bg-secondary/20
                                 borderRadius: Theme.of(context).customBorderRadius.defaultRadius, // rounded
                               ),
                               child: Text(

@@ -78,7 +78,7 @@ class MenuItemCard extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: tag == 'Spicy'
                                     ? AppTheme.red100 // bg-red-100
-                                    : AppTheme.secondaryColor.withOpacity(0.2), // bg-secondary/20
+                                    : AppTheme.secondaryColor.withValues(alpha: 0.2), // bg-secondary/20
                                 borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
                               ),
                               child: Text(
@@ -201,7 +201,7 @@ class MenuItemCard extends StatelessWidget {
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.2), // shadow-lg
+                                  color: Colors.black.withValues(alpha: 0.2), // shadow-lg
                                   blurRadius: 8,
                                   offset: const Offset(0, 4),
                                 ),
@@ -221,7 +221,7 @@ class MenuItemCard extends StatelessWidget {
                             borderRadius: Theme.of(context).customBorderRadius.full, // rounded-full
                             boxShadow: [
                               BoxShadow(
-                                color: Colors.black.withOpacity(0.2), // shadow-lg
+                                color: Colors.black.withValues(alpha: 0.2), // shadow-lg
                                 blurRadius: 8,
                                 offset: const Offset(0, 4),
                               ),
