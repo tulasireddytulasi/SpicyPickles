@@ -17,6 +17,7 @@ class StoreItemsScreen extends StatefulWidget {
 
 class _StoreItemsScreenState extends State<StoreItemsScreen> {
   final PagingController<int, Product> _pagingController = PagingController(firstPageKey: 1);
+  final int lastPageNo = 2;
 
   @override
   void initState() {
@@ -50,7 +51,12 @@ class _StoreItemsScreenState extends State<StoreItemsScreen> {
       body: BlocConsumer<StoreItemsBloc, StoreItemsState>(
         listener: (context, state) {
           if (state is StoreItemsLoaded) {
-            _pagingController.appendPage(state.products, state.nextPageKey + 1);
+            if (state.nextPageKey + 1 == lastPageNo) {
+              _pagingController.appendLastPage(state.products);
+            } else {
+              _pagingController.appendPage(state.products, state.nextPageKey + 1);
+            }
+            print("nextPageKey77: ${state.nextPageKey + 1}");
           } else if (state is StoreItemsError) {
             _pagingController.error = state.message;
           }
