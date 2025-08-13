@@ -19,6 +19,7 @@ import 'package:spicypickles/app/presentation/product_details/widgets/seller_her
 import 'package:spicypickles/app/presentation/product_details/widgets/seller_quick_info.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/special_offer_card.dart';
 import 'package:spicypickles/app/presentation/widgets/bottom_nav_bar.dart';
+import 'dart:math' as math;
 
 class SellerDetailsScreen extends StatefulWidget {
   const SellerDetailsScreen({super.key});
@@ -28,6 +29,16 @@ class SellerDetailsScreen extends StatefulWidget {
 }
 
 class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
+  static const double expandedHeight = 240.0;
+  static const double collapsedHeight = kToolbarHeight;
+  static const double leadingIconWidth = 56.0;
+  static const double leadingIconPadding = 16.0;
+  static const double collapsedTitleLeftPadding = leadingIconWidth + leadingIconPadding;
+
+  // Define the padding for the expanded and collapsed states
+  static const EdgeInsets expandedPadding = EdgeInsets.only(top: 74.0, left: 14); // Only the top padding is set here
+  static const EdgeInsets collapsedPadding = EdgeInsets.only(left: collapsedTitleLeftPadding);
+
   @override
   void initState() {
     super.initState();
@@ -50,7 +61,6 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
     return Scaffold(
       backgroundColor: AppTheme.whiteColor, // Set background color from theme
       extendBodyBehindAppBar: true, // Allows content to go behind the app bar
-      appBar: const CustomAppBar(), // Use the custom app bar
       body: MultiBlocListener(
         listeners: [
           BlocListener<SellerBloc, SellerState>(
@@ -85,31 +95,104 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
           children: [
             CustomScrollView(
               slivers: [
+                SliverAppBar(
+                  expandedHeight: expandedHeight,
+                  collapsedHeight: collapsedHeight,
+                  pinned: true,
+                  leading: const Padding(
+                    padding: EdgeInsets.only(left: 16.0),
+                    child: Icon(Icons.arrow_back, color: Colors.black),
+                  ),
+                  flexibleSpace: LayoutBuilder(
+                    builder: (BuildContext context, BoxConstraints constraints) {
+                      final double currentHeight = constraints.biggest.height;
+                      final double scrollProgress =
+                          math.max(0.0, 1.0 - (currentHeight - collapsedHeight) / (expandedHeight - collapsedHeight));
+
+                      final Alignment titleAlignment = Alignment.lerp(
+                        Alignment.centerLeft,
+                        Alignment.centerLeft,
+                        scrollProgress,
+                      )!;
+
+                      // **FIXED:** The `EdgeInsets.lerp` now correctly transitions from `expandedPadding`
+                      // to `collapsedPadding`. Changes to `expandedPadding` will no longer
+                      // affect the final `collapsedPadding`.
+                      final EdgeInsets titlePadding = EdgeInsets.lerp(
+                        expandedPadding,
+                        collapsedPadding,
+                        scrollProgress,
+                      )!;
+
+                      return FlexibleSpaceBar(
+                        titlePadding: EdgeInsets.only(top: 6, bottom: 4),
+                        centerTitle: true,
+                        background: BlocBuilder<SellerBloc, SellerState>(
+                          builder: (context, state) {
+                            if (state is SellerLoaded) {
+                              return Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  FeaturedWidget(sellerDetails: state.sellerDetails),
+                                  OverallRatingWidget(sellerDetails: state.sellerDetails),
+                                  SellerQuickInfo(sellerDetails: state.sellerDetails),
+                                ],
+                              );
+                            } else if (state is SellerLoading) {
+                              return const Center(child: CircularProgressIndicator());
+                            } else if (state is SellerError) {
+                              return Center(child: Text('Failed to load seller details: ${state.message}'));
+                            }
+                            return const SizedBox.shrink(); // Initial or other states
+                          },
+                        ),
+                        title: Align(
+                          alignment: titleAlignment,
+                          child: Padding(
+                            padding: titlePadding,
+                            child: BlocBuilder<SellerBloc, SellerState>(
+                              builder: (context, state) {
+                                if (state is SellerLoaded) {
+                                  return Text(
+                                    state.sellerDetails.name,
+                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                          fontSize: 16, // text-2xl
+                                          fontWeight: FontWeight.bold, // font-bold
+                                          color: AppTheme.gray800, // text-gray-800
+                                        ),
+                                  );
+                                } else if (state is SellerError) {
+                                  return Center(child: Text('Failed to load seller details: ${state.message}'));
+                                }
+                                return const SizedBox.shrink(); // Initial or other states
+                              },
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+                SliverAppBar(
+                  key: Key("bar3"),
+                  toolbarHeight: 30,
+                  expandedHeight: 30,
+                  automaticallyImplyLeading: false,
+                  pinned: true,
+                  backgroundColor: Colors.blue,
+                  flexibleSpace: FlexibleSpaceBar(
+                    titlePadding: EdgeInsets.only(top: 4, bottom: 4),
+                    background: Container(
+                        decoration: const BoxDecoration(
+                          color: AppTheme.whiteColor,
+                          border: Border.symmetric(horizontal: BorderSide(color: AppTheme.gray100, width: 2.0)),
+                        ),
+                        child: const CategoryNavigationBar()),
+                  ),
+                ),
                 SliverList(
                   delegate: SliverChildListDelegate(
                     [
-                      // Add padding to push content below the app bar
-                      SizedBox(height: AppBar().preferredSize.height + MediaQuery.of(context).padding.top),
-                      // Seller Information Section
-                      BlocBuilder<SellerBloc, SellerState>(
-                        builder: (context, state) {
-                          if (state is SellerLoaded) {
-                            return Column(
-                              children: [
-                                SellerHeroSection(sellerDetails: state.sellerDetails),
-                                SellerQuickInfo(sellerDetails: state.sellerDetails),
-                              ],
-                            );
-                          } else if (state is SellerLoading) {
-                            return const Center(child: CircularProgressIndicator());
-                          } else if (state is SellerError) {
-                            return Center(child: Text('Failed to load seller details: ${state.message}'));
-                          }
-                          return const SizedBox.shrink(); // Initial or other states
-                        },
-                      ),
-                      // Category Navigation Bar
-                      const CategoryNavigationBar(),
                       // Menu Section (Bestsellers)
                       BlocBuilder<ProductBloc, ProductState>(
                         builder: (context, state) {
@@ -129,17 +212,17 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                           Text(
                                             'Bestsellers',
                                             style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                              fontSize: 18, // text-lg
-                                              fontWeight: FontWeight.bold, // font-bold
-                                              color: AppTheme.gray800, // text-gray-800
-                                            ),
+                                                  fontSize: 18, // text-lg
+                                                  fontWeight: FontWeight.bold, // font-bold
+                                                  color: AppTheme.gray800, // text-gray-800
+                                                ),
                                           ),
                                           Text(
                                             '${state.bestsellers.length} items',
                                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                              color: AppTheme.primaryColor, // text-primary
-                                              fontSize: 14, // text-sm
-                                            ),
+                                                  color: AppTheme.primaryColor, // text-primary
+                                                  fontSize: 14, // text-sm
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -149,8 +232,8 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                       children: state.bestsellers.map((product) {
                                         return Padding(
                                           padding: const EdgeInsets.only(bottom: 16.0), // space-y-4 (for each card)
-                                           child: MenuItemCard(product: product),
-                                         // child: Text('Failed to load products: ${product.name}'),
+                                          child: MenuItemCard(product: product),
+                                          // child: Text('Failed to load products: ${product.name}'),
                                         );
                                       }).toList(),
                                     ),
@@ -185,24 +268,25 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                         Text(
                                           'Special Offers',
                                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                            fontSize: 16, // text-base
-                                            fontWeight: FontWeight.w600, // font-semibold
-                                            color: AppTheme.gray800,
-                                          ),
+                                                fontSize: 16, // text-base
+                                                fontWeight: FontWeight.w600, // font-semibold
+                                                color: AppTheme.gray800,
+                                              ),
                                         ),
                                         GestureDetector(
                                           onTap: () {
                                             ScaffoldMessenger.of(context).showSnackBar(
-                                              const SnackBar(content: Text('View All Special Offers (Not implemented)')),
+                                              const SnackBar(
+                                                  content: Text('View All Special Offers (Not implemented)')),
                                             );
                                           },
                                           child: Text(
                                             'View All',
                                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                              color: AppTheme.primaryColor,
-                                              fontSize: 14, // text-sm
-                                              fontWeight: FontWeight.w500, // font-medium
-                                            ),
+                                                  color: AppTheme.primaryColor,
+                                                  fontSize: 14, // text-sm
+                                                  fontWeight: FontWeight.w500, // font-medium
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -246,10 +330,10 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                         Text(
                                           'Customer Reviews',
                                           style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                            fontSize: 16, // text-base
-                                            fontWeight: FontWeight.w600, // font-semibold
-                                            color: AppTheme.gray800,
-                                          ),
+                                                fontSize: 16, // text-base
+                                                fontWeight: FontWeight.w600, // font-semibold
+                                                color: AppTheme.gray800,
+                                              ),
                                         ),
                                         GestureDetector(
                                           onTap: () {
@@ -260,10 +344,10 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                           child: Text(
                                             'See All',
                                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                              color: AppTheme.primaryColor,
-                                              fontSize: 14, // text-sm
-                                              fontWeight: FontWeight.w500, // font-medium
-                                            ),
+                                                  color: AppTheme.primaryColor,
+                                                  fontSize: 14, // text-sm
+                                                  fontWeight: FontWeight.w500, // font-medium
+                                                ),
                                           ),
                                         ),
                                       ],
@@ -282,10 +366,10 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                           child: Text(
                                             'Recent Reviews',
                                             style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                              fontSize: 14, // text-sm
-                                              fontWeight: FontWeight.w500, // font-medium
-                                              color: AppTheme.gray800, // text-gray-700
-                                            ),
+                                                  fontSize: 14, // text-sm
+                                                  fontWeight: FontWeight.w500, // font-medium
+                                                  color: AppTheme.gray800, // text-gray-700
+                                                ),
                                           ),
                                         ),
                                         // List of Review Cards

@@ -14,10 +14,9 @@ class SellerQuickInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0), // px-4 py-4
+      padding: const EdgeInsets.only(left: 20.0, right: 16, top: 10.0),
       decoration: const BoxDecoration(
         color: AppTheme.whiteColor, // bg-white
-        border: Border(bottom: BorderSide(color: AppTheme.gray100, width: 1.0)), // border-b
       ),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -79,10 +78,10 @@ class SellerQuickInfo extends StatelessWidget {
                             child: Text(
                               offer,
                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                                fontSize: 10, // text-xs
-                                fontWeight: FontWeight.w500, // font-medium
-                                color: textColor,
-                              ),
+                                    fontSize: 10, // text-xs
+                                    fontWeight: FontWeight.w500, // font-medium
+                                    color: textColor,
+                                  ),
                             ),
                           );
                         }),
@@ -104,9 +103,9 @@ class SellerQuickInfo extends StatelessWidget {
                         Text(
                           sellerDetails.deliveryTime.split('-').first.trim(), // "30 min" from "30-40 min"
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            fontSize: 12, // text-xs
-                            color: AppTheme.gray500, // text-gray-500
-                          ),
+                                fontSize: 12, // text-xs
+                                color: AppTheme.gray500, // text-gray-500
+                              ),
                         ),
                       ],
                     ),
@@ -133,9 +132,9 @@ class SellerQuickInfo extends StatelessWidget {
                         Text(
                           'Min ${sellerDetails.minOrder}', // Min $20
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                            fontSize: 12, // text-xs
-                            color: AppTheme.gray500, // text-gray-500
-                          ),
+                                fontSize: 12, // text-xs
+                                color: AppTheme.gray500, // text-gray-500
+                              ),
                         ),
                       ],
                     ),
