@@ -32,7 +32,7 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
   static const double collapsedTitleLeftPadding = leadingIconWidth + leadingIconPadding;
 
   // Define the padding for the expanded and collapsed states
-  static const EdgeInsets expandedPadding = EdgeInsets.only(top: 74.0, left: 14); // Only the top padding is set here
+  static const EdgeInsets expandedPadding = EdgeInsets.only(top: 52.0, left: 14); // Only the top padding is set here
   static const EdgeInsets collapsedPadding = EdgeInsets.only(left: collapsedTitleLeftPadding);
 
   @override
@@ -97,15 +97,29 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                   collapsedHeight: collapsedHeight,
                   backgroundColor: Colors.white,
                   pinned: true,
-                  leading: const Padding(
-                    padding: EdgeInsets.only(left: 16.0),
-                    child: Icon(Icons.arrow_back, color: Colors.black),
+                  leading: InkWell(
+                    onTap: () => Navigator.pop(context),
+                    child: const Padding(
+                      padding: EdgeInsets.only(left: 16.0),
+                      child: Icon(Icons.arrow_back, color: Colors.black),
+                    ),
                   ),
+                  actions: [
+                    const Padding(
+                      padding: EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.more_vert, color: Colors.black),
+                    )
+                  ],
                   flexibleSpace: LayoutBuilder(
                     builder: (BuildContext context, BoxConstraints constraints) {
                       final double currentHeight = constraints.biggest.height;
                       final double scrollProgress =
                           math.max(0.0, 1.0 - (currentHeight - collapsedHeight) / (expandedHeight - collapsedHeight));
+
+                      // Calculate the font size based on scroll progress
+                      final double titleFontSize = 16.0 - (16.0 - 18.0) * scrollProgress;
+
+                      print("titleFontSize: $titleFontSize");
 
                       final Alignment titleAlignment = Alignment.lerp(
                         Alignment.centerLeft,
@@ -125,7 +139,7 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                       return ColoredBox(
                         color: Colors.white,
                         child: FlexibleSpaceBar(
-                          titlePadding: EdgeInsets.only(top: 6, bottom: 4),
+                          titlePadding: EdgeInsets.only(top: 28, bottom: 4),
                           centerTitle: true,
                           background: BlocBuilder<SellerBloc, SellerState>(
                             builder: (context, state) {
@@ -156,7 +170,7 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                                     return Text(
                                       state.sellerDetails.name,
                                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                            fontSize: 16, // text-2xl
+                                            fontSize: titleFontSize, // text-2xl
                                             fontWeight: FontWeight.bold, // font-bold
                                             color: AppTheme.gray800, // text-gray-800
                                           ),
