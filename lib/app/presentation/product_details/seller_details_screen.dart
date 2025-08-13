@@ -9,12 +9,8 @@ import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/bloc/product_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/seller_bloc/seller_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/category_navigation_bar.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/custom_app_bar.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/floating_cart_button.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/menu_item_card.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/overall_rating_summary.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/review_card.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/review_highlights.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/seller_hero_section.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/seller_quick_info.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/special_offer_card.dart';
@@ -96,8 +92,10 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
             CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  key: Key("bar1"),
                   expandedHeight: expandedHeight,
                   collapsedHeight: collapsedHeight,
+                  backgroundColor: Colors.white,
                   pinned: true,
                   leading: const Padding(
                     padding: EdgeInsets.only(left: 16.0),
@@ -124,48 +122,51 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                         scrollProgress,
                       )!;
 
-                      return FlexibleSpaceBar(
-                        titlePadding: EdgeInsets.only(top: 6, bottom: 4),
-                        centerTitle: true,
-                        background: BlocBuilder<SellerBloc, SellerState>(
-                          builder: (context, state) {
-                            if (state is SellerLoaded) {
-                              return Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  FeaturedWidget(sellerDetails: state.sellerDetails),
-                                  OverallRatingWidget(sellerDetails: state.sellerDetails),
-                                  SellerQuickInfo(sellerDetails: state.sellerDetails),
-                                ],
-                              );
-                            } else if (state is SellerLoading) {
-                              return const Center(child: CircularProgressIndicator());
-                            } else if (state is SellerError) {
-                              return Center(child: Text('Failed to load seller details: ${state.message}'));
-                            }
-                            return const SizedBox.shrink(); // Initial or other states
-                          },
-                        ),
-                        title: Align(
-                          alignment: titleAlignment,
-                          child: Padding(
-                            padding: titlePadding,
-                            child: BlocBuilder<SellerBloc, SellerState>(
-                              builder: (context, state) {
-                                if (state is SellerLoaded) {
-                                  return Text(
-                                    state.sellerDetails.name,
-                                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                          fontSize: 16, // text-2xl
-                                          fontWeight: FontWeight.bold, // font-bold
-                                          color: AppTheme.gray800, // text-gray-800
-                                        ),
-                                  );
-                                } else if (state is SellerError) {
-                                  return Center(child: Text('Failed to load seller details: ${state.message}'));
-                                }
-                                return const SizedBox.shrink(); // Initial or other states
-                              },
+                      return ColoredBox(
+                        color: Colors.white,
+                        child: FlexibleSpaceBar(
+                          titlePadding: EdgeInsets.only(top: 6, bottom: 4),
+                          centerTitle: true,
+                          background: BlocBuilder<SellerBloc, SellerState>(
+                            builder: (context, state) {
+                              if (state is SellerLoaded) {
+                                return Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    FeaturedWidget(sellerDetails: state.sellerDetails),
+                                    OverallRatingWidget(sellerDetails: state.sellerDetails),
+                                    SellerQuickInfo(sellerDetails: state.sellerDetails),
+                                  ],
+                                );
+                              } else if (state is SellerLoading) {
+                                return const Center(child: CircularProgressIndicator());
+                              } else if (state is SellerError) {
+                                return Center(child: Text('Failed to load seller details: ${state.message}'));
+                              }
+                              return const SizedBox.shrink(); // Initial or other states
+                            },
+                          ),
+                          title: Align(
+                            alignment: titleAlignment,
+                            child: Padding(
+                              padding: titlePadding,
+                              child: BlocBuilder<SellerBloc, SellerState>(
+                                builder: (context, state) {
+                                  if (state is SellerLoaded) {
+                                    return Text(
+                                      state.sellerDetails.name,
+                                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                            fontSize: 16, // text-2xl
+                                            fontWeight: FontWeight.bold, // font-bold
+                                            color: AppTheme.gray800, // text-gray-800
+                                          ),
+                                    );
+                                  } else if (state is SellerError) {
+                                    return Center(child: Text('Failed to load seller details: ${state.message}'));
+                                  }
+                                  return const SizedBox.shrink(); // Initial or other states
+                                },
+                              ),
                             ),
                           ),
                         ),
@@ -174,12 +175,12 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                   ),
                 ),
                 SliverAppBar(
-                  key: Key("bar3"),
+                  key: Key("bar2"),
                   toolbarHeight: 30,
                   expandedHeight: 30,
                   automaticallyImplyLeading: false,
                   pinned: true,
-                  backgroundColor: Colors.blue,
+                  backgroundColor: Colors.white,
                   flexibleSpace: FlexibleSpaceBar(
                     titlePadding: EdgeInsets.only(top: 4, bottom: 4),
                     background: Container(
@@ -304,103 +305,6 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                           }
                           return const SizedBox.shrink();
                         },
-                      ),
-                      // Customer Reviews Section
-                      BlocBuilder<SellerBloc, SellerState>(
-                        builder: (context, state) {
-                          if (state is SellerLoaded) {
-                            // Mock review highlights for now (as SellerDetailsModel doesn't contain them)
-                            final List<String> mockReviewHighlights = [
-                              'Authentic taste (45)',
-                              'Great quality (38)',
-                              'Fresh ingredients (32)',
-                              'Perfect spice level (28)',
-                            ];
-
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(vertical: 16.0), // mb-6
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0), // mb-3
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Customer Reviews',
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                                fontSize: 16, // text-base
-                                                fontWeight: FontWeight.w600, // font-semibold
-                                                color: AppTheme.gray800,
-                                              ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                              const SnackBar(content: Text('See All Reviews (Not implemented)')),
-                                            );
-                                          },
-                                          child: Text(
-                                            'See All',
-                                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                  color: AppTheme.primaryColor,
-                                                  fontSize: 14, // text-sm
-                                                  fontWeight: FontWeight.w500, // font-medium
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  OverallRatingSummary(sellerDetails: state.sellerDetails),
-                                  ReviewHighlights(highlights: mockReviewHighlights),
-                                  // Recent Reviews Section
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                                    child: Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: [
-                                        Padding(
-                                          padding: const EdgeInsets.only(bottom: 8.0), // mb-2
-                                          child: Text(
-                                            'Recent Reviews',
-                                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                  fontSize: 14, // text-sm
-                                                  fontWeight: FontWeight.w500, // font-medium
-                                                  color: AppTheme.gray800, // text-gray-700
-                                                ),
-                                          ),
-                                        ),
-                                        // List of Review Cards
-                                        ...state.recentReviews.asMap().entries.map((entry) {
-                                          final int index = entry.key;
-                                          final review = entry.value;
-                                          final bool isLast = index == state.recentReviews.length - 1;
-                                          return ReviewCard(review: review, isLastItem: isLast);
-                                        }).toList(),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            );
-                          } else if (state is SellerLoading) {
-                            return const Center(child: CircularProgressIndicator());
-                          } else if (state is SellerError) {
-                            return Center(child: Text('Failed to load reviews: ${state.message}'));
-                          }
-                          return const SizedBox.shrink();
-                        },
-                      ),
-                      // Placeholder for About Section
-                      Container(
-                        padding: const EdgeInsets.all(16.0),
-                        color: AppTheme.whiteColor,
-                        child: Text(
-                          'About Section Placeholder',
-                          style: Theme.of(context).textTheme.headlineSmall,
-                        ),
                       ),
                       const SizedBox(height: 100), // Space for bottom nav and floating button
                     ],
