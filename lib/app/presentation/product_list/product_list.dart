@@ -16,9 +16,23 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
- // final PagingController<int, Product> _pagingController = PagingController(firstPageKey: 1);
   final TextEditingController _searchController = TextEditingController();
   final ValueNotifier<String> _searchTextNotifier = ValueNotifier<String>("");
+
+  // PagingController manages paging logic and state
+  late final _pagingController = PagingController<int, Product>(
+    getNextPageKey: (state) {
+      // This convenience getter checks if the last returned page is empty.
+      // You can replace this with a check if the last page has returned less items than expected,
+      // for a more efficient implementation.
+      if (state.lastPageIsEmpty) return null;
+      // This convenience getter increments the page key by 1, assuming keys start at 1.
+      return state.nextIntPageKey;
+    },
+    fetchPage: (pageKey) {
+      return _fetchItems(pageKey: pageKey);
+    }, // Callback to fetch data
+  );
 
 
   @override
@@ -27,30 +41,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
     _searchController.addListener(() {
       _searchTextNotifier.value = _searchController.text;
     });
-    // _pagingController.addPageRequestListener((pageKey) {
-    //   _fetchPopularActors(pageKey: pageKey);
-    // });
   }
 
-  // _fetchPopularActors({required int pageKey}) async {
-  //   try {
-  //     final productsModel = productsModelFromJson(json.encode(RepoData.data2));
-  //     final List<Product> actorsList = productsModel.products ?? [];
-  //     _pagingController.appendPage(actorsList, pageKey + 1);
-  //   } catch (error, stackTrace) {
-  //     log("fetchPopularActors error: $error");
-  //     log("fetchPopularActors stackTrace: $stackTrace");
-  //     _pagingController.error = error;
-  //   }
-  // }
+  Future<List<Product>> _fetchItems({required int pageKey}) async {
+    try {
+      final productsModel = productsModelFromJson(json.encode(RepoData.data2));
+      final List<Product> productsList = productsModel.products ?? [];
+      return productsList;
+    } catch (error, stackTrace) {
+      log("fetchPopularActors error: $error");
+      log("fetchPopularActors stackTrace: $stackTrace");
+      return [];
+    }
+  }
 
   @override
   void dispose() {
     _searchController.dispose();
     _searchTextNotifier.dispose();
-   // _pagingController.dispose();
+   _pagingController.dispose();
     super.dispose();
   }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -110,19 +122,24 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
           const Divider(height: 2, thickness: 2, color: AppColors.lightGrey),
-          // Expanded(
-          //   child: PagedListView<int, Product>(
-          //     pagingController: _pagingController,
-          //     builderDelegate: PagedChildBuilderDelegate<Product>(
-          //       itemBuilder: (context, items, index) => ItemCard2(
-          //         imgUrl: items.imgUrl ?? "",
-          //         title: items.title ?? "",
-          //         description: items.description ?? "",
-          //         price: items.price ?? "",
-          //       ),
-          //     ),
-          //   ),
-          // ),
+          Expanded(
+            child: PagingListener(
+              controller: _pagingController,
+              builder: (context, state, fetchNextPage) => PagedListView<int, Product>.separated(
+                state: state,
+                fetchNextPage: fetchNextPage, // Called when scroll reaches end
+                separatorBuilder: (context, index) => const Divider(),
+                builderDelegate: PagedChildBuilderDelegate(
+                  itemBuilder: (context, items, index) => ItemCard2(
+                    imgUrl: items.imgUrl ?? "",
+                    title: items.title ?? "",
+                    description: items.description ?? "",
+                    price: items.price ?? "",
+                  ),
+                ),
+              ),
+            ),
+          ),
         ],
       ),
     );
