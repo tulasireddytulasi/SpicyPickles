@@ -16,7 +16,7 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
-  final PagingController<int, Product> _pagingController = PagingController(firstPageKey: 1);
+ // final PagingController<int, Product> _pagingController = PagingController(firstPageKey: 1);
   final TextEditingController _searchController = TextEditingController();
   final ValueNotifier<String> _searchTextNotifier = ValueNotifier<String>("");
 
@@ -27,28 +27,28 @@ class _ProductListScreenState extends State<ProductListScreen> {
     _searchController.addListener(() {
       _searchTextNotifier.value = _searchController.text;
     });
-    _pagingController.addPageRequestListener((pageKey) {
-      _fetchPopularActors(pageKey: pageKey);
-    });
+    // _pagingController.addPageRequestListener((pageKey) {
+    //   _fetchPopularActors(pageKey: pageKey);
+    // });
   }
 
-  _fetchPopularActors({required int pageKey}) async {
-    try {
-      final productsModel = productsModelFromJson(json.encode(RepoData.data2));
-      final List<Product> actorsList = productsModel.products ?? [];
-      _pagingController.appendPage(actorsList, pageKey + 1);
-    } catch (error, stackTrace) {
-      log("fetchPopularActors error: $error");
-      log("fetchPopularActors stackTrace: $stackTrace");
-      _pagingController.error = error;
-    }
-  }
+  // _fetchPopularActors({required int pageKey}) async {
+  //   try {
+  //     final productsModel = productsModelFromJson(json.encode(RepoData.data2));
+  //     final List<Product> actorsList = productsModel.products ?? [];
+  //     _pagingController.appendPage(actorsList, pageKey + 1);
+  //   } catch (error, stackTrace) {
+  //     log("fetchPopularActors error: $error");
+  //     log("fetchPopularActors stackTrace: $stackTrace");
+  //     _pagingController.error = error;
+  //   }
+  // }
 
   @override
   void dispose() {
     _searchController.dispose();
     _searchTextNotifier.dispose();
-    _pagingController.dispose();
+   // _pagingController.dispose();
     super.dispose();
   }
   @override
@@ -110,19 +110,19 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
           const Divider(height: 2, thickness: 2, color: AppColors.lightGrey),
-          Expanded(
-            child: PagedListView<int, Product>(
-              pagingController: _pagingController,
-              builderDelegate: PagedChildBuilderDelegate<Product>(
-                itemBuilder: (context, items, index) => ItemCard2(
-                  imgUrl: items.imgUrl ?? "",
-                  title: items.title ?? "",
-                  description: items.description ?? "",
-                  price: items.price ?? "",
-                ),
-              ),
-            ),
-          ),
+          // Expanded(
+          //   child: PagedListView<int, Product>(
+          //     pagingController: _pagingController,
+          //     builderDelegate: PagedChildBuilderDelegate<Product>(
+          //       itemBuilder: (context, items, index) => ItemCard2(
+          //         imgUrl: items.imgUrl ?? "",
+          //         title: items.title ?? "",
+          //         description: items.description ?? "",
+          //         price: items.price ?? "",
+          //       ),
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );

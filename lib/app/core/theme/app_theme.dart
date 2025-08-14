@@ -18,6 +18,8 @@ class AppTheme {
   static const Color blackColor = Color(0xFF000000); // Black color
   static const Color gray300 = Color(0xFFCBD5E0); // Equivalent to bg-gray-300
   static const Color background = Color(0xFFF7FAFC); // Equivalent to bg-background
+  static const Color divider = Color(0xFFE5E7EB); // Equivalent to bg-background
+
 
   static final ThemeData lightTheme = ThemeData(
     primaryColor: primaryColor,

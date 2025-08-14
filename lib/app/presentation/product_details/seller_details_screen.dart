@@ -4,16 +4,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
 import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/bloc/product_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/seller_bloc/seller_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/category_navigation_bar.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/floating_cart_button.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/menu_item_card.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/seller_hero_section.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/seller_quick_info.dart';
-import 'package:spicypickles/app/presentation/product_details/widgets/special_offer_card.dart';
 import 'package:spicypickles/app/presentation/widgets/bottom_nav_bar.dart';
 import 'dart:math' as math;
 
@@ -25,6 +24,7 @@ class SellerDetailsScreen extends StatefulWidget {
 }
 
 class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
+  PagingState<int, String> _state = PagingState();
   static const double expandedHeight = 240.0;
   static const double collapsedHeight = kToolbarHeight;
   static const double leadingIconWidth = 56.0;
@@ -35,6 +35,21 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
   static const EdgeInsets expandedPadding = EdgeInsets.only(top: 52.0, left: 14); // Only the top padding is set here
   static const EdgeInsets collapsedPadding = EdgeInsets.only(left: collapsedTitleLeftPadding);
 
+  // PagingController manages paging logic and state
+  late final _pagingController = PagingController<int, String>(
+    getNextPageKey: (state) {
+      // This convenience getter checks if the last returned page is empty.
+      // You can replace this with a check if the last page has returned less items than expected,
+      // for a more efficient implementation.
+      if (state.lastPageIsEmpty) return null;
+      // This convenience getter increments the page key by 1, assuming keys start at 1.
+      return state.nextIntPageKey;
+    },
+    fetchPage: (pageKey) {
+      return addData(pageKey);
+    }, // Callback to fetch data
+  );
+
   @override
   void initState() {
     super.initState();
@@ -42,6 +57,12 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
     context.read<SellerBloc>().add(const LoadSellerDetails());
     context.read<ProductBloc>().add(const LoadProducts());
     context.read<CartBloc>().add(const LoadCart());
+  }
+
+  @override
+  void dispose() {
+    _pagingController.dispose();
+    super.dispose();
   }
 
   // Function to open the cart modal (will be implemented later)
@@ -93,6 +114,7 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
               slivers: [
                 SliverAppBar(
                   key: Key("bar1"),
+                  floating: false,
                   expandedHeight: expandedHeight,
                   collapsedHeight: collapsedHeight,
                   backgroundColor: Colors.white,
@@ -192,136 +214,73 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                   key: Key("bar2"),
                   toolbarHeight: 30,
                   expandedHeight: 30,
+                  floating: false,
                   automaticallyImplyLeading: false,
                   pinned: true,
                   backgroundColor: Colors.white,
                   flexibleSpace: FlexibleSpaceBar(
                     titlePadding: EdgeInsets.only(top: 4, bottom: 4),
                     background: Container(
-                        decoration: const BoxDecoration(
-                          color: AppTheme.whiteColor,
-                          border: Border.symmetric(horizontal: BorderSide(color: AppTheme.gray100, width: 2.0)),
+                      decoration: const BoxDecoration(
+                        color: AppTheme.whiteColor,
+                        border: Border.symmetric(
+                          horizontal: BorderSide(color: AppTheme.divider, width: 1.0),
                         ),
-                        child: const CategoryNavigationBar()),
+                      ),
+                      child: const CategoryNavigationBar(),
+                    ),
                   ),
                 ),
-                SliverList(
-                  delegate: SliverChildListDelegate(
-                    [
-                      // Menu Section (Bestsellers)
-                      BlocBuilder<ProductBloc, ProductState>(
-                        builder: (context, state) {
-                          if (state is ProductLoaded) {
-                            // Only show bestsellers if 'all' or 'bestsellers' category is active
-                            if (state.activeCategory == 'all' || state.activeCategory == 'bestsellers') {
-                              return Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0), // px-4 py-4
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(bottom: 16.0), // mb-4
-                                      child: Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(
-                                            'Bestsellers',
-                                            style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                                  fontSize: 18, // text-lg
-                                                  fontWeight: FontWeight.bold, // font-bold
-                                                  color: AppTheme.gray800, // text-gray-800
-                                                ),
-                                          ),
-                                          Text(
-                                            '${state.bestsellers.length} items',
-                                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                  color: AppTheme.primaryColor, // text-primary
-                                                  fontSize: 14, // text-sm
-                                                ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    // List of Menu Items
-                                    Column(
-                                      children: state.bestsellers.map((product) {
-                                        return Padding(
-                                          padding: const EdgeInsets.only(bottom: 16.0), // space-y-4 (for each card)
-                                          child: MenuItemCard(product: product),
-                                          // child: Text('Failed to load products: ${product.name}'),
-                                        );
-                                      }).toList(),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            } else {
-                              return const SizedBox.shrink(); // Hide if not in active category
-                            }
-                          } else if (state is ProductLoading) {
-                            return const Center(child: CircularProgressIndicator());
-                          } else if (state is ProductError) {
-                            return Center(child: Text('Failed to load products: ${state.message}'));
-                          }
-                          return const SizedBox.shrink();
-                        },
+                // PagedSliverList<int, String>.separated(
+                //   state: _state,
+                //   fetchNextPage: _fetchNextPage, // Called when scroll reaches end
+                //   separatorBuilder: (context, index) => const Divider(),
+                //   builderDelegate: PagedChildBuilderDelegate(
+                //     itemBuilder: (context, item, index) => Container(
+                //       margin: const EdgeInsets.only(top: 10),
+                //       padding: const EdgeInsets.all(10),
+                //       child: Text(item), // Display each item from the list
+                //     ),
+                //   ),
+                // ),
+                SliverToBoxAdapter(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20), // mb-4
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          'Bestsellers',
+                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontSize: 18, // text-lg
+                            fontWeight: FontWeight.bold, // font-bold
+                            color: AppTheme.gray800, // text-gray-800
+                          ),
+                        ),
+                        Text(
+                          '22 items',
+                          style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                            color: AppTheme.primaryColor, // text-primary
+                            fontSize: 14, // text-sm
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                PagingListener(
+                  controller: _pagingController,
+                  builder: (context, state, fetchNextPage) => PagedSliverList<int, String>.separated(
+                    state: state,
+                    fetchNextPage: fetchNextPage, // Called when scroll reaches end
+                    separatorBuilder: (context, index) => const Divider(),
+                    builderDelegate: PagedChildBuilderDelegate(
+                      itemBuilder: (context, item, index) => Container(
+                        margin: const EdgeInsets.only(top: 10),
+                        padding: const EdgeInsets.all(10),
+                        child: Text(item), // Display each item from the list
                       ),
-                      // Special Offers Section
-                      BlocBuilder<ProductBloc, ProductState>(
-                        builder: (context, state) {
-                          if (state is ProductLoaded && state.specialOffers.isNotEmpty) {
-                            return Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(bottom: 12.0), // mb-3
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text(
-                                          'Special Offers',
-                                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                                                fontSize: 16, // text-base
-                                                fontWeight: FontWeight.w600, // font-semibold
-                                                color: AppTheme.gray800,
-                                              ),
-                                        ),
-                                        GestureDetector(
-                                          onTap: () {
-                                            ScaffoldMessenger.of(context).showSnackBar(
-                                              const SnackBar(
-                                                  content: Text('View All Special Offers (Not implemented)')),
-                                            );
-                                          },
-                                          child: Text(
-                                            'View All',
-                                            style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                                                  color: AppTheme.primaryColor,
-                                                  fontSize: 14, // text-sm
-                                                  fontWeight: FontWeight.w500, // font-medium
-                                                ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  // Display the first special offer card
-                                  SpecialOfferCard(offer: state.specialOffers.first),
-                                ],
-                              ),
-                            );
-                          } else if (state is ProductLoading) {
-                            return const Center(child: CircularProgressIndicator());
-                          } else if (state is ProductError) {
-                            return Center(child: Text('Failed to load special offers: ${state.message}'));
-                          }
-                          return const SizedBox.shrink();
-                        },
-                      ),
-                      const SizedBox(height: 100), // Space for bottom nav and floating button
-                    ],
+                    ),
                   ),
                 ),
               ],
@@ -337,5 +296,50 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
         ),
       ),
     );
+  }
+
+  // Simulates fetching data with 2-second delay
+  Future<List<String>> addData(int page) async {
+    List<String> myList = [];
+    //myList.clear();
+    if(page >= 4) return [];
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
+
+    // Add 5 dummy items per page
+    for (int i = 0; i < 5; i++) {
+      myList.add('Page $page - Item ${i + 1}');
+    }
+
+    return myList; // Return updated list
+  }
+
+  void _fetchNextPage() async {
+    if (_state.isLoading) return;
+
+    setState(() {
+      _state = _state.copyWith(isLoading: true, error: null);
+    });
+
+    try {
+      final newKey = (_state.keys?.last ?? 0) + 1;
+      final newItems = await addData(newKey);
+      final isLastPage = newItems.isEmpty;
+
+      setState(() {
+        _state = _state.copyWith(
+          pages: [...?_state.pages, newItems],
+          keys: [...?_state.keys, newKey],
+          hasNextPage: !isLastPage,
+          isLoading: false,
+        );
+      });
+    } catch (error) {
+      setState(() {
+        _state = _state.copyWith(
+          error: error,
+          isLoading: false,
+        );
+      });
+    }
   }
 }
