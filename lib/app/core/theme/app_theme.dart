@@ -5,17 +5,20 @@
 import 'package:flutter/material.dart';
 
 class AppTheme {
-  // Define primary and secondary colors based on the HTML's Tailwind config
-  static const Color primaryColor = Color(0xFF267E3E); // #267E3E
+  // Define colors based on the HTML's Tailwind config
+  static const Color primaryColor = Color(0xFF2E7D32); // #2E7D32
   static const Color secondaryColor = Color(0xFFFBC02D); // #FBC02D
-  static const Color gray800 = Color(0xFF2D3748); // Equivalent to text-gray-800
-  static const Color gray500 = Color(0xFF718096); // Equivalent to text-gray-500
-  static const Color gray600 = Color(0xFF4A5568); // Equivalent to text-gray-600
+  static const Color tertiaryColor = Color(0xFF8D6E63); // #8D6E63
+  static const Color backgroundColor = Color(0xFFFFF8E1); // #FFF8E1
+  static const Color accentColor = Color(0xFFD84315); // #D84315
+  static const Color gray800 = Color(0xFF2D3748);
+  static const Color gray500 = Color(0xFF718096);
+  static const Color gray600 = Color(0xFF4A5568);
   static const Color gray100 = Color(0xFFF7FAFC); // Equivalent to bg-gray-100
   static const Color red600 = Color(0xFFE53E3E); // Equivalent to text-red-600
   static const Color red100 = Color(0xFFFED7D7); // Equivalent to bg-red-100
-  static const Color whiteColor = Color(0xFFFFFFFF); // White color
-  static const Color blackColor = Color(0xFF000000); // Black color
+  static const Color whiteColor = Color(0xFFFFFFFF);
+  static const Color blackColor = Color(0xFF000000);
   static const Color gray300 = Color(0xFFCBD5E0); // Equivalent to bg-gray-300
   static const Color background = Color(0xFFF7FAFC); // Equivalent to bg-background
   static const Color divider = Color(0xFFE5E7EB); // Equivalent to bg-background
@@ -24,12 +27,12 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     primaryColor: primaryColor,
     secondaryHeaderColor: secondaryColor,
-    scaffoldBackgroundColor: whiteColor,
-    fontFamily: 'Poppins', // Poppins is used in the HTML
+    scaffoldBackgroundColor: backgroundColor,
+    fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
-      backgroundColor: Colors.transparent,
+      backgroundColor: whiteColor,
       elevation: 0,
-      iconTheme: IconThemeData(color: whiteColor),
+      iconTheme: IconThemeData(color: primaryColor),
       titleTextStyle: TextStyle(
         color: gray800,
         fontSize: 20,
@@ -43,19 +46,12 @@ class AppTheme {
       displaySmall: TextStyle(fontSize: 48, fontWeight: FontWeight.w400, color: gray800),
       headlineMedium: TextStyle(fontSize: 34, fontWeight: FontWeight.w400, color: gray800),
       headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w400, color: gray800),
-      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: gray800), // h1 in HTML
+      titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: gray800),
       bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: gray600),
-      bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: gray600), // Default text
-      labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: whiteColor), // Button text
-      bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: gray500), // Small text
-      labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w400, color: gray500), // Extra small text
-    ),
-    buttonTheme: const ButtonThemeData(
-      buttonColor: primaryColor,
-      textTheme: ButtonTextTheme.primary,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.all(Radius.circular(8.0)), // 'button' in HTML
-      ),
+      bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, color: gray600),
+      labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w500, color: whiteColor),
+      bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, color: gray500),
+      labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w400, color: gray500),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
@@ -75,10 +71,9 @@ class AppTheme {
     cardTheme: CardThemeData(
       elevation: 1,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(8.0), // Default in HTML
+        borderRadius: BorderRadius.circular(8.0),
       ),
     ),
-    // Define custom border radius for consistency with Tailwind
     extensions: <ThemeExtension<dynamic>>[
       _CustomBorderRadius(
         none: BorderRadius.circular(0.0),
