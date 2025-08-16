@@ -15,6 +15,7 @@ import 'package:spicypickles/app/presentation/product_details/widgets/category_w
 import 'package:spicypickles/app/presentation/product_details/widgets/floating_cart_button.dart';
 import 'package:spicypickles/app/presentation/product_details/widgets/sliver_app_bar.dart';
 import 'package:spicypickles/app/presentation/store/bloc/store_items_bloc.dart';
+import 'package:spicypickles/app/presentation/store/widget/product_card.dart';
 import 'package:spicypickles/app/presentation/widgets/bottom_nav_bar.dart';
 
 class SellerDetailsScreen extends StatefulWidget {
@@ -106,7 +107,11 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                           itemBuilder: (context, item, index) => Container(
                             margin: const EdgeInsets.only(top: 10),
                             padding: const EdgeInsets.all(10),
-                            child: Text(item.title ?? "No data"), // Display each item from the list
+                            child: FoodItemCard(
+                              product: item,
+                              key: ValueKey(index),
+                            ),
+                            // Text(item.title ?? "No data"), // Display each item from the list
                           ),
                         ),
                       );
