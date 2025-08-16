@@ -26,6 +26,15 @@ final class StoreItemsLoaded extends StoreItemsState {
   List<Object?> get props => [products, nextPageKey];
 }
 
+final class FetchItemsState extends StoreItemsState {
+  final PagingState<int, Product> pagingState;
+
+  const FetchItemsState(this.pagingState);
+
+  @override
+  List<Object?> get props => [pagingState];
+}
+
 final class StoreItemsError extends StoreItemsState {
   final String message;
 

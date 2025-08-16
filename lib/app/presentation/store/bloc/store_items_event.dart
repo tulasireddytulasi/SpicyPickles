@@ -12,3 +12,11 @@ final class FetchFoodItemsEvent extends StoreItemsEvent {
   @override
   List<Object?> get props => [pageKey];
 }
+
+final class FetchPagingStateEvent extends StoreItemsEvent {
+
+  const FetchPagingStateEvent();
+
+  @override
+  List<Object?> get props => [];
+}

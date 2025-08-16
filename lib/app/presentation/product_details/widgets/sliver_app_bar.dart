@@ -56,8 +56,6 @@ class _SellerAppbarState extends State<SellerAppbar> {
           // Calculate the font size based on scroll progress
           final double titleFontSize = 16.0 - (16.0 - 18.0) * scrollProgress;
 
-          print("titleFontSize: $titleFontSize");
-
           final Alignment titleAlignment = Alignment.lerp(
             Alignment.centerLeft,
             Alignment.centerLeft,
