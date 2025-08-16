@@ -43,6 +43,7 @@ class StoreItemsBloc extends Bloc<StoreItemsEvent, StoreItemsState> {
 
       try {
         final newKey = (_state.keys?.last ?? 0) + 1;
+        if(newKey >= 3) return;
         final productsModel = productsModelFromJson(json.encode(RepoData.data2));
         final List<Product> productList = productsModel.products ?? [];
         final isLastPage = productList.isEmpty;
