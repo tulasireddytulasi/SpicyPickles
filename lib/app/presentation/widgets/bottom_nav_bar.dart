@@ -6,31 +6,19 @@ import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart'; // Import AppTheme for colors
 
 class BottomNavBar extends StatefulWidget {
-  const BottomNavBar({super.key});
+  const BottomNavBar({super.key, this.onPageChanged});
+  final Function(int)? onPageChanged;
 
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
-  int _selectedIndex = 1; // 'Explore' is the active tab in the HTML, so index 1
+  int _selectedIndex = 0; // 'Explore' is the active tab in the HTML, so index 1
 
   void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    // In a real application, you would navigate to different screens here
-    // based on the selected index. For now, we just update the state.
-    // Example:
-    // switch (index) {
-    //   case 0:
-    //     Navigator.pushReplacementNamed(context, '/home');
-    //     break;
-    //   case 1:
-    //     Navigator.pushReplacementNamed(context, '/explore');
-    //     break;
-    //   // ... other cases
-    // }
+    widget.onPageChanged!(index);
+    _selectedIndex = index;
   }
 
   @override
@@ -72,10 +60,10 @@ class _BottomNavBarState extends State<BottomNavBar> {
             icon: Icon(Icons.explore_outlined, size: 24), // ri-compass-3-line
             label: 'Explore',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined, size: 24), // ri-shopping-cart-2-line
-            label: 'Cart',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.shopping_cart_outlined, size: 24), // ri-shopping-cart-2-line
+          //   label: 'Cart',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.list_alt, size: 24), // ri-file-list-3-line
             label: 'Orders',
