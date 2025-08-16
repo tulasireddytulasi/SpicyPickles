@@ -25,13 +25,9 @@ class SellerDetailsScreen extends StatefulWidget {
 }
 
 class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
-  late final StoreItemsBloc storeBloc;
-
-
   @override
   void initState() {
     super.initState();
-    storeBloc = StoreItemsBloc();
     // Dispatch events to load initial data when the screen is created
     context.read<SellerBloc>().add(const LoadSellerDetails());
     context.read<ProductBloc>().add(const LoadProducts());
@@ -40,9 +36,8 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
   }
 
   void _fetchPagingStateEvent() {
-    storeBloc.add(const FetchPagingStateEvent());
+    context.read<StoreItemsBloc>().add(const FetchPagingStateEvent());
   }
-
 
   @override
   void dispose() {
@@ -100,10 +95,9 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                 CategoryWidget(),
                 BestsellerTitleWidget(itemsLength: 22),
                 BlocBuilder<StoreItemsBloc, StoreItemsState>(
-                  bloc: storeBloc,
-                  buildWhen: (previous, current) => (current  is FetchItemsState),
+                  buildWhen: (previous, current) => (current is FetchItemsState),
                   builder: (context, state) {
-                    if(state is FetchItemsState){
+                    if (state is FetchItemsState) {
                       return PagedSliverList<int, Product>.separated(
                         state: state.pagingState,
                         fetchNextPage: _fetchPagingStateEvent, // Called when scroll reaches end
@@ -117,7 +111,7 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                         ),
                       );
                     } else {
-                      return SliverToBoxAdapter(child: Text("Loading ui"));
+                      return SliverToBoxAdapter(child: Center(child: Text("Loading Food Items")));
                     }
                   },
                 ),
