@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   // Define colors based on the HTML's Tailwind config
   static const Color primaryColor = Color(0xFF2E7D32); // #2E7D32
-  static const Color secondaryColor = Color(0xFFFBC02D); // #FBC02D
+  static const Color secondaryColor = Color(0xFFFBC02D); // #FBC02D d2f8d2
+  static const Color lightGreenColor = Color(0xFFE8F5E9); // #e8f5e9
   static const Color tertiaryColor = Color(0xFF8D6E63); // #8D6E63
   static const Color backgroundColor = Color(0xFFFFF8E1); // #FFF8E1
   static const Color accentColor = Color(0xFFD84315); // #D84315
@@ -27,7 +28,7 @@ class AppTheme {
   static final ThemeData lightTheme = ThemeData(
     primaryColor: primaryColor,
     secondaryHeaderColor: secondaryColor,
-    scaffoldBackgroundColor: backgroundColor,
+    scaffoldBackgroundColor: lightGreenColor,
     fontFamily: 'Poppins',
     appBarTheme: const AppBarTheme(
       backgroundColor: whiteColor,

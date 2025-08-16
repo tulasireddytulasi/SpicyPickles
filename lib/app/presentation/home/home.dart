@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:spicypickles/app/core/theme/app_theme.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
 import 'package:spicypickles/app/presentation/dashboard_screen/dashboard_screen.dart';
 import 'package:spicypickles/app/presentation/dashboard_screen/widgets/app_bar.dart';
@@ -41,7 +42,6 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: context.colorScheme?.onPrimary,
       appBar: _appBars[_currentIndex],
       body: IndexedStack(index: _currentIndex, children: _pages),
       bottomNavigationBar: BottomNavBar(
