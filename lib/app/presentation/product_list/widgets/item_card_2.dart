@@ -1,8 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/presentation/product_details/seller_details_screen.dart';
-import 'package:spicypickles/app/presentation/store/store_items_screen.dart';
 import 'package:spicypickles/app/presentation/widgets/widget_exports.dart';
 
 class ItemCard2 extends StatefulWidget {
@@ -13,6 +11,7 @@ class ItemCard2 extends StatefulWidget {
     required this.description,
     required this.price,
     this.maxLines = 2,
+    required this.onTap,
   });
 
   final String imgUrl;
@@ -20,6 +19,7 @@ class ItemCard2 extends StatefulWidget {
   final String description;
   final double price;
   final int maxLines;
+  final VoidCallback onTap;
 
   @override
   State<ItemCard2> createState() => _ItemCard2State();
@@ -29,15 +29,7 @@ class _ItemCard2State extends State<ItemCard2> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () async {
-        await Future.delayed(const Duration(milliseconds: 200));
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => const SellerDetailsScreen(),
-          ),
-        );
-      },
+      onTap: widget.onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 6.0),
         child: Card(

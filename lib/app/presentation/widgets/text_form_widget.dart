@@ -23,6 +23,7 @@ class TextFormFieldWidget extends StatefulWidget {
   final bool readOnly;
   final String? label;
   final InputBorder? focusedBorder;
+  final FocusNode? focusNode;
 
   const TextFormFieldWidget({
     super.key,
@@ -45,6 +46,7 @@ class TextFormFieldWidget extends StatefulWidget {
     this.label,
     this.focusedBorder,
     this.onTap,
+    this.focusNode,
   });
 
   @override
@@ -68,6 +70,7 @@ class _TextFormFieldWidgetState extends State<TextFormFieldWidget> {
   Widget build(BuildContext context) {
     //  bool isDesktopScreen = isDesktop(screenWidth: widget.maxWidth);
     return TextFormField(
+      focusNode: widget.focusNode,
       readOnly: widget.readOnly,
       keyboardType: widget.textInputType,
       textInputAction: widget.actionKeyboard,

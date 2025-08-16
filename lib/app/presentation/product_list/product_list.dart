@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
 import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/presentation/product_details/seller_details_screen.dart';
 import 'package:spicypickles/app/presentation/product_list/widgets/product_list_widget_exports.dart';
 import 'package:spicypickles/app/presentation/widgets/widget_exports.dart';
 
@@ -16,6 +17,7 @@ class ProductListScreen extends StatefulWidget {
 }
 
 class _ProductListScreenState extends State<ProductListScreen> {
+  late FocusNode _myFocusNode;
   final TextEditingController _searchController = TextEditingController();
   final ValueNotifier<String> _searchTextNotifier = ValueNotifier<String>("");
 
@@ -38,6 +40,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   void initState() {
     super.initState();
+    _myFocusNode = FocusNode();
     _searchController.addListener(() {
       _searchTextNotifier.value = _searchController.text;
     });
@@ -57,6 +60,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   @override
   void dispose() {
+    _myFocusNode.dispose();
     _searchController.dispose();
     _searchTextNotifier.dispose();
    _pagingController.dispose();
@@ -66,81 +70,95 @@ class _ProductListScreenState extends State<ProductListScreen> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormFieldWidget(
-              maxWidth: double.infinity,
-              controller: _searchController,
-              hintText: "Search for your favorite pickle",
-              textInputType: TextInputType.text,
-              actionKeyboard: TextInputAction.search,
-              prefixIcon: const Icon(Icons.arrow_back_ios_rounded, size: 20, color: AppColors.vibrantRed),
-              suffixIcon: ValueListenableBuilder<String>(
-                valueListenable: _searchTextNotifier,
-                builder: (context, value, child) {
-                  return Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (value.isNotEmpty)
-                        InkWell(
-                          onTap: () {
-                            _searchController.clear();
-                            _searchTextNotifier.value = "";
-                          },
-                          child: const Icon(Icons.close, size: 20, color: AppColors.black),
-                        ),
-                      const SizedBox(width: 6),
-                      const RotatedBox(
-                        quarterTurns: 3,
-                        child: SizedBox(
-                          width: 20,
-                          child: Divider(
-                            height: 4,
-                            thickness: 2,
-                            color: AppColors.lightGrey,
+      child: GestureDetector(
+        onTap: () => _myFocusNode.unfocus(),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: TextFormFieldWidget(
+                focusNode: _myFocusNode,
+                maxWidth: double.infinity,
+                controller: _searchController,
+                hintText: "Search for your favorite pickle",
+                textInputType: TextInputType.text,
+                actionKeyboard: TextInputAction.search,
+                prefixIcon: const Icon(Icons.arrow_back_ios_rounded, size: 20, color: AppColors.vibrantRed),
+                suffixIcon: ValueListenableBuilder<String>(
+                  valueListenable: _searchTextNotifier,
+                  builder: (context, value, child) {
+                    return Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        if (value.isNotEmpty)
+                          InkWell(
+                            onTap: () {
+                              _searchController.clear();
+                              _searchTextNotifier.value = "";
+                            },
+                            child: const Icon(Icons.close, size: 20, color: AppColors.black),
+                          ),
+                        const SizedBox(width: 6),
+                        const RotatedBox(
+                          quarterTurns: 3,
+                          child: SizedBox(
+                            width: 20,
+                            child: Divider(
+                              height: 4,
+                              thickness: 2,
+                              color: AppColors.lightGrey,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(width: 6),
-                      const Icon(Icons.search_rounded, size: 20, color: AppColors.vibrantRed),
-                      const SizedBox(width: 10),
-                    ],
-                  );
+                        const SizedBox(width: 6),
+                        const Icon(Icons.search_rounded, size: 20, color: AppColors.vibrantRed),
+                        const SizedBox(width: 10),
+                      ],
+                    );
+                  },
+                ),
+                contentPadding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 10,
+                ),
+                maxLength: 100,
+                onChanged: (value) {},
+                onClick: (value) {
+                  print("Text: $value");
                 },
               ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: 12,
-                horizontal: 10,
-              ),
-              maxLength: 100,
-              onChanged: (value) {},
-              onClick: (value) {
-                print("Text: $value");
-              },
             ),
-          ),
-          const Divider(height: 2, thickness: 2, color: AppColors.lightGrey),
-          Expanded(
-            child: PagingListener(
-              controller: _pagingController,
-              builder: (context, state, fetchNextPage) => PagedListView<int, Product>.separated(
-                state: state,
-                fetchNextPage: fetchNextPage, // Called when scroll reaches end
-                separatorBuilder: (context, index) => const Divider(),
-                builderDelegate: PagedChildBuilderDelegate(
-                  itemBuilder: (context, items, index) => ItemCard2(
-                    imgUrl: items.imgUrl ?? "",
-                    title: items.title ?? "",
-                    description: items.description ?? "",
-                    price: items.price ?? 0.0,
+            const Divider(height: 2, thickness: 2, color: AppColors.lightGrey),
+            Expanded(
+              child: PagingListener(
+                controller: _pagingController,
+                builder: (context, state, fetchNextPage) => PagedListView<int, Product>.separated(
+                  state: state,
+                  fetchNextPage: fetchNextPage, // Called when scroll reaches end
+                  separatorBuilder: (context, index) => const Divider(),
+                  builderDelegate: PagedChildBuilderDelegate(
+                    itemBuilder: (context, items, index) => ItemCard2(
+                      imgUrl: items.imgUrl ?? "",
+                      title: items.title ?? "",
+                      description: items.description ?? "",
+                      price: items.price ?? 0.0,
+                      onTap: () async {
+                        _myFocusNode.unfocus();
+                        await Future.delayed(const Duration(milliseconds: 200));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const SellerDetailsScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
