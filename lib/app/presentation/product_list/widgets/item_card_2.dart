@@ -17,7 +17,7 @@ class ItemCard2 extends StatefulWidget {
   final String imgUrl;
   final String title;
   final String description;
-  final String price;
+  final double price;
   final int maxLines;
 
   @override

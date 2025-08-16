@@ -134,7 +134,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
                     imgUrl: items.imgUrl ?? "",
                     title: items.title ?? "",
                     description: items.description ?? "",
-                    price: items.price ?? "",
+                    price: items.price ?? 0.0,
                   ),
                 ),
               ),

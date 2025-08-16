@@ -73,7 +73,7 @@ class _ItemsState extends State<Items> {
                     width: screenWidth / 2,
                     margin: const EdgeInsets.only(top: 4),
                     child:  Text(
-                      product.price ?? "₹49.00",
+                      product.price.toString(),
                       softWrap: true,
                       maxLines: 3,
                       overflow: TextOverflow.ellipsis,

@@ -55,7 +55,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle12,
         "title": "Spicy and Flavorful Chilli Pickle Delight",
         "description": "A fiery and flavorful chilli pickle [1/2Kg]",
-        "price": "₹130",
+        "price": 130.0,
+        "originalPrice": 150.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 4.6
@@ -64,7 +65,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle15,
         "title": "Tangy and Delicious Traditional Mango Pickle",
         "description": "A tangy and delicious mango pickle [1/2Kg]",
-        "price": "₹150",
+        "price": 150.0,
+        "originalPrice": 180.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 3.1
@@ -73,7 +75,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle13,
         "title": "Zesty and Unique Ginger Pickle Experience",
         "description": "A zesty ginger pickle with a unique taste [1/2Kg]",
-        "price": "₹140",
+        "price": 140.0,
+        "originalPrice": 170.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 2.5
@@ -82,7 +85,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle14,
         "title": "Authentic and Traditional Gongura Pickle Taste",
         "description": "A traditional and authentic gongura pickle [1/2Kg]",
-        "price": "₹160",
+        "price": 160.0,
+        "originalPrice": 210.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 3.7
@@ -91,7 +95,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle15,
         "title": "Refreshing and Citrus-Infused Lime Pickle Treat",
         "description": "A refreshing and citrusy lime pickle [1/2Kg]",
-        "price": "₹120",
+        "price": 120.0,
+        "originalPrice": 170.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 4.4
@@ -100,7 +105,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle16,
         "title": "Delicious and Flavorful Mixed Pickle Creation",
         "description": "A blend of flavors in a delicious mixed pickle [1/2Kg]",
-        "price": "₹170",
+        "price": 170.0,
+        "originalPrice": 220.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 3.9
@@ -109,7 +115,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle7,
         "title": "Refreshing and Zesty Citrus Lime Pickle Jar",
         "description": "A refreshing and citrusy lime pickle [1/2Kg]",
-        "price": "₹120",
+        "price": 120.0,
+        "originalPrice": 150.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 3.4
@@ -118,7 +125,8 @@ class RepoData {
         "imgUrl": AppAssets.kPickle8,
         "title": "Delicious and Tangy Mixed Pickle with Spices",
         "description": "A blend of flavors in a delicious mixed pickle [1/2Kg]",
-        "price": "₹170",
+        "price": 170.0,
+        "originalPrice": 210.0,
         "isVeg": true,
         "isBestseller": true,
         "rating": 4.9

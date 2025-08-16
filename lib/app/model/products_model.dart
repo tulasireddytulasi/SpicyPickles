@@ -28,7 +28,8 @@ class Product {
   String? imgUrl;
   String? title;
   String? description;
-  String? price;
+  double? price;
+  double? originalPrice;
   double? rating;
   bool? isVeg;
   bool? isBestseller;
@@ -38,6 +39,7 @@ class Product {
     this.title,
     this.description,
     this.price,
+    this.originalPrice,
     this.rating,
     this.isVeg,
     this.isBestseller,
@@ -48,6 +50,7 @@ class Product {
     title: json["title"],
     description: json["description"],
     price: json["price"],
+    originalPrice: json["originalPrice"],
     rating: json["rating"]?.toDouble(),
     isVeg: json["isVeg"],
     isBestseller: json["isBestseller"],
@@ -58,6 +61,7 @@ class Product {
     "title": title,
     "description": description,
     "price": price,
+    "originalPrice": originalPrice,
     "isVeg": isVeg,
     "isBestseller":isBestseller,
     "rating": rating,

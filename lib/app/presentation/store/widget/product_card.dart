@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:spicypickles/app/core/theme/app_theme.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
 import 'package:spicypickles/app/model/model_exports.dart';
 import 'package:spicypickles/app/presentation/cart/widgets/add_items_button.dart';
@@ -48,10 +49,10 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   maxLines: 4,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.bodySmall?.copyWith(
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     fontSize: 16,
-                    color: AppColors.black,
-                    fontFamily: "MontserratSemiBold",
+                    fontWeight: FontWeight.w500, // font-medium
+                    color: AppTheme.gray800, // text-gray-800
                   ),
                 ),
                 const SizedBox(height: 6),
@@ -70,13 +71,29 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   ],
                 ),
                 const SizedBox(height: 6),
-                Text(
-                  product.price ?? "",
-                  style: context.textStyle?.bodySmall?.copyWith(
-                    fontSize: 14,
-                    color: AppColors.black,
-                    fontFamily: "MontserratSemiBold",
-                  ),
+                // Price
+                Row(
+                  children: [
+                    Text(
+                      '₹${product.price?.toStringAsFixed(2)}',
+                      style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                        color: AppTheme.primaryColor, // text-primary
+                        fontWeight: FontWeight.w500, // font-medium
+                      ),
+                    ),
+                    if (product.originalPrice != null)
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8.0), // ml-2
+                        child: Text(
+                          '₹${product.originalPrice!.toStringAsFixed(2)}',
+                          style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                            fontSize: 12, // text-xs
+                            color: AppTheme.gray500, // text-gray-500
+                            decoration: TextDecoration.lineThrough, // line-through
+                          ),
+                        ),
+                      ),
+                  ],
                 ),
                 const SizedBox(height: 6),
                 Text(
@@ -84,10 +101,9 @@ class _FoodItemCardState extends State<FoodItemCard> {
                   maxLines: 2,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
-                  style: context.textStyle?.bodySmall?.copyWith(
-                    fontSize: 12,
-                    color: AppColors.mediumGrey,
-                    fontFamily: "MontserratSemiBold",
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontSize: 12, // text-xs
+                    color: AppTheme.gray500, // text-gray-500
                   ),
                 ),
                 const SizedBox(height: 6),
