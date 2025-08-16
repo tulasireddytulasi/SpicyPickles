@@ -61,7 +61,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                     StarRating(rating: product.rating?.toInt() ?? 0, filledColor: Colors.amber, starSize: 14.5),
                     const SizedBox(width: 4),
                     Text(
-                      "(126)",
+                      "(126+)",
                       style: context.textStyle?.bodySmall?.copyWith(
                         fontSize: 12,
                         color: AppColors.black,
@@ -77,7 +77,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                     Text(
                       '₹${product.price?.toStringAsFixed(2)}',
                       style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                        color: AppTheme.primaryColor, // text-primary
+                        color: AppTheme.blackColor, // text-primary
                         fontWeight: FontWeight.w500, // font-medium
                       ),
                     ),

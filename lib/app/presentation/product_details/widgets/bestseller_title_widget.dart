@@ -9,7 +9,7 @@ class BestsellerTitleWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20), // mb-4
+        padding: const EdgeInsets.only(left: 20, right: 20, top: 16), // mb-4
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
