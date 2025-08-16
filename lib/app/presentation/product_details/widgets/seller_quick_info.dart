@@ -95,13 +95,14 @@ class SellerQuickInfo extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(
-                          Icons.access_time, // ri-time-line
+                          Icons.workspace_premium_outlined, // ri-time-line
                           color: AppTheme.gray500,
                           size: 16, // icon size
                         ),
                         const SizedBox(width: 4), // gap-1
                         Text(
-                          sellerDetails.deliveryTime.split('-').first.trim(), // "30 min" from "30-40 min"
+                         // sellerDetails.deliveryTime.split('-').first.trim(), // "30 min" from "30-40 min"
+                          "Premium Quality",
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 fontSize: 12, // text-xs
                                 color: AppTheme.gray500, // text-gray-500
@@ -124,13 +125,14 @@ class SellerQuickInfo extends StatelessWidget {
                     Row(
                       children: [
                         const Icon(
-                          Icons.shopping_bag_outlined, // ri-shopping-bag-line
+                          Icons.workspace_premium_outlined, // ri-shopping-bag-line
                           color: AppTheme.gray500,
                           size: 16, // icon size
                         ),
                         const SizedBox(width: 4), // gap-1
                         Text(
-                          'Min ${sellerDetails.minOrder}', // Min $20
+                          //'Min ${sellerDetails.minOrder}', // Min $20
+                          "Handcrafted",
                           style: Theme.of(context).textTheme.labelSmall?.copyWith(
                                 fontSize: 12, // text-xs
                                 color: AppTheme.gray500, // text-gray-500

@@ -96,41 +96,51 @@ class OverallRatingWidget extends StatelessWidget {
               ),
               const SizedBox(width: 16), // gap-4
               // Delivery Time
-              Row(
-                children: [
-                  const Icon(
-                    Icons.access_time, // ri-time-line
-                    color: AppTheme.gray600,
-                    size: 16, // mr-1 (icon size)
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    sellerDetails.deliveryTime, // 30-40 min
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: 14, // text-sm
-                          color: AppTheme.gray600, // text-gray-600
-                        ),
-                  ),
-                ],
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.local_shipping_outlined, // ri-time-line
+                      color: AppTheme.gray600,
+                      size: 16, // mr-1 (icon size)
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        //sellerDetails.deliveryTime, // 30-40 min
+                        "Pan India Shipping",
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontSize: 14, // text-sm
+                              color: AppTheme.gray600, // text-gray-600
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
               const SizedBox(width: 16), // gap-4
               // Distance
-              Row(
-                children: [
-                  const Icon(
-                    Icons.location_on_outlined, // ri-map-pin-line
-                    color: AppTheme.gray600,
-                    size: 16, // mr-1 (icon size)
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    sellerDetails.distance, // 2.4 miles
-                    style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                          fontSize: 14, // text-sm
-                          color: AppTheme.gray600, // text-gray-600
-                        ),
-                  ),
-                ],
+              Expanded(
+                child: Row(
+                  children: [
+                    const Icon(
+                      Icons.beenhere_outlined, // ri-map-pin-line
+                      color: AppTheme.gray600,
+                      size: 16, // mr-1 (icon size)
+                    ),
+                    const SizedBox(width: 4),
+                    Expanded(
+                      child: Text(
+                        //sellerDetails.distance, // 2.4 miles
+                        "100% Natural",
+                        style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              fontSize: 14, // text-sm
+                              color: AppTheme.gray600, // text-gray-600
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ],
           ),

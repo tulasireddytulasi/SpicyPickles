@@ -15,7 +15,7 @@ class SellerAppbar extends StatefulWidget {
 }
 
 class _SellerAppbarState extends State<SellerAppbar> {
-  static const double expandedHeight = 240.0;
+  static const double expandedHeight = 250.0;
   static const double collapsedHeight = kToolbarHeight;
   static const double leadingIconWidth = 56.0;
   static const double leadingIconPadding = 16.0;
