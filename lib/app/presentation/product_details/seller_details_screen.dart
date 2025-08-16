@@ -122,11 +122,6 @@ class _SellerDetailsScreenState extends State<SellerDetailsScreen> {
                 ),
               ],
             ),
-            // Bottom Navigation Bar
-            const Align(
-              alignment: Alignment.bottomCenter,
-              child: BottomNavBar(),
-            ),
             // Floating Cart Button
             FloatingCartButton(onPressed: _openCartModal),
           ],

@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
+import 'package:spicypickles/app/presentation/product_details/seller_details_screen.dart';
 import 'package:spicypickles/app/presentation/store/store_items_screen.dart';
 import 'package:spicypickles/app/presentation/widgets/widget_exports.dart';
 
@@ -33,7 +34,7 @@ class _ItemCard2State extends State<ItemCard2> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => const StoreItemsScreen(),
+            builder: (context) => const SellerDetailsScreen(),
           ),
         );
       },
