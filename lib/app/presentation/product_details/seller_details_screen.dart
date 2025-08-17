@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
-import 'package:spicypickles/app/model/products_model.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart' show Product;
 import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/bloc/product_bloc.dart';
 import 'package:spicypickles/app/presentation/product_details/seller_bloc/seller_bloc.dart';
@@ -16,7 +16,6 @@ import 'package:spicypickles/app/presentation/product_details/widgets/floating_c
 import 'package:spicypickles/app/presentation/product_details/widgets/sliver_app_bar.dart';
 import 'package:spicypickles/app/presentation/store/bloc/store_items_bloc.dart';
 import 'package:spicypickles/app/presentation/store/widget/product_card.dart';
-import 'package:spicypickles/app/presentation/widgets/bottom_nav_bar.dart';
 
 class SellerDetailsScreen extends StatefulWidget {
   const SellerDetailsScreen({super.key});

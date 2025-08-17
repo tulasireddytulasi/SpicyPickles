@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
-import 'package:spicypickles/app/model/category_model.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart' show Category;
 
 class CategoryItemWidget extends StatelessWidget {
   final Category category;

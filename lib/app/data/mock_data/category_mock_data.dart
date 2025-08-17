@@ -1,7 +1,7 @@
 // ... (previous mock data)
 
 
-import 'package:spicypickles/app/model/category_model.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart' show Category;
 
 List<Category> mockCategories = [
   Category(
