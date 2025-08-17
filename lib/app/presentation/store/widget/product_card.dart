@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 import 'package:spicypickles/app/presentation/cart/widgets/add_items_button.dart';
 import 'package:spicypickles/app/presentation/home/widget/rating_widget.dart';
 

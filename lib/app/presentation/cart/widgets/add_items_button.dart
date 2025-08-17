@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 
 class AddItemButton extends StatefulWidget {

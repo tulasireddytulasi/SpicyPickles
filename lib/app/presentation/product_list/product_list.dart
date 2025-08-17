@@ -4,7 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 import 'package:spicypickles/app/presentation/product_details/seller_details_screen.dart';
 import 'package:spicypickles/app/presentation/product_list/widgets/product_list_widget_exports.dart';
 import 'package:spicypickles/app/presentation/widgets/widget_exports.dart';

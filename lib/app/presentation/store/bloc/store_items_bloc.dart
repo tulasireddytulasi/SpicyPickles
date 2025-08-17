@@ -5,7 +5,7 @@ import 'dart:developer';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 import 'package:spicypickles/app/presentation/product_list/widgets/products_list_data.dart';
 
 part 'store_items_event.dart';

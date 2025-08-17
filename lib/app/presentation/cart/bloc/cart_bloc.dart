@@ -3,10 +3,8 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:spicypickles/app/data/models/cart_item_model.dart';
-import 'package:spicypickles/app/data/models/product_model.dart';
 import 'package:spicypickles/app/data/repositories/cart_repository.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 
 part 'cart_event.dart';
 

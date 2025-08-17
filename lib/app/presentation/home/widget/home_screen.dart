@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 import 'package:spicypickles/app/presentation/home/widget/home_widget_exports.dart';
 import 'package:spicypickles/app/presentation/product_list/widgets/products_list_data.dart';
 

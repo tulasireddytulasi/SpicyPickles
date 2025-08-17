@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/utils/util_exports.dart';
-import 'package:spicypickles/app/model/model_exports.dart';
+import 'package:spicypickles/app/data/models/model_exports.dart';
 
 class PicklesList extends StatelessWidget {
   const PicklesList({super.key, required this.iconsModel});
