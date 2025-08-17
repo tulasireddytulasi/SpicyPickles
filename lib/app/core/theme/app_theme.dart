@@ -3,6 +3,7 @@
 // Folder: lib/config/
 
 import 'package:flutter/material.dart';
+import 'package:spicypickles/app/core/utils/app_colors.dart';
 
 class AppTheme {
   // Define colors based on the HTML's Tailwind config
@@ -30,6 +31,21 @@ class AppTheme {
     secondaryHeaderColor: secondaryColor,
     scaffoldBackgroundColor: lightGreenColor,
     fontFamily: 'Poppins',
+    colorScheme: const ColorScheme(
+      primary: AppColors.vividOrange,
+      primaryContainer: AppColors.deepRed,
+      secondary: AppColors.vividOrange,
+      secondaryContainer: AppColors.softOrange,
+      surface: AppColors.lightGrey,
+      background: AppColors.white,
+      error: AppColors.vividOrange,
+      onPrimary: AppColors.white,
+      onSecondary: AppColors.grey,
+      onSurface: AppColors.darkGrey,
+      onBackground: AppColors.grey,
+      onError: AppColors.white,
+      brightness: Brightness.light,
+    ),
     appBarTheme: const AppBarTheme(
       backgroundColor: whiteColor,
       elevation: 0,

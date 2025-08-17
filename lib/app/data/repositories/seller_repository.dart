@@ -9,7 +9,7 @@ import 'package:spicypickles/app/data/models/seller_details_model.dart' show Sel
 class SellerRepository {
   Future<SellerDetailsModel> fetchSellerDetails() async {
     // Simulate network delay
-    await Future.delayed(const Duration(seconds: 1));
+   // await Future.delayed(const Duration(seconds: 1));
 
     return SellerDetailsModel(
       name: 'Grandma\'s Pickles',

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
+import 'package:spicypickles/app/presentation/cart/cart.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   const CustomAppBar({super.key});
@@ -61,7 +62,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         Stack(
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Cart(),
+                  ),
+                );
+              },
               icon: const Icon(Icons.shopping_cart_outlined, color: AppTheme.primaryColor),
             ),
             Positioned(
