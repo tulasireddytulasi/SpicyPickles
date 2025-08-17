@@ -137,6 +137,7 @@ class _FoodItemCardState extends State<FoodItemCard> {
                 bottom: -16,
                 right: 14,
                 child: AddItemButton(
+                  key: Key(product.id),
                   width: 110,
                   height: 40,
                   product: product,

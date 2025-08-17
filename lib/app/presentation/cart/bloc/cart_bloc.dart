@@ -28,7 +28,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   FutureOr<void> _addItem(AddItem event, Emitter<CartState> emit) {
     // Find the index of the product in the cart
-    int index = cart.indexWhere((item) => item.product?.title == event.product.title);
+    int index = cart.indexWhere((item) => item.product?.id == event.product.id);
 
     if (index != -1) {
       // Product already exists, increase quantity
@@ -51,7 +51,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   FutureOr<void> _removeItem(RemoveItem event, Emitter<CartState> emit) {
     // Find the index of the product in the cart
-    int index = cart.indexWhere((item) => item.product?.title == event.product.title);
+    int index = cart.indexWhere((item) => item.product?.id == event.product.id);
 
     if (index != -1) {
       if (cart[index].quantity! > 1) {

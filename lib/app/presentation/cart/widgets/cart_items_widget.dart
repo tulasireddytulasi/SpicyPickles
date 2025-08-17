@@ -84,7 +84,7 @@ class _ItemsState extends State<Items> {
                     ),
                   ),
                   const SizedBox(height: 2),
-                  AddItemButton(noOfItems: 1, product: product),
+                  AddItemButton(key: Key(product.id),noOfItems: 1, product: product),
                 ],
               ),
             ),
