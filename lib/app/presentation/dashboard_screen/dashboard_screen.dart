@@ -4,6 +4,7 @@ import 'package:spicypickles/app/presentation/dashboard_screen/widgets/popular_s
 import 'package:spicypickles/app/presentation/dashboard_screen/widgets/search_bar_widget.dart';
 import 'widgets/popular_categories_widget.dart';
 import 'widgets/best_selling_pickles_widget.dart';
+import 'widgets/popular_sellers_vertical_section_widget.dart' show PopularSellersVerticalSectionWidget;
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -22,6 +23,7 @@ class DashboardScreen extends StatelessWidget {
             BannerWidget(),
             PopularCategoriesWidget(),
             PopularSellersWidget(),
+            PopularSellersVerticalSectionWidget(),
             BestSellingPicklesWidget(),
             const SizedBox(height: 100),
             // Popular Categories
