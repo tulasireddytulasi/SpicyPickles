@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/presentation/dashboard_screen/widgets/banner_widget.dart';
+import 'package:spicypickles/app/presentation/dashboard_screen/widgets/popular_sellers_widget.dart';
 import 'package:spicypickles/app/presentation/dashboard_screen/widgets/search_bar_widget.dart';
 import 'widgets/popular_categories_widget.dart';
 
@@ -19,6 +20,9 @@ class DashboardScreen extends StatelessWidget {
             // Banner
             BannerWidget(),
             PopularCategoriesWidget(),
+            PopularSellersWidget(),
+
+            const SizedBox(height: 100),
             // Popular Categories
             // etc.
           ],
