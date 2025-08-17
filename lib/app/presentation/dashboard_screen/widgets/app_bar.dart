@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
+import 'package:spicypickles/app/presentation/cart/bloc/cart_bloc.dart';
 import 'package:spicypickles/app/presentation/cart/cart.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -72,29 +74,37 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               },
               icon: const Icon(Icons.shopping_cart_outlined, color: AppTheme.primaryColor),
             ),
-            Positioned(
-              right: 4,
-              top: 4,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: AppTheme.accentColor,
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                constraints: const BoxConstraints(
-                  minWidth: 16,
-                  minHeight: 16,
-                ),
-                child: const Text(
-                  '3',
-                  style: TextStyle(
-                    color: AppTheme.whiteColor,
-                    fontSize: 10,
-                    fontWeight: FontWeight.bold,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
+            BlocBuilder<CartBloc, CartState>(
+              builder: (context, state) {
+                if (state is CartLoaded && state.productList.isNotEmpty){
+                  return Positioned(
+                    right: 4,
+                    top: 4,
+                    child: Container(
+                      padding: const EdgeInsets.all(2),
+                      decoration: BoxDecoration(
+                        color: AppTheme.accentColor,
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      constraints: const BoxConstraints(
+                        minWidth: 16,
+                        minHeight: 16,
+                      ),
+                      child: Text(
+                        state.totalQuantity.toString(),
+                        style: TextStyle(
+                          color: AppTheme.whiteColor,
+                          fontSize: 10,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
+                } else {
+                  return SizedBox.shrink();
+                }
+              },
             ),
           ],
         ),

@@ -41,7 +41,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       // Product not found, add new item
       cart.add(CartItemsModel(product: event.product, quantity: 1));
     }
-    emit(CartLoaded(productList: [...cart]));
+
+    int totalQuantity = 0;
+    for (var item in cart) {
+      totalQuantity += item.quantity ?? 0;
+    }
+    emit(CartLoaded(productList: [...cart], totalQuantity: totalQuantity));
   }
 
   FutureOr<void> _removeItem(RemoveItem event, Emitter<CartState> emit) {
@@ -62,12 +67,23 @@ class CartBloc extends Bloc<CartEvent, CartState> {
       }
     }
 
-    emit(CartLoaded(productList: [...cart]));
+    print("cart length: ${cart.length}");
+
+    // int totalQuantity = 0;
+    // for (var item in cart) {
+    //   totalQuantity += item.quantity ?? 0;
+    // }
+
+    // Recalculate totalQuantity after the cart has been modified
+    final int totalQuantity = cart.fold(0, (sum, item) => sum + (item.quantity ?? 0));
+
+
+    emit(CartLoaded(productList: [...cart], totalQuantity: totalQuantity));
   }
 
   FutureOr<void> _clearAllItems(clearAllItem event, Emitter<CartState> emit) {
     cart.clear();
-    emit(CartLoaded(productList: [...cart]));
+    emit(CartLoaded(productList: [...cart], totalQuantity: 0));
   }
 
   // new changes
