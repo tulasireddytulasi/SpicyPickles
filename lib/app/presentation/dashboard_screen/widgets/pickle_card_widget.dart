@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:spicypickles/app/core/theme/app_theme.dart';
-import 'package:spicypickles/app/model/pickle_model.dart';
+import 'package:spicypickles/app/data/models/pickle_model.dart';
 
 class PickleCardWidget extends StatelessWidget {
   final Pickle pickle;

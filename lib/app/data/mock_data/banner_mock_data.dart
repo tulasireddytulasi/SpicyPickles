@@ -1,4 +1,4 @@
-import 'package:spicypickles/app/model/banner_model.dart';
+import 'package:spicypickles/app/data/models/banner_model.dart';
 
 List<Banner> mockBanners = [
   Banner(

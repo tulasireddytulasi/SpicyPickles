@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:spicypickles/app/model/products_model.dart';
+import 'package:spicypickles/app/data/models/products_model.dart';
 
 CartItemsModel cartItemsModelFromJson(String str) => CartItemsModel.fromJson(json.decode(str));
 

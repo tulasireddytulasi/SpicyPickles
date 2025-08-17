@@ -1,6 +1,6 @@
 // ... (previous imports and mock data)
 
-import 'package:spicypickles/app/model/pickle_model.dart';
+import 'package:spicypickles/app/data/models/pickle_model.dart';
 
 List<Pickle> mockPickles = [
   Pickle(
